@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.device.dao.DeviceMapper">
+
+
+	<resultMap extends="BaseResultMap" id="DeviceBindExtResultMap" type="com.soco.car.device.entity.ext.DeviceBindExt">
+		<result column="state" jdbcType="BIGINT" property="state" />
+		<result column="bindTime" jdbcType="TIMESTAMP" property="bindTime" />
+		<result column="unbindTime" jdbcType="TIMESTAMP" property="unbindTime" />
+		<result column="carModelName" jdbcType="VARCHAR" property="carModelName" />
+		<result column="colorCode" jdbcType="VARCHAR" property="colorCode" />
+		<result column="imgUrl" jdbcType="VARCHAR" property="imgUrl" />
+	</resultMap>
+
+	<select id="queryUserBindDeviceByPage" resultMap="DeviceBindExtResultMap">
+		SELECT
+		d.*,
+		ubd.state,ubd.bindTime,ubd.unbindTime,
+		cb.dateManufacture AS colorCode,
+		ifnull(cp.imgUrl,"resource/SOCOUploadImg/APPImg/car/ts.png") as imgUrl,
+        ifnull(cp.carModelName,"TS") as carModelName
+		FROM ts01_device d
+		LEFT JOIN ts01_userbinddevice ubd ON (d.deviceId = ubd.deviceId)
+		LEFT JOIN ts01_user u ON (ubd.userId = u.userId)
+		LEFT JOIN ts01_car_baseinfo cb ON(cb.deviceNo=d.deviceNo)
+		LEFT JOIN ts01_car_picture cp ON(cb.carModelName=cp.carModelName AND
+		cb.colorCode=cp.colorCode)
+		WHERE u.userId = #{userId}
+		ORDER BY
+		ubd.state DESC
+	</select>
+
+	<select id="queryDeviceInfoByDeviceNo" resultMap="DeviceBindExtResultMap">
+		SELECT
+		d.*,
+		ubd.state,ubd.bindTime,ubd.unbindTime,
+		cb.dateManufacture AS colorCode,
+		ifnull(cp.imgUrl,"resource/SOCOUploadImg/APPImg/car/ts.png") as imgUrl,
+        ifnull(cp.carModelName,"TS") as carModelName
+		FROM ts01_device d
+		LEFT JOIN ts01_userbinddevice ubd ON (d.deviceId = ubd.deviceId)
+		LEFT JOIN ts01_car_baseinfo cb ON(cb.deviceNo=d.deviceNo)
+		LEFT JOIN ts01_car_picture cp ON(cb.carModelName=cp.carModelName AND
+		cb.colorCode=cp.colorCode)
+		WHERE d.deviceNo = #{deviceNo} and ubd.state=0
+		limit 1
+	</select>
+	<select id="queryDeviceInfoByUserId" resultMap="DeviceBindExtResultMap">
+		SELECT
+		d.*,
+		ubd.state,ubd.bindTime,ubd.unbindTime,
+		cp.carModelName,
+		cb.dateManufacture AS colorCode,
+		ifnull(cp.imgUrl,"resource/SOCOUploadImg/APPImg/car/ts.png") as imgUrl,
+        ifnull(cp.carModelName,"TS") as carModelName
+		FROM ts01_device d
+		LEFT JOIN ts01_userbinddevice ubd ON (d.deviceId = ubd.deviceId)
+		LEFT JOIN ts01_car_baseinfo cb ON(cb.deviceNo=d.deviceNo)
+		LEFT JOIN ts01_car_picture cp ON(cb.carModelName=cp.carModelName AND
+		cb.colorCode=cp.colorCode)
+		WHERE ubd.userId = #{userId} and ubd.state=0
+		limit 1
+	</select>
+	<update id="updateDeviceInfo">
+		update ts01_device set activationDate=now() where deviceId=#{deviceId} and
+		activationDate is null
+	</update>
+</mapper>

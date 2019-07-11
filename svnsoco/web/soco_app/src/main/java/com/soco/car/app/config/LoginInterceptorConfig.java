@@ -1,0 +1,72 @@
+/**
+ * Project Name:SOCO_APP
+ * File Name:JwtAuthConfig.java
+ * Package Name:com.soco.car.app.config
+ * Date:2018年7月19日下午5:49:46
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.soco.car.app.interceptor.LoginInterceptor;
+
+/**
+ * ClassName:JwtAuthConfig <br/>
+ * Reason: 登录授权拦截器. <br/>
+ * Date: 2018年7月19日 下午5:49:46 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Configuration
+public class LoginInterceptorConfig implements WebMvcConfigurer {
+
+	@Bean
+	public LoginInterceptor loginInterceptor() {
+		return new LoginInterceptor();
+	}
+	
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		// 注册拦截器
+		InterceptorRegistration loginRegistry = registry.addInterceptor(loginInterceptor());
+		// 拦截路径
+		loginRegistry.addPathPatterns("/**");
+		// 排除路径
+		loginRegistry.excludePathPatterns("/rest/v1/");
+		loginRegistry.excludePathPatterns("/rest/v1/login");
+		loginRegistry.excludePathPatterns("/rest/v1/register");
+		loginRegistry.excludePathPatterns("/rest/v1/modifyPassword");
+		loginRegistry.excludePathPatterns("/rest/v1/sendRegisterCode/**");
+		loginRegistry.excludePathPatterns("/rest/v1/sendModifyPasswordCode/**");
+		loginRegistry.excludePathPatterns("/rest/v1/countryList");
+		loginRegistry.excludePathPatterns("/rest/v1/verifyCode");
+		loginRegistry.excludePathPatterns("/rest/v1/setPassword");
+		loginRegistry.excludePathPatterns("/rest/v1/config/isUpgradeVersion/{versionNo}/{systemName}");
+		loginRegistry.excludePathPatterns("/rest/v1/repairService/**");
+		loginRegistry.excludePathPatterns("/rest/v1/config/selectKefu");
+		loginRegistry.excludePathPatterns("/error");
+		loginRegistry.excludePathPatterns("/swagger-ui.html");
+		loginRegistry.excludePathPatterns("/**/swagger-resources/**");
+		loginRegistry.excludePathPatterns("/webjars/**");
+		loginRegistry.excludePathPatterns("/webjars/**");
+		loginRegistry.excludePathPatterns("/rest/v1/configStart/**");
+		loginRegistry.excludePathPatterns("/rest/v1/repairstation/nearby");
+		
+		// 排除资源请求
+		loginRegistry.excludePathPatterns("/css/**/*.css");
+		loginRegistry.excludePathPatterns("/js/**/*.js");
+		loginRegistry.excludePathPatterns("/image/**/*.png");
+		
+		
+	}
+}

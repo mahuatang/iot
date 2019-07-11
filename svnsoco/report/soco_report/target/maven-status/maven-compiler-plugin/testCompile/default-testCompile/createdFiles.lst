@@ -1,0 +1,8 @@
+com/soco/car/report/service/BaiduMapServiceTest.class
+com/soco/car/report/base/BaseTest.class
+com/soco/car/SoCoReportApplicatoinTest.class
+com/soco/car/report/utils/CoordinateUtilTest.class
+com/soco/car/report/service/TrailDeviceServiceTest.class
+com/soco/car/report/utils/MapToWGSTest.class
+com/soco/car/report/repository/TrailDeviceRepositoryTest.class
+com/soco/car/report/task/SyncTrailDeviceGeoTaskTest.class

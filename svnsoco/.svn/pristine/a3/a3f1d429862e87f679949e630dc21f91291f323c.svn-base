@@ -1,0 +1,62 @@
+package com.soco.car.app.controller;
+
+import com.soco.car.app.api.request.BindedDeviceRequest;
+import com.soco.car.app.api.request.DeviceStateRequest;
+import com.soco.car.app.api.response.BaseResponse;
+import com.soco.car.app.service.UserbinddeviceService;
+import com.soco.car.user.entity.Userbinddevice;
+import io.swagger.annotations.Api;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/rest/v1/UserbinddeviceController")
+@Api(value = "/rest/v1/UserbinddeviceController", tags = { "车辆管理相关接口服务" })
+public class UserbinddeviceController extends BaseController{
+    private static final Logger logger = LoggerFactory.getLogger(UserbinddeviceController.class);
+
+    @Autowired
+    private UserbinddeviceService userbinddeviceService;
+
+    @PostMapping("userBindDevice")
+    public BaseResponse userBindDevice(Userbinddevice userbinddevice) {
+        return userbinddeviceService.userBindDevice(userbinddevice);
+    }
+
+    @PostMapping("userUnBindDevice")
+    public BaseResponse userUnBindDevice(Userbinddevice userbinddevice) {
+        return userbinddeviceService.userUnBindDevice(userbinddevice);
+    }
+
+    @PostMapping("queryMyBindedDevice")
+    public BaseResponse queryMyBindedDevice(@RequestBody BindedDeviceRequest bindedDeviceRequest) {
+        return userbinddeviceService.queryMyBindedDevice(bindedDeviceRequest);
+    }
+
+    @PostMapping("queryDeviceStatisMsg")
+    public BaseResponse queryDeviceStatisMsg(@RequestBody DeviceStateRequest deviceStateRequest) {
+        return userbinddeviceService.queryDeviceStatisMsg(deviceStateRequest);
+    }
+
+    @PostMapping("selectDeviceInfo/{deviceNo}")
+    public BaseResponse selectDeviceInfo(@PathVariable("deviceNo") String deviceNo) {
+        return userbinddeviceService.selectDeviceInfo(deviceNo);
+    }
+
+    @PostMapping("selectDeviceWarnInfo/{userId}")
+    public BaseResponse selectDeviceWarnInfo(@PathVariable("userId") Long userId) {
+        return userbinddeviceService.selectDeviceWarnInfo(userId);
+    }
+
+    @PostMapping("deleteDeviceWarnInfo/{userId}")
+    public BaseResponse deleteDeviceWarnInfo(@PathVariable("userId") Long userId) {
+        return userbinddeviceService.deleteDeviceWarnInfo(userId);
+    }
+
+    @PostMapping("getCourseUrl/{protype}")
+    public BaseResponse getCourseUrl(String protype) {
+        return userbinddeviceService.getCourseUrl(protype);
+    }
+}

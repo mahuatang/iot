@@ -1,0 +1,48 @@
+/**
+ * Project Name:SOCO_API
+ * File Name:DeviceServiceTest.java
+ * Package Name:com.soco.car.device.service
+ * Date:2018年7月23日下午8:14:43
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.device.service;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.github.pagehelper.PageInfo;
+import com.soco.car.base.BaseTest;
+import com.soco.car.device.entity.DeviceWarn;
+
+/**
+ * ClassName:DeviceServiceTest <br/>
+ * Reason: TODO ADD REASON. <br/>
+ * Date: 2018年7月23日 下午8:14:43 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public class DeviceServiceTest extends BaseTest {
+
+	@Autowired(required = false)
+	private DeviceService deviceService;
+
+	@Test
+	public void testFindAll() throws Exception {
+		System.out.println(deviceService.findAll());
+	}
+
+	@Test
+	public void testFindDeviceWarnByPage() throws Exception {
+		Long userId = 13465l;
+		Integer delFlag = null;
+		Integer pageNum = 1;
+		Integer pageSize = 10;
+		PageInfo<DeviceWarn> page = deviceService.findDeviceWarnByPage(userId, delFlag, pageNum, pageSize);
+		System.out.println(page);
+	}
+
+}

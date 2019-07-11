@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.user.dao.UserbinddeviceMapper">
+
+    <select id="checkUserBindDevice" resultType="Integer">
+        SELECT COUNT(bindId) from ts01_userbinddevice where userId=#{userId} and state=0
+    </select>
+
+    <select id="checkDeviceBindUser" resultType="Integer" parameterType="Long">
+        select count(bindId) from ts01_userbinddevice where deviceId=#{deviceId} and state=0
+    </select>
+
+    <select id="checkUserDeviceBind" parameterType="com.soco.car.user.entity.Userbinddevice" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ts01_userbinddevice where userId=#{userId} and deviceId=#{deviceId}
+    </select>
+
+    <select id="getDeviceBindTimes" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select count(*) from ts01_userbinddevice where state = 0 and userId = #{userId}
+    </select>
+
+    <update id="updateUserBindDevice">
+        update ts01_userbinddevice
+        <set>
+            <if test="imgUrls != null">
+                imgUrls = #{imgUrls,jdbcType=VARCHAR},
+            </if>
+            <if test="bindTime != null">
+                bindTime = #{bindTime,jdbcType=VARCHAR},
+            </if>
+            <if test="unbindTime != null">
+                unbindTime = #{unbindTime,jdbcType=VARCHAR},
+            </if>
+            state = #{state,jdbcType=VARCHAR},
+        </set>
+        where bindId = #{bindId,jdbcType=INTEGER}
+    </update>
+
+    <select id="queryMyBindedDevice" resultMap="BaseResultMap">
+        SELECT
+        t.bindTime,t.unbindTime,t.state,d.deviceNo,d.snCode,
+        ifnull(acp.imgUrl,"SOCOUploadImg/APPImg/car/ts.png") as imgUrls,
+        ifnull(acb.carModelName,"TS") as carModelName, acb.carMotorNumber, acb.dateManufacture AS colorCode, acb.carFrameNumber
+        from ts01_userbinddevice t
+        left join ts01_device d on d.deviceId = t.deviceId
+        left join ts01_car_baseinfo acb on acb.deviceNo=d.deviceNo
+        left join ts01_car_picture acp on acp.carModelName=acb.carModelName and acp.colorCode=acb.colorCode
+        where t.userId = #{userId} and t.state=#{state}
+        order by t.bindTime desc limit #{start},#{limit}
+    </select>
+
+    <select id="userIdBindDeviceByDeviceNo" parameterType="String" resultType="String">
+        SELECT a.userId
+        FROM ts01_userbinddevice a
+        LEFT JOIN ts01_device c ON a.deviceId = c.deviceId
+        WHERE a.state = 0 AND c.deviceNo = #{deviceNo}
+    </select>
+    
+    <select id="getUserBindDeviceNow" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ts01_userbinddevice a where userId = #{userId} ORDER BY bindTime desc limit 1
+    </select>
+</mapper>

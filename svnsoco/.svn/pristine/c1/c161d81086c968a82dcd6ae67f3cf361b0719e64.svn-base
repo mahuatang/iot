@@ -1,0 +1,71 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:HeartbeatMsg.java
+ * Package Name:com.soco.car.iot.message.car
+ * Date:2018年7月9日下午4:05:39
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.message.car.convert;
+
+import java.util.Arrays;
+
+import org.springframework.stereotype.Service;
+
+import com.soco.car.iot.message.BaseMsg;
+import com.soco.car.iot.message.MessageConverter;
+import com.soco.car.iot.message.car.msg.HeartbeatMsg;
+import com.soco.car.iot.utils.ByteUtils;
+import com.soco.car.iot.utils.Hex;
+
+/**
+ * ClassName:HeartbeatMsg <br/>
+ * Reason: 心跳包. <br/>
+ * Date: 2018年7月9日 下午4:05:39 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class HeartbeatConvert implements MessageConverter {
+	
+	private String msgType = "heartbeat";
+	/**
+	 * 
+	 * 心跳转换类，无需回复客户端，response设置为空
+	 * @see com.soco.car.iot.message.MessageConverter#convert2Message(byte[])
+	 */
+	@Override
+	public BaseMsg convert2Message(byte[] msg) {
+		HeartbeatMsg heartbeatMsg = new HeartbeatMsg();
+		byte[] command = Arrays.copyOfRange(msg, 0, 2);
+		byte contentLength = Arrays.copyOfRange(msg, 2, 3)[0];
+		byte terminal = Arrays.copyOfRange(msg, 4, 5)[0];
+		byte voltageLevel = Arrays.copyOfRange(msg, 5, 6)[0];
+		byte gsm = Arrays.copyOfRange(msg, 6, 7)[0];
+		byte languge = Arrays.copyOfRange(msg, 7, 8)[0];
+		heartbeatMsg.setCommand(ByteUtils.byte2ToShort(command));
+		heartbeatMsg.setContentLength(contentLength);
+		heartbeatMsg.setTerminal(terminal);
+		heartbeatMsg.setVoltageLevel(voltageLevel);
+		heartbeatMsg.setGsm(gsm);
+		heartbeatMsg.setLanguge(languge);
+		heartbeatMsg.setMsgType(msgType);
+		heartbeatMsg.setRequestContent(msg);
+		return heartbeatMsg;
+	}
+
+	/**
+	 *
+	 * 心跳协议包
+	 * 
+	 * @see com.soco.car.iot.message.MessageConverter#supportProcotol()
+	 */
+	@Override
+	public byte supportProcotol() {
+		return 0x13;
+	}
+
+}

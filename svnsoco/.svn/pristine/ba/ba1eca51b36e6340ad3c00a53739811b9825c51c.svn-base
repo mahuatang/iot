@@ -1,0 +1,326 @@
+/**
+ * Project Name:SOCO_APP
+ * File Name:UserService.java
+ * Package Name:com.soco.car.app.service
+ * Date:2018年7月24日下午1:25:50
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.service;
+
+import java.text.MessageFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.soco.car.app.constants.SiteConstant;
+import com.soco.car.car.api.ConfigApi;
+import com.soco.car.car.entity.ConfigVersion;
+import com.soco.car.user.entity.PhoneVersion;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.soco.car.app.api.request.LoginRequest;
+import com.soco.car.app.api.request.RegisterRequest;
+import com.soco.car.app.api.request.UserDataRequest;
+import com.soco.car.app.api.response.BaseResponse;
+import com.soco.car.app.cache.CodeCache;
+import com.soco.car.app.cache.TokenCache;
+import com.soco.car.app.cache.pojo.CodePOJO;
+import com.soco.car.app.cache.pojo.TokenPOJO;
+import com.soco.car.app.constants.AliSmsTemplateEnum;
+import com.soco.car.app.constants.ResponseMessageEnum;
+import com.soco.car.app.constants.SOCOAppConstant;
+import com.soco.car.app.handler.BaseResponseGenerator;
+import com.soco.car.app.sdk.ali.sms.AliSmsService;
+import com.soco.car.app.utils.CountryUtil;
+import com.soco.car.app.utils.RandomUtil;
+import com.soco.car.user.api.UserApi;
+import com.soco.car.user.entity.User;
+
+/**
+ * ClassName:UserService <br/>
+ * Reason: 用户相关服务. <br/>
+ * Date: 2018年7月24日 下午1:25:50 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class UserService {
+
+	private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
+	@Reference
+	private UserApi userApi;
+
+	@Autowired
+	private JwtService jwtService;
+
+	@Autowired
+	private TokenCache tokenCache;
+
+	@Autowired
+	private AliSmsService aliSmsService;
+
+	@Autowired
+	private CodeCache codeCache;
+
+	@Reference
+	private ConfigApi configApi;
+
+	/**
+	 * 
+	 * register:注册
+	 *
+	 * @author sunlangping
+	 * @param registerRequest
+	 * @return
+	 */
+	public BaseResponse register(RegisterRequest registerRequest) {
+		BaseResponse result = vaildateCode(registerRequest.getPhoneCode(), registerRequest.getPhone(),
+				registerRequest.getVerificationCode());
+		if (null != result) {
+			return result;
+		}
+		User u = userApi.findByPhone(registerRequest.getPhoneCode(), registerRequest.getPhone());
+		if (u != null) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+					ResponseMessageEnum.register_account_exist.getValue());
+		}
+		User user = new User();
+		user.setUserName(registerRequest.getPhone());
+		user.setPhone(registerRequest.getPhone());
+		user.setRgsTime(new Date());
+		user.setPassword(DigestUtils.md5Hex(registerRequest.getPassword()));
+		user.setPhoneCode(registerRequest.getPhoneCode());
+		user.setCountryCode(registerRequest.getCountryCode());
+		// user.set
+		userApi.save(user);
+		return BaseResponseGenerator.genSuccessResult(u);
+	}
+
+	/**
+	 * 
+	 * vaildateCode:通用验证代码模块
+	 *
+	 * @author sunlangping
+	 * @param phoneCode
+	 *            TODO
+	 * @param phone
+	 * @param code
+	 * @return
+	 */
+	public BaseResponse vaildateCode(String phoneCode, String phone, String code) {
+		String key = MessageFormat.format(codeCache.value_key, phoneCode, phone);
+		CodePOJO codePOJO = codeCache.get(key);
+		if (codePOJO == null) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+					ResponseMessageEnum.verification_code_expire.getValue());
+		}
+		if (!StringUtils.equals(codePOJO.getCode(), code)) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+					ResponseMessageEnum.verification_code_error.getValue());
+		}
+		return null;
+	}
+
+	/**
+	 * 
+	 * login:登录
+	 *
+	 * @author sunlangping
+	 * @param loginRequest
+	 * @return
+	 */
+	public BaseResponse login(LoginRequest loginRequest) {
+		User u = userApi.findByPhone(loginRequest.getPhoneCode(), loginRequest.getPhone());
+		if (u == null) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+					ResponseMessageEnum.register_account_failure.getValue());
+		}
+
+		String md5Pwd = DigestUtils.md5Hex(loginRequest.getPassword());
+		if (!StringUtils.equals(md5Pwd, u.getPassword())) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+					ResponseMessageEnum.register_account_failure.getValue());
+		}
+		String token = jwtService.generateToken(loginRequest, u);
+		u.setLastLoginTime(new Date());
+		u.setSignLoginMark(token);
+		userApi.save(u);
+		return BaseResponseGenerator.genSuccessResult(token);
+	}
+
+	/**
+	 * 
+	 * refresh:刷新token
+	 *
+	 * @author sunlangping
+	 * @param tokenPOJO
+	 *            TODO
+	 * @return
+	 */
+	public BaseResponse refresh(TokenPOJO tokenPOJO) {
+		LoginRequest loginRequest = new LoginRequest();
+		loginRequest.setPhone(tokenPOJO.getPhone());
+		String newToken = jwtService.generateToken(loginRequest, null);
+		return BaseResponseGenerator.genSuccessResult(newToken);
+	}
+
+	public BaseResponse loginout(TokenPOJO tokenPOJO) {
+		tokenCache.remove(tokenPOJO.getPhone());
+		return BaseResponseGenerator.genSuccessResult(null);
+	}
+
+	public BaseResponse sendRegisterCode(String phoneCode, String phone) {
+		String templateId = null;
+		if (CountryUtil.isChinese(phoneCode)) {
+			templateId = AliSmsTemplateEnum.register_account_zh.getValue();
+		} else {
+			templateId = AliSmsTemplateEnum.register_account_en.getValue();
+		}
+		return sendCode(phoneCode, phone, templateId, true);
+	}
+
+	public BaseResponse sendModifyPasswordCode(String phoneCode, String phone) {
+		String templateId = null;
+		if (CountryUtil.isChinese(phoneCode)) {
+			templateId = AliSmsTemplateEnum.modify_password_zh.getValue();
+		} else {
+			templateId = AliSmsTemplateEnum.modify_password_en.getValue();
+		}
+		return sendCode(phoneCode, phone, templateId, false);
+	}
+
+	public BaseResponse modifyPassword(RegisterRequest registerRequest) {
+		BaseResponse result = vaildateCode(registerRequest.getPhone(), registerRequest.getPhone(),
+				registerRequest.getVerificationCode());
+		if (result != null) {
+			return result;
+		}
+		User user = userApi.findByPhone(registerRequest.getPhoneCode(), registerRequest.getPhone());
+		if (user == null) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+					ResponseMessageEnum.register_account_not_exist.getValue());
+		}
+		user.setPassword(DigestUtils.md5Hex(registerRequest.getPassword()));
+		user.setUpdateTime(new Date());
+		userApi.save(user);
+		return BaseResponseGenerator.genSuccessResult(null);
+	}
+
+	/**
+	 * 
+	 * sendCode:发送验证码
+	 *
+	 * @author sunlangping
+	 * @param phoneCode
+	 *            国家代码
+	 * @param phone
+	 *            手机号码
+	 * @param templateId
+	 *            发送短信的不同模板
+	 * @param isVaildata
+	 *            是否 验证手机号在系统中存在
+	 * 
+	 * @return
+	 */
+	private BaseResponse sendCode(String phoneCode, String phone, String templateId, boolean isVaildata) {
+		if (isVaildata) {
+			User user = userApi.findByPhone(phoneCode, phone);
+			if (user != null) {
+				return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+						ResponseMessageEnum.register_account_exist.getValue());
+			}
+		}
+		String randomCode = saveCodeCache(phoneCode, phone, templateId);
+		logger.info("短信操作类型:{},手机号码为:{},短信验证码为:{}", templateId, phone, randomCode);
+		Map<String, String> variableMap = new HashMap<>();
+		variableMap.put("phone", phone);
+		variableMap.put("code", randomCode);
+		aliSmsService.sendSms(phoneCode, phone, templateId, variableMap);
+		return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_200,
+				ResponseMessageEnum.success.getValue());
+	}
+
+	private String saveCodeCache(String phoneCode, String phone, String smsTemplate) {
+		String randomCode = RandomUtil.getRandomForSix();
+		CodePOJO codePOJO = new CodePOJO();
+		codePOJO.setPhoneCode(phoneCode);
+		codePOJO.setPhone(phone);
+		codePOJO.setCode(randomCode);
+		codePOJO.setTemplateId(smsTemplate);
+		codeCache.save(codePOJO);
+		return randomCode;
+	}
+
+	public BaseResponse switchOffNO(TokenPOJO token, Integer isWarnPush) {
+		User user = new User();
+		user.setUserId(token.getUserId());
+		user.setPhone(token.getPhone());
+		user.setIsWarnPush(isWarnPush);
+		userApi.save(user);
+		return BaseResponseGenerator.genSuccessResult(null);
+	}
+
+	public BaseResponse historyLocusSwitch(TokenPOJO token, Integer historyLocusSwitch) {
+		User user = new User();
+		user.setUserId(token.getUserId());
+		user.setPhone(token.getPhone());
+		user.setHistoryLocusSwitch(historyLocusSwitch);
+		userApi.save(user);
+		return BaseResponseGenerator.genSuccessResult(null);
+	}
+
+	public BaseResponse moidfyUser(TokenPOJO tokenPOJO, UserDataRequest userDataRequest) {
+		User u = userApi.findByPhone(tokenPOJO.getPhoneCode(), tokenPOJO.getPhone());
+		u.setUpdateTime(new Date());
+		u.setUserAvatar(userDataRequest.getUserAvatar());
+		u.setUserName(userDataRequest.getUserName());
+		u.setSex(userDataRequest.getSex());
+		u.setIndustry(userDataRequest.getIndustry());
+		u.setUserDesc(userDataRequest.getUserDesc());
+		userApi.save(u);
+		return BaseResponseGenerator.genSuccessResult(null);
+	}
+
+	public BaseResponse insertPhoneVersion(PhoneVersion phoneVersion) {
+		userApi.insertPhoneVersion(phoneVersion);
+		return BaseResponseGenerator.genSuccessResult(null);
+	}
+
+	public BaseResponse isUpgradeVersion(PhoneVersion phoneVersion) {
+		Long configId = null;
+		if (SiteConstant.SYSTEM_IOS.equalsIgnoreCase(phoneVersion.getSystemname())) {
+			configId = SiteConstant.CONFIG_TYPE_IOS;
+		} else {
+			configId = SiteConstant.CONFIG_TYPE_ANDROID;
+		}
+		ConfigVersion configVersion = configApi.selectVersionInfo(configId);
+		if (configVersion != null) {
+			int sysVersion = configVersion.getVersionno();
+			int appVersion = Integer.parseInt(phoneVersion.getVersionno());
+			if (appVersion >= sysVersion) {
+				// 如果版本一致强制设置为不需要升级
+				configVersion.setIsupgradeversion(SiteConstant.UPGRADE_TYPE_NO);
+				return BaseResponseGenerator.genSuccessResult(configVersion, "查询成功，版本已是最新");
+			}  else {
+				return BaseResponseGenerator.genSuccessResult("查询成功，发现新版本");
+			}
+		} else {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400, ResponseMessageEnum.is_update_version_fail.getValue());
+		}
+	}
+
+	public BaseResponse getUserProductInstructions(String carType) {
+		return  BaseResponseGenerator.genSuccessResult(userApi.getUserProductInstructions(carType));
+	}
+}

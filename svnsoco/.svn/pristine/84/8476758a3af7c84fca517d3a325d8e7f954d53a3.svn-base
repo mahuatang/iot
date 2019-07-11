@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.user.dao.UserRunPointMapper">
+	<select id="findHistryList"  resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		ts01_user_run_point
+		WHERE userId=#{userId}
+		<!-- 
+		AND beginLatitude IS NOT NULL AND endLatitude IS NOT NULL
+		AND mileage > 0
+				<![CDATA[
+				AND (UNIX_TIMESTAMP(endTime)-UNIX_TIMESTAMP(beginTime)) >15 and (UNIX_TIMESTAMP(endTime)-UNIX_TIMESTAMP(beginTime)) < 36000
+					AND (mileage/((UNIX_TIMESTAMP(endTime)-UNIX_TIMESTAMP(beginTime)) / 60) )*60 < 80 
+					and minutes< 600
+				]]>
+ 		-->
+		ORDER BY pointId DESC
+	</select>
+</mapper>

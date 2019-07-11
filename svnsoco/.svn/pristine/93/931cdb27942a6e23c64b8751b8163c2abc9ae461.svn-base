@@ -1,0 +1,49 @@
+package com.soco.car.user.service;
+
+import com.soco.car.user.service.RepairAreaService;
+import com.soco.car.user.service.RepairstationService;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.soco.car.base.BaseTest;
+
+public class RepairServiceTest extends BaseTest{
+	
+    @Autowired
+    private RepairstationService repairstationService;
+
+
+    @Autowired
+    private RepairAreaService repairAreaService;
+
+
+    @Test
+    public void testSelectCurrLocationRepairStations() throws Exception {
+        System.out.println(repairstationService.selectCurrLocationRepairStations(117.194, 34.274));
+    }
+
+    @Test
+    public void testSelectFieldVisionRepairStations() throws Exception {
+        System.out.println(repairstationService.selectFieldVisionRepairStations(116.0, 118.0, 33.0, 35.0));
+    }
+
+    @Test
+    public void testSelectRepairStationsByArea() throws Exception {
+        System.out.println(repairstationService.selectRepairStationsByArea(4, 1, 10));
+    }
+
+    @Test
+    public void testSelectRepairStationByProvince() throws Exception {
+        System.out.println(repairstationService.selectRepairStationByProvince("速珂", 1, 10));
+    }
+
+    @Test
+    public void testSelectNearByRepairstation() throws Exception {
+        System.out.println(repairstationService.selectNearByRepairstation(117.194, 34.274, 100.0));
+    }
+
+    @Test
+    public void testSelectRepairAreaList() throws Exception {
+        System.out.println(repairAreaService.selectRepairAreaList());
+    }
+}

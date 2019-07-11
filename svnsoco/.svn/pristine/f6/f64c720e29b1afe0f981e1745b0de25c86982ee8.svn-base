@@ -1,0 +1,64 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:LoginService.java
+ * Package Name:com.soco.car.iot.service.car
+ * Date:2018年7月12日下午2:55:18
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.service.car;
+
+import java.util.Date;
+
+import javax.annotation.Resource;
+
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
+
+import com.soco.car.iot.cache.entity.DeviceCache;
+import com.soco.car.iot.constants.DeviceChannelContext;
+import com.soco.car.iot.constants.SOCOIotConstant;
+import com.soco.car.iot.message.BaseMsg;
+import com.soco.car.iot.message.car.msg.LoginMsg;
+import com.soco.car.iot.service.BaseService;
+
+import io.netty.channel.Channel;
+
+/**
+ * ClassName:LoginService <br/>
+ * Reason: 登录中后续的业务处理类. <br/>
+ * Date: 2018年7月12日 下午2:55:18 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class LoginService extends BaseService {
+
+	@Resource(name = "redisTemplate")
+	private RedisTemplate<String, DeviceCache> deviceCacheTemplate;
+
+	/**
+	 * 
+	 * 处理登录操作相关业务
+	 * 
+	 * @see com.soco.car.iot.service.ServiceI#processBusiness(io.netty.channel.Channel,
+	 *      com.soco.car.iot.message.BaseMsg)
+	 */
+	@Override
+	public void processBusiness(Channel channel, BaseMsg baseMsg) {
+		LoginMsg loginMsg = (LoginMsg) baseMsg;
+		String deviceNo = loginMsg.getDeviceNo();
+		DeviceCache cache = (DeviceCache) deviceCacheTemplate.opsForHash().get(SOCOIotConstant.DEVICE_HASH, deviceNo);
+		if (cache == null) {
+			cache = new DeviceCache();
+			cache.setDeviceNo(deviceNo);
+			cache.setCreateTime(new Date());
+		}
+		deviceCacheTemplate.opsForHash().put(SOCOIotConstant.DEVICE_HASH, deviceNo, cache);
+		DeviceChannelContext.putDevice(channel.id().asLongText(), channel);
+	}
+
+}

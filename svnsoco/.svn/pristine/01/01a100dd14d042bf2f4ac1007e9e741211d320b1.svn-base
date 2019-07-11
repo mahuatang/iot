@@ -1,0 +1,19 @@
+package com.soco.car.car.service;
+
+import com.alibaba.dubbo.config.annotation.Service;
+import com.soco.car.car.api.ConfigStartApi;
+import com.soco.car.car.dao.ConfigStartMapper;
+import com.soco.car.car.entity.ConfigStart;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Service(interfaceClass = ConfigStartApi.class, timeout = 30000)
+public class ConfigStartService implements ConfigStartApi {
+    @Autowired
+    private ConfigStartMapper configStartMapper;
+
+    @Override
+    public ConfigStart selectStartInfo() {
+        ConfigStart start = configStartMapper.selectStartInfo();
+        return start;
+    }
+}

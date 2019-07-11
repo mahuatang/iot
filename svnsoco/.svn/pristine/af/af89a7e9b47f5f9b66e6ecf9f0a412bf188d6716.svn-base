@@ -1,0 +1,81 @@
+/**
+ * Project Name:soco_iot
+ * File Name:AuthItercepter.java
+ * Package Name:com.soco.car.iot.itercepter
+ * Date:2018年8月2日下午4:28:34
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.intercepter;
+
+import org.apache.commons.lang.StringUtils;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import com.soco.car.iot.annotation.AuthAnnotation;
+import com.soco.car.iot.constants.AppChannelContext;
+import com.soco.car.iot.constants.DeviceChannelContext;
+import com.soco.car.iot.constants.PlatChannelContext;
+import com.soco.car.iot.message.BaseMsg;
+
+import io.netty.channel.Channel;
+
+/**
+ * ClassName:AuthItercepter <br/>
+ * Reason: 统一认证处理中心. <br/>
+ * Date: 2018年8月2日 下午4:28:34 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Aspect
+@Service
+public class AuthIntercepter {
+
+	private final static Logger logger = LoggerFactory.getLogger(AuthIntercepter.class);
+
+	@Around(value = "execution(* com.soco.car.iot.message.*.convert.*.*(..)) && @annotation(auth)")
+	public Object doAuthCheck(ProceedingJoinPoint pjp, AuthAnnotation auth) {
+		Object obj = null;
+		Channel channel = null;
+		try {
+			Object[] objs = pjp.getArgs();
+			channel = (Channel) objs[0];
+			// 设备认证检查
+//			if (AuthAnnotation.Auth.AUTH_DEVICE.equals(auth.value())) {
+//				if (StringUtils.isEmpty(DeviceChannelContext.getAttrbute(channel))) {
+//					return new BaseMsg(false);
+//				} else {
+//					return pjp.proceed();
+//				}
+//			}
+//			// APP认证检查
+//			if (AuthAnnotation.Auth.AUTH_APP.equals(auth.value())) {
+//				if (StringUtils.isEmpty(AppChannelContext.getAttrbute(channel))) {
+//					return new BaseMsg(false);
+//				} else {
+//					return pjp.proceed();
+//				}
+//			}
+//			// 后台认证检查
+//			if (AuthAnnotation.Auth.AUTH_PLAT.equals(auth.value())) {
+//				if (StringUtils.isEmpty(PlatChannelContext.getAttrbute(channel))) {
+//					return new BaseMsg(false);
+//				} else {
+//					return pjp.proceed();
+//				}
+//			}
+			obj = pjp.proceed();
+		} catch (Throwable e) {
+			logger.error("处理消息发生异常:{},异常内容描述为:{}", auth.value(),e.getMessage());
+		}
+		return obj;
+
+	}
+}

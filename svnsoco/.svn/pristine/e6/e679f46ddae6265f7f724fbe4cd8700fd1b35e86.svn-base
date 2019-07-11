@@ -1,0 +1,65 @@
+/**
+ * Project Name:soco_app
+ * File Name:AliSmsService.java
+ * Package Name:com.soco.car.app.sdk.ali.sms
+ * Date:2018年7月28日下午2:05:53
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.sdk.ali.sms;
+
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.aliyuncs.IAcsClient;
+import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
+
+/**
+ * ClassName:AliSmsService <br/>
+ * Reason: 阿里发送短信服务 <br/>
+ * Date: 2018年7月28日 下午2:05:53 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class AliSmsService {
+
+	private static final Logger logger = LoggerFactory.getLogger(AliSmsService.class);
+
+	@Autowired
+	private IAcsClient acsClient;
+
+	/**
+	 * 
+	 * sendSms: 发送短信
+	 *
+	 * @author sunlangping
+	 * @param phone
+	 * @param templateId
+	 * @param variableMap
+	 */
+	public void sendSms(String phone, String templateId, Map<String, String> variableMap) {
+		SendSmsRequest request = new SendSmsRequest();
+		request.setPhoneNumbers(phone);
+		request.setSignName("SUPERSOCO");
+		request.setTemplateCode(templateId);
+		
+//		request.setTemplateParam(GsonUtil.GsonString(variableMap));
+//		try {
+			//SendSmsResponse response = acsClient.getAcsResponse(request);
+			//logger.info("send message response:{}" + response);
+//		} catch (ServerException e) {
+//			logger.info("sendSms:" + e.getMessage());
+//		} catch (ClientException e) {
+//			logger.info("sendSms:" + e.getMessage());
+//		}
+	}
+
+}

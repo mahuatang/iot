@@ -1,0 +1,39 @@
+/**
+ * Project Name:soco_iot
+ * File Name:AppHeartbeatService.java
+ * Package Name:com.soco.car.iot.service.app
+ * Date:2018年8月8日下午4:00:04
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.service.app;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import com.soco.car.iot.server.car.message.BaseMsg;
+
+import io.netty.channel.Channel;
+
+/**
+ * ClassName:AppHeartbeatService <br/>
+ * Reason: APP心跳服务 <br/>
+ * Date: 2018年8月8日 下午4:00:04 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class AppHeartbeatService implements IAppService {
+
+	private final Logger logger = LoggerFactory.getLogger(AppHeartbeatService.class);
+
+	@Override
+	public BaseMsg exec(Channel channel, BaseMsg baseMsg) {
+		return baseMsg;
+	}
+
+}

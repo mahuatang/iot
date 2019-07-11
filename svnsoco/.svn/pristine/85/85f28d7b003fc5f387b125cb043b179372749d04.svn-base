@@ -1,0 +1,61 @@
+/**
+ * Project Name:SOCO_APP
+ * File Name:UserPOJO.java
+ * Package Name:com.soco.car.app.pojo
+ * Date:2018年7月24日下午9:01:47
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.cache.pojo;
+
+import com.soco.car.user.entity.User;
+
+/**
+ * ClassName:UserPOJO <br/>
+ * Reason: TODO ADD REASON. <br/>
+ * Date: 2018年7月24日 下午9:01:47 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public class TokenPOJO extends User {
+
+	private static final long serialVersionUID = -3080583148255120435L;
+
+	/**
+	 * 手机号码
+	 */
+	private String phone;
+
+	private String token;
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TokenPOJO [phone=");
+		builder.append(phone);
+		builder.append(", token=");
+		builder.append(token);
+		builder.append("]");
+		return builder.toString();
+	}
+
+}

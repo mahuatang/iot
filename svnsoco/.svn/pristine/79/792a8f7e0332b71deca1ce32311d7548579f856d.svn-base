@@ -1,0 +1,114 @@
+/**
+ * Project Name:SOCO_APP
+ * File Name:jwtService.java
+ * Package Name:com.soco.car.app.service
+ * Date:2018年7月25日下午1:27:15
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.service;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import com.soco.car.app.api.request.LoginRequest;
+import com.soco.car.app.cache.TokenCache;
+import com.soco.car.app.cache.pojo.TokenPOJO;
+import com.soco.car.app.exception.AuthException;
+import com.soco.car.user.entity.User;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
+/**
+ * ClassName:jwtService <br/>
+ * Reason: JWT验证模块 <br/>
+ * Date: 2018年7月25日 下午1:27:15 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class JwtService {
+
+	@Value("${jwt.secret}")
+	private String SECRET = "supersoco";
+
+	@Value("${jwt.expire}")
+	private int jwtExpire;
+
+	@Autowired
+	private TokenCache tokenCache;
+
+	/**
+	 * 
+	 * generateToken:生成新的token
+	 *
+	 * @author sunlangping
+	 * @param loginRequest
+	 * @param user
+	 *            TODO
+	 * @return
+	 */
+	public String generateToken(LoginRequest loginRequest, User user) {
+		HashMap<String, Object> map = new HashMap<>();
+		// you can put any data in the map
+		map.put("phone", loginRequest.getPhone());
+		// 7天不登录则将token设置为过期
+		String jwt = Jwts.builder().setClaims(map)
+				.setExpiration(new Date(System.currentTimeMillis() + (1000 * 60 * 60 * jwtExpire)))
+				.signWith(SignatureAlgorithm.HS512, SECRET).compact();
+		String token = "Bearer " + jwt;// jwt前面一般都会加Bearer
+		TokenPOJO tokenPOJO = new TokenPOJO();
+		tokenPOJO.setPhone(loginRequest.getPhone());
+		tokenPOJO.setToken(token);
+		fullCacheUser(user, tokenPOJO);
+		tokenCache.save(tokenPOJO);
+		return token;
+	}
+
+	/**
+	 * 
+	 * fullCacheUser:填充用户中的缓存信息
+	 *
+	 * @author sunlangping
+	 */
+	private void fullCacheUser(User u, TokenPOJO tokenPOJO) {
+		if (u == null) {
+			return;
+		}
+		tokenPOJO.setUserid(u.getUserid());
+	}
+
+	/**
+	 * 
+	 * validateToken:验证token是否有效
+	 *
+	 * @author sunlangping
+	 * @param token
+	 * @return
+	 */
+	public Map<String, Object> validateToken(String token) {
+		Map<String, Object> body = null;
+		try {
+			String t = token.replace("Bearer ", "");
+			// 将token转换
+			body = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(t).getBody();
+			String phone = body.get("phone") + "";
+			TokenPOJO tokenPOJO = tokenCache.get(phone);
+			if (!tokenPOJO.getToken().equals(token)) {
+				throw new AuthException("鉴权失败,请重新请求授权");
+			}
+		} catch (Exception e) {
+			throw new AuthException("鉴权失败！");
+		}
+		return body;
+	}
+}

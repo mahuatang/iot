@@ -1,0 +1,86 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:ChannelContext.java
+ * Package Name:com.soco.car.iot.constants
+ * Date:2018年7月13日下午1:46:28
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.constants;
+
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
+import io.netty.channel.Channel;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
+
+/**
+ * ClassName:ChannelContext <br/>
+ * Reason: 设备通道对象上下文. <br/>
+ * Date: 2018年7月13日 下午1:46:28 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public class DeviceChannelContext {
+
+	private static final AttributeKey<String> device_channel_key = AttributeKey.valueOf("device.channel");
+	/**
+	 * 所有的通道对象统一业务处理
+	 */
+	private static final ConcurrentMap<String, Channel> deviceChannel = new ConcurrentHashMap<>();
+
+	public static Channel putDevice(String deviceNo, Channel channel) {
+		return deviceChannel.put(deviceNo, channel);
+	}
+
+	public static Channel removeDevice(String deviceNo) {
+		return deviceChannel.remove(deviceNo);
+	}
+
+	public static Channel getDevice(String deviceNo) {
+		return deviceChannel.get(deviceNo);
+	}
+
+	public static Integer getDeviceSize() {
+		return deviceChannel.size();
+	}
+
+	/**
+	 * 
+	 * setAttrbute: 设置当前会话对象
+	 *
+	 * @author sunlangping
+	 * @param deviceNo
+	 *            设备号
+	 * @param channel
+	 *            通道对象
+	 */
+	public static void setAttrbute(String deviceNo, Channel channel) {
+		Attribute<String> attr = channel.attr(device_channel_key);
+		if (attr.get() == null) {
+			attr.setIfAbsent(deviceNo);
+		}
+	}
+
+	/**
+	 * 
+	 * getAttrbute:获取当前会话对象
+	 *
+	 * @author sunlangping
+	 * @param channel
+	 *            通道对象
+	 * @return
+	 */
+	public static String getAttrbute(Channel channel) {
+		Attribute<String> attr = channel.attr(device_channel_key);
+		return attr.get();
+	}
+
+	public static String removeAttrbute(Channel channel) {
+		return channel.attr(device_channel_key).getAndSet(null);
+	}
+}

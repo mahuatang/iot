@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <echo>Jar Client</echo>
+  <jar compress="true" jarfile="target/soco_api-client-1.0-SNAPSHOT.jar">
+    <fileset dir="target/classes">
+      <include name="com/soco/car/car/api/**"/>
+      <include name="com/soco/car/car/entity/**"/>
+      <exclude name="com/soco/car/car/entity/*Example*"/>
+      <include name="com/soco/car/user/api/**"/>
+      <include name="com/soco/car/user/entity/**"/>
+      <exclude name="com/soco/car/user/entity/*Example*"/>
+      <include name="com/soco/car/device/api/**"/>
+      <include name="com/soco/car/device/entity/**"/>
+      <exclude name="com/soco/car/device/entity/*Example*"/>
+    </fileset>
+    <fileset dir="src/main/java">
+      <include name="com/soco/car/car/api/**"/>
+      <include name="com/soco/car/car/entity/**"/>
+      <exclude name="com/soco/car/car/entity/*Example*"/>
+      <include name="com/soco/car/user/api/**"/>
+      <include name="com/soco/car/user/entity/**"/>
+      <exclude name="com/soco/car/user/entity/*Example*"/>
+      <include name="com/soco/car/device/api/**"/>
+      <include name="com/soco/car/device/entity/**"/>
+      <exclude name="com/soco/car/device/entity/*Example*"/>
+    </fileset>
+  </jar>
+</target>
+</project>

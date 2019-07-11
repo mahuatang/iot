@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.user.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.soco.car.user.entity.User">
+    <id column="userId" jdbcType="BIGINT" property="userid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="userAvatar" jdbcType="VARCHAR" property="useravatar" />
+    <result column="pointPrevious" jdbcType="VARCHAR" property="pointprevious" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="userDesc" jdbcType="VARCHAR" property="userdesc" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="isOpen" jdbcType="INTEGER" property="isopen" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="rgsTime" jdbcType="TIMESTAMP" property="rgstime" />
+    <result column="lastLoginTime" jdbcType="TIMESTAMP" property="lastlogintime" />
+    <result column="signLoginMark" jdbcType="TIMESTAMP" property="signloginmark" />
+    <result column="updateTime" jdbcType="VARCHAR" property="updatetime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="lat" jdbcType="DECIMAL" property="lat" />
+    <result column="lng" jdbcType="DECIMAL" property="lng" />
+    <result column="openPosition" jdbcType="INTEGER" property="openposition" />
+    <result column="totalMileage" jdbcType="DOUBLE" property="totalmileage" />
+    <result column="totalMinutes" jdbcType="DOUBLE" property="totalminutes" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    userId, userName, phone, password, userAvatar, pointPrevious, sex, birthday, address, 
+    userDesc, industry, isOpen, level, score, rgsTime, lastLoginTime, signLoginMark, 
+    updateTime, status, lat, lng, openPosition, totalMileage, totalMinutes
+  </sql>
+  <select id="selectByExample" parameterType="com.soco.car.user.entity.UserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ts01_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ts01_user
+    where userId = #{userid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ts01_user
+    where userId = #{userid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.soco.car.user.entity.UserExample">
+    delete from ts01_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.soco.car.user.entity.User">
+    <selectKey keyProperty="userid" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_user (userName, phone, password, 
+      userAvatar, pointPrevious, sex, 
+      birthday, address, userDesc, 
+      industry, isOpen, level, 
+      score, rgsTime, lastLoginTime, 
+      signLoginMark, updateTime, status, 
+      lat, lng, openPosition, 
+      totalMileage, totalMinutes)
+    values (#{username,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{useravatar,jdbcType=VARCHAR}, #{pointprevious,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{birthday,jdbcType=DATE}, #{address,jdbcType=VARCHAR}, #{userdesc,jdbcType=VARCHAR}, 
+      #{industry,jdbcType=VARCHAR}, #{isopen,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, 
+      #{score,jdbcType=INTEGER}, #{rgstime,jdbcType=TIMESTAMP}, #{lastlogintime,jdbcType=TIMESTAMP}, 
+      #{signloginmark,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{lat,jdbcType=DECIMAL}, #{lng,jdbcType=DECIMAL}, #{openposition,jdbcType=INTEGER}, 
+      #{totalmileage,jdbcType=DOUBLE}, #{totalminutes,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.soco.car.user.entity.User">
+    <selectKey keyProperty="userid" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="useravatar != null">
+        userAvatar,
+      </if>
+      <if test="pointprevious != null">
+        pointPrevious,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="userdesc != null">
+        userDesc,
+      </if>
+      <if test="industry != null">
+        industry,
+      </if>
+      <if test="isopen != null">
+        isOpen,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="rgstime != null">
+        rgsTime,
+      </if>
+      <if test="lastlogintime != null">
+        lastLoginTime,
+      </if>
+      <if test="signloginmark != null">
+        signLoginMark,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="lat != null">
+        lat,
+      </if>
+      <if test="lng != null">
+        lng,
+      </if>
+      <if test="openposition != null">
+        openPosition,
+      </if>
+      <if test="totalmileage != null">
+        totalMileage,
+      </if>
+      <if test="totalminutes != null">
+        totalMinutes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="useravatar != null">
+        #{useravatar,jdbcType=VARCHAR},
+      </if>
+      <if test="pointprevious != null">
+        #{pointprevious,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="userdesc != null">
+        #{userdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="isopen != null">
+        #{isopen,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="rgstime != null">
+        #{rgstime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastlogintime != null">
+        #{lastlogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signloginmark != null">
+        #{signloginmark,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lat != null">
+        #{lat,jdbcType=DECIMAL},
+      </if>
+      <if test="lng != null">
+        #{lng,jdbcType=DECIMAL},
+      </if>
+      <if test="openposition != null">
+        #{openposition,jdbcType=INTEGER},
+      </if>
+      <if test="totalmileage != null">
+        #{totalmileage,jdbcType=DOUBLE},
+      </if>
+      <if test="totalminutes != null">
+        #{totalminutes,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.soco.car.user.entity.UserExample" resultType="java.lang.Long">
+    select count(*) from ts01_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ts01_user
+    <set>
+      <if test="record.userid != null">
+        userId = #{record.userid,jdbcType=BIGINT},
+      </if>
+      <if test="record.username != null">
+        userName = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useravatar != null">
+        userAvatar = #{record.useravatar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pointprevious != null">
+        pointPrevious = #{record.pointprevious,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=INTEGER},
+      </if>
+      <if test="record.birthday != null">
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userdesc != null">
+        userDesc = #{record.userdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.industry != null">
+        industry = #{record.industry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isopen != null">
+        isOpen = #{record.isopen,jdbcType=INTEGER},
+      </if>
+      <if test="record.level != null">
+        level = #{record.level,jdbcType=INTEGER},
+      </if>
+      <if test="record.score != null">
+        score = #{record.score,jdbcType=INTEGER},
+      </if>
+      <if test="record.rgstime != null">
+        rgsTime = #{record.rgstime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastlogintime != null">
+        lastLoginTime = #{record.lastlogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.signloginmark != null">
+        signLoginMark = #{record.signloginmark,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatetime != null">
+        updateTime = #{record.updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.lat != null">
+        lat = #{record.lat,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lng != null">
+        lng = #{record.lng,jdbcType=DECIMAL},
+      </if>
+      <if test="record.openposition != null">
+        openPosition = #{record.openposition,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalmileage != null">
+        totalMileage = #{record.totalmileage,jdbcType=DOUBLE},
+      </if>
+      <if test="record.totalminutes != null">
+        totalMinutes = #{record.totalminutes,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ts01_user
+    set userId = #{record.userid,jdbcType=BIGINT},
+      userName = #{record.username,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      userAvatar = #{record.useravatar,jdbcType=VARCHAR},
+      pointPrevious = #{record.pointprevious,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=INTEGER},
+      birthday = #{record.birthday,jdbcType=DATE},
+      address = #{record.address,jdbcType=VARCHAR},
+      userDesc = #{record.userdesc,jdbcType=VARCHAR},
+      industry = #{record.industry,jdbcType=VARCHAR},
+      isOpen = #{record.isopen,jdbcType=INTEGER},
+      level = #{record.level,jdbcType=INTEGER},
+      score = #{record.score,jdbcType=INTEGER},
+      rgsTime = #{record.rgstime,jdbcType=TIMESTAMP},
+      lastLoginTime = #{record.lastlogintime,jdbcType=TIMESTAMP},
+      signLoginMark = #{record.signloginmark,jdbcType=TIMESTAMP},
+      updateTime = #{record.updatetime,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      lat = #{record.lat,jdbcType=DECIMAL},
+      lng = #{record.lng,jdbcType=DECIMAL},
+      openPosition = #{record.openposition,jdbcType=INTEGER},
+      totalMileage = #{record.totalmileage,jdbcType=DOUBLE},
+      totalMinutes = #{record.totalminutes,jdbcType=DOUBLE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.soco.car.user.entity.User">
+    update ts01_user
+    <set>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="useravatar != null">
+        userAvatar = #{useravatar,jdbcType=VARCHAR},
+      </if>
+      <if test="pointprevious != null">
+        pointPrevious = #{pointprevious,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="userdesc != null">
+        userDesc = #{userdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="isopen != null">
+        isOpen = #{isopen,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="rgstime != null">
+        rgsTime = #{rgstime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastlogintime != null">
+        lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signloginmark != null">
+        signLoginMark = #{signloginmark,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lat != null">
+        lat = #{lat,jdbcType=DECIMAL},
+      </if>
+      <if test="lng != null">
+        lng = #{lng,jdbcType=DECIMAL},
+      </if>
+      <if test="openposition != null">
+        openPosition = #{openposition,jdbcType=INTEGER},
+      </if>
+      <if test="totalmileage != null">
+        totalMileage = #{totalmileage,jdbcType=DOUBLE},
+      </if>
+      <if test="totalminutes != null">
+        totalMinutes = #{totalminutes,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.soco.car.user.entity.User">
+    update ts01_user
+    set userName = #{username,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      userAvatar = #{useravatar,jdbcType=VARCHAR},
+      pointPrevious = #{pointprevious,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=DATE},
+      address = #{address,jdbcType=VARCHAR},
+      userDesc = #{userdesc,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      isOpen = #{isopen,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
+      score = #{score,jdbcType=INTEGER},
+      rgsTime = #{rgstime,jdbcType=TIMESTAMP},
+      lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
+      signLoginMark = #{signloginmark,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      lat = #{lat,jdbcType=DECIMAL},
+      lng = #{lng,jdbcType=DECIMAL},
+      openPosition = #{openposition,jdbcType=INTEGER},
+      totalMileage = #{totalmileage,jdbcType=DOUBLE},
+      totalMinutes = #{totalminutes,jdbcType=DOUBLE}
+    where userId = #{userid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,38 @@
+package com.soco.car.device.dao;
+
+import com.soco.car.device.entity.DeviceWarn;
+import com.soco.car.device.entity.DeviceWarnExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface DeviceWarnMapper {
+    long countByExample(DeviceWarnExample example);
+
+    int deleteByExample(DeviceWarnExample example);
+
+    int deleteByPrimaryKey(Long warnid);
+
+    int insert(DeviceWarn record);
+
+    int insertSelective(DeviceWarn record);
+
+    List<DeviceWarn> selectByExample(DeviceWarnExample example);
+
+    DeviceWarn selectByPrimaryKey(Long warnid);
+
+    int updateByExampleSelective(@Param("record") DeviceWarn record, @Param("example") DeviceWarnExample example);
+
+    int updateByExample(@Param("record") DeviceWarn record, @Param("example") DeviceWarnExample example);
+
+    int updateByPrimaryKeySelective(DeviceWarn record);
+
+    int updateByPrimaryKey(DeviceWarn record);
+
+    /**
+     *  下面为扩展方法
+     */
+
+    DeviceWarn selectDeviceWarnInfo(Long userId);
+
+    Integer deleteDeviceWarnInfo(Long userId);
+}

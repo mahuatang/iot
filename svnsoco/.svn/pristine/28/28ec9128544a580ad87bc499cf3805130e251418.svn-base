@@ -1,0 +1,9 @@
+package com.soco.car.user.api;
+
+import com.soco.car.user.entity.RepairAreas;
+
+import java.util.List;
+
+public interface RepairAreasApi {
+    public List<RepairAreas> selectRepairAreaList();
+}

@@ -1,0 +1,55 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:GpsConvert.java
+ * Package Name:com.soco.car.iot.message.car.convert
+ * Date:2018年7月17日上午9:12:07
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.message.car.convert;
+
+import java.util.Arrays;
+
+import org.springframework.stereotype.Service;
+
+import com.soco.car.iot.message.AbstractMessageConverter;
+import com.soco.car.iot.message.BaseMsg;
+import com.soco.car.iot.message.car.msg.UploadCarStateMsg;
+
+/**
+ * ClassName:UploadCarStateConvert <br/>
+ * Reason: 透传协议上传车辆状态信息 <br/>
+ * Date: 2018年7月17日 上午9:12:07 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class UploadCarStateConvert extends AbstractMessageConverter {
+
+	private String msgType = "uploadCarState";
+
+	@Override
+	public BaseMsg convert2Message(byte[] msg) {
+		UploadCarStateMsg gpsMsg = new UploadCarStateMsg();
+		byte[] command = Arrays.copyOfRange(msg, 0, 2);
+		byte contentLength = Arrays.copyOfRange(msg, 2, 3)[0];
+		gpsMsg.setRequestContent(msg);
+		gpsMsg.setMsgType(msgType);
+		return gpsMsg;
+	}
+
+	/**
+	 * 
+	 * 透传协议公共处理类
+	 * 
+	 * @see com.soco.car.iot.message.MessageConverter#supportProcotol()
+	 */
+	@Override
+	public byte supportProcotol() {
+		return (byte) 0x32;
+	}
+
+}

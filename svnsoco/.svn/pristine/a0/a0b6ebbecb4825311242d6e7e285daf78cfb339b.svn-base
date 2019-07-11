@@ -1,0 +1,102 @@
+/**
+ * Project Name:SOCO_APP
+ * File Name:LangugeHandle.java
+ * Package Name:com.soco.car.app.controller
+ * Date:2018年7月23日上午11:34:33
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.handler;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.ConnectException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.context.request.NativeWebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.soco.car.app.api.response.BaseResponse;
+import com.soco.car.app.constants.ResponseMessageEnum;
+import com.soco.car.app.constants.SOCOAppConstant;
+import com.soco.car.app.exception.AuthException;
+import com.soco.car.app.exception.AuthNullException;
+import com.soco.car.app.exception.ParamsException;
+
+/**
+ * ClassName:ControllerExceptionHandler <br/>
+ * Reason: 所有错误综合处理类. <br/>
+ * Date: 2018年7月23日 上午11:34:33 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@ControllerAdvice
+public class ControllerExceptionHandler {
+
+	private final static Logger logger = LoggerFactory.getLogger(ControllerExceptionHandler.class);
+
+	@ExceptionHandler
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	public <T> BaseResponse<T> runtimeExceptionHandler(NativeWebRequest request, Exception e,
+			HttpServletResponse response) {
+		HttpServletRequest r = (HttpServletRequest) request.getNativeRequest();
+		logger.error("请求的URL:{},错误类型:{},错误消息描述为{},请求的内容体为{}", r.getRequestURI(), e, e.getMessage());
+		if (e instanceof AuthException) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_403,
+					ResponseMessageEnum.token_expire.getValue());
+		}
+		if (e instanceof AuthNullException) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_403,
+					ResponseMessageEnum.params_auth_null_error.getValue());
+		}
+		if (e instanceof ParamsException) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_403,
+					ResponseMessageEnum.params_error.getValue());
+		}
+		if (e instanceof MaxUploadSizeExceededException) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+					ResponseMessageEnum.max_upload_size_exceeded.getValue());
+		}
+		if (e instanceof IOException) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+					ResponseMessageEnum.error.getValue());
+		}
+		if (e instanceof ConnectException) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+					ResponseMessageEnum.error.getValue());
+		}
+		if (e instanceof MethodArgumentTypeMismatchException) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+					ResponseMessageEnum.params_error.getValue());
+		}
+		if (e instanceof JsonParseException) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+					ResponseMessageEnum.params_error.getValue());
+		}
+		if (e instanceof HttpRequestMethodNotSupportedException) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+					ResponseMessageEnum.request_not_support.getValue());
+		}
+
+		return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_500,
+				ResponseMessageEnum.error.getValue());
+	}
+
+}

@@ -1,0 +1,943 @@
+package com.soco.car.user.entity;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class UserRunPointExample {
+    protected String orderByClause;
+
+    protected boolean distinct;
+
+    protected List<Criteria> oredCriteria;
+
+    private Integer limit;
+
+    private Integer offset;
+
+    public UserRunPointExample() {
+        oredCriteria = new ArrayList<Criteria>();
+    }
+
+    public void setOrderByClause(String orderByClause) {
+        this.orderByClause = orderByClause;
+    }
+
+    public String getOrderByClause() {
+        return orderByClause;
+    }
+
+    public void setDistinct(boolean distinct) {
+        this.distinct = distinct;
+    }
+
+    public boolean isDistinct() {
+        return distinct;
+    }
+
+    public List<Criteria> getOredCriteria() {
+        return oredCriteria;
+    }
+
+    public void or(Criteria criteria) {
+        oredCriteria.add(criteria);
+    }
+
+    public Criteria or() {
+        Criteria criteria = createCriteriaInternal();
+        oredCriteria.add(criteria);
+        return criteria;
+    }
+
+    public Criteria createCriteria() {
+        Criteria criteria = createCriteriaInternal();
+        if (oredCriteria.size() == 0) {
+            oredCriteria.add(criteria);
+        }
+        return criteria;
+    }
+
+    protected Criteria createCriteriaInternal() {
+        Criteria criteria = new Criteria();
+        return criteria;
+    }
+
+    public void clear() {
+        oredCriteria.clear();
+        orderByClause = null;
+        distinct = false;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+    }
+
+    public Integer getOffset() {
+        return offset;
+    }
+
+    protected abstract static class GeneratedCriteria {
+        protected List<Criterion> criteria;
+
+        protected GeneratedCriteria() {
+            super();
+            criteria = new ArrayList<Criterion>();
+        }
+
+        public boolean isValid() {
+            return criteria.size() > 0;
+        }
+
+        public List<Criterion> getAllCriteria() {
+            return criteria;
+        }
+
+        public List<Criterion> getCriteria() {
+            return criteria;
+        }
+
+        protected void addCriterion(String condition) {
+            if (condition == null) {
+                throw new RuntimeException("Value for condition cannot be null");
+            }
+            criteria.add(new Criterion(condition));
+        }
+
+        protected void addCriterion(String condition, Object value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value));
+        }
+
+        protected void addCriterion(String condition, Object value1, Object value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        public Criteria andPointidIsNull() {
+            addCriterion("pointId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointidIsNotNull() {
+            addCriterion("pointId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointidEqualTo(Long value) {
+            addCriterion("pointId =", value, "pointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointidNotEqualTo(Long value) {
+            addCriterion("pointId <>", value, "pointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointidGreaterThan(Long value) {
+            addCriterion("pointId >", value, "pointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointidGreaterThanOrEqualTo(Long value) {
+            addCriterion("pointId >=", value, "pointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointidLessThan(Long value) {
+            addCriterion("pointId <", value, "pointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointidLessThanOrEqualTo(Long value) {
+            addCriterion("pointId <=", value, "pointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointidIn(List<Long> values) {
+            addCriterion("pointId in", values, "pointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointidNotIn(List<Long> values) {
+            addCriterion("pointId not in", values, "pointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointidBetween(Long value1, Long value2) {
+            addCriterion("pointId between", value1, value2, "pointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointidNotBetween(Long value1, Long value2) {
+            addCriterion("pointId not between", value1, value2, "pointid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridIsNull() {
+            addCriterion("userId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridIsNotNull() {
+            addCriterion("userId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridEqualTo(Long value) {
+            addCriterion("userId =", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridNotEqualTo(Long value) {
+            addCriterion("userId <>", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridGreaterThan(Long value) {
+            addCriterion("userId >", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridGreaterThanOrEqualTo(Long value) {
+            addCriterion("userId >=", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridLessThan(Long value) {
+            addCriterion("userId <", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridLessThanOrEqualTo(Long value) {
+            addCriterion("userId <=", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridIn(List<Long> values) {
+            addCriterion("userId in", values, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridNotIn(List<Long> values) {
+            addCriterion("userId not in", values, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridBetween(Long value1, Long value2) {
+            addCriterion("userId between", value1, value2, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridNotBetween(Long value1, Long value2) {
+            addCriterion("userId not between", value1, value2, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeIsNull() {
+            addCriterion("beginTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeIsNotNull() {
+            addCriterion("beginTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeEqualTo(Date value) {
+            addCriterion("beginTime =", value, "begintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeNotEqualTo(Date value) {
+            addCriterion("beginTime <>", value, "begintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeGreaterThan(Date value) {
+            addCriterion("beginTime >", value, "begintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("beginTime >=", value, "begintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeLessThan(Date value) {
+            addCriterion("beginTime <", value, "begintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeLessThanOrEqualTo(Date value) {
+            addCriterion("beginTime <=", value, "begintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeIn(List<Date> values) {
+            addCriterion("beginTime in", values, "begintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeNotIn(List<Date> values) {
+            addCriterion("beginTime not in", values, "begintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeBetween(Date value1, Date value2) {
+            addCriterion("beginTime between", value1, value2, "begintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeNotBetween(Date value1, Date value2) {
+            addCriterion("beginTime not between", value1, value2, "begintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlatitudeIsNull() {
+            addCriterion("beginLatitude is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlatitudeIsNotNull() {
+            addCriterion("beginLatitude is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlatitudeEqualTo(Double value) {
+            addCriterion("beginLatitude =", value, "beginlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlatitudeNotEqualTo(Double value) {
+            addCriterion("beginLatitude <>", value, "beginlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlatitudeGreaterThan(Double value) {
+            addCriterion("beginLatitude >", value, "beginlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlatitudeGreaterThanOrEqualTo(Double value) {
+            addCriterion("beginLatitude >=", value, "beginlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlatitudeLessThan(Double value) {
+            addCriterion("beginLatitude <", value, "beginlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlatitudeLessThanOrEqualTo(Double value) {
+            addCriterion("beginLatitude <=", value, "beginlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlatitudeIn(List<Double> values) {
+            addCriterion("beginLatitude in", values, "beginlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlatitudeNotIn(List<Double> values) {
+            addCriterion("beginLatitude not in", values, "beginlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlatitudeBetween(Double value1, Double value2) {
+            addCriterion("beginLatitude between", value1, value2, "beginlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlatitudeNotBetween(Double value1, Double value2) {
+            addCriterion("beginLatitude not between", value1, value2, "beginlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlongitudeIsNull() {
+            addCriterion("beginLongitude is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlongitudeIsNotNull() {
+            addCriterion("beginLongitude is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlongitudeEqualTo(Double value) {
+            addCriterion("beginLongitude =", value, "beginlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlongitudeNotEqualTo(Double value) {
+            addCriterion("beginLongitude <>", value, "beginlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlongitudeGreaterThan(Double value) {
+            addCriterion("beginLongitude >", value, "beginlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlongitudeGreaterThanOrEqualTo(Double value) {
+            addCriterion("beginLongitude >=", value, "beginlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlongitudeLessThan(Double value) {
+            addCriterion("beginLongitude <", value, "beginlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlongitudeLessThanOrEqualTo(Double value) {
+            addCriterion("beginLongitude <=", value, "beginlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlongitudeIn(List<Double> values) {
+            addCriterion("beginLongitude in", values, "beginlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlongitudeNotIn(List<Double> values) {
+            addCriterion("beginLongitude not in", values, "beginlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlongitudeBetween(Double value1, Double value2) {
+            addCriterion("beginLongitude between", value1, value2, "beginlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andBeginlongitudeNotBetween(Double value1, Double value2) {
+            addCriterion("beginLongitude not between", value1, value2, "beginlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeIsNull() {
+            addCriterion("endTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeIsNotNull() {
+            addCriterion("endTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeEqualTo(Date value) {
+            addCriterion("endTime =", value, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeNotEqualTo(Date value) {
+            addCriterion("endTime <>", value, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeGreaterThan(Date value) {
+            addCriterion("endTime >", value, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("endTime >=", value, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeLessThan(Date value) {
+            addCriterion("endTime <", value, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeLessThanOrEqualTo(Date value) {
+            addCriterion("endTime <=", value, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeIn(List<Date> values) {
+            addCriterion("endTime in", values, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeNotIn(List<Date> values) {
+            addCriterion("endTime not in", values, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeBetween(Date value1, Date value2) {
+            addCriterion("endTime between", value1, value2, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeNotBetween(Date value1, Date value2) {
+            addCriterion("endTime not between", value1, value2, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlatitudeIsNull() {
+            addCriterion("endLatitude is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlatitudeIsNotNull() {
+            addCriterion("endLatitude is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlatitudeEqualTo(Double value) {
+            addCriterion("endLatitude =", value, "endlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlatitudeNotEqualTo(Double value) {
+            addCriterion("endLatitude <>", value, "endlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlatitudeGreaterThan(Double value) {
+            addCriterion("endLatitude >", value, "endlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlatitudeGreaterThanOrEqualTo(Double value) {
+            addCriterion("endLatitude >=", value, "endlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlatitudeLessThan(Double value) {
+            addCriterion("endLatitude <", value, "endlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlatitudeLessThanOrEqualTo(Double value) {
+            addCriterion("endLatitude <=", value, "endlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlatitudeIn(List<Double> values) {
+            addCriterion("endLatitude in", values, "endlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlatitudeNotIn(List<Double> values) {
+            addCriterion("endLatitude not in", values, "endlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlatitudeBetween(Double value1, Double value2) {
+            addCriterion("endLatitude between", value1, value2, "endlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlatitudeNotBetween(Double value1, Double value2) {
+            addCriterion("endLatitude not between", value1, value2, "endlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlongitudeIsNull() {
+            addCriterion("endLongitude is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlongitudeIsNotNull() {
+            addCriterion("endLongitude is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlongitudeEqualTo(Double value) {
+            addCriterion("endLongitude =", value, "endlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlongitudeNotEqualTo(Double value) {
+            addCriterion("endLongitude <>", value, "endlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlongitudeGreaterThan(Double value) {
+            addCriterion("endLongitude >", value, "endlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlongitudeGreaterThanOrEqualTo(Double value) {
+            addCriterion("endLongitude >=", value, "endlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlongitudeLessThan(Double value) {
+            addCriterion("endLongitude <", value, "endlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlongitudeLessThanOrEqualTo(Double value) {
+            addCriterion("endLongitude <=", value, "endlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlongitudeIn(List<Double> values) {
+            addCriterion("endLongitude in", values, "endlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlongitudeNotIn(List<Double> values) {
+            addCriterion("endLongitude not in", values, "endlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlongitudeBetween(Double value1, Double value2) {
+            addCriterion("endLongitude between", value1, value2, "endlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndlongitudeNotBetween(Double value1, Double value2) {
+            addCriterion("endLongitude not between", value1, value2, "endlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andMileageIsNull() {
+            addCriterion("mileage is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMileageIsNotNull() {
+            addCriterion("mileage is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMileageEqualTo(Double value) {
+            addCriterion("mileage =", value, "mileage");
+            return (Criteria) this;
+        }
+
+        public Criteria andMileageNotEqualTo(Double value) {
+            addCriterion("mileage <>", value, "mileage");
+            return (Criteria) this;
+        }
+
+        public Criteria andMileageGreaterThan(Double value) {
+            addCriterion("mileage >", value, "mileage");
+            return (Criteria) this;
+        }
+
+        public Criteria andMileageGreaterThanOrEqualTo(Double value) {
+            addCriterion("mileage >=", value, "mileage");
+            return (Criteria) this;
+        }
+
+        public Criteria andMileageLessThan(Double value) {
+            addCriterion("mileage <", value, "mileage");
+            return (Criteria) this;
+        }
+
+        public Criteria andMileageLessThanOrEqualTo(Double value) {
+            addCriterion("mileage <=", value, "mileage");
+            return (Criteria) this;
+        }
+
+        public Criteria andMileageIn(List<Double> values) {
+            addCriterion("mileage in", values, "mileage");
+            return (Criteria) this;
+        }
+
+        public Criteria andMileageNotIn(List<Double> values) {
+            addCriterion("mileage not in", values, "mileage");
+            return (Criteria) this;
+        }
+
+        public Criteria andMileageBetween(Double value1, Double value2) {
+            addCriterion("mileage between", value1, value2, "mileage");
+            return (Criteria) this;
+        }
+
+        public Criteria andMileageNotBetween(Double value1, Double value2) {
+            addCriterion("mileage not between", value1, value2, "mileage");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinutesIsNull() {
+            addCriterion("minutes is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinutesIsNotNull() {
+            addCriterion("minutes is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinutesEqualTo(Double value) {
+            addCriterion("minutes =", value, "minutes");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinutesNotEqualTo(Double value) {
+            addCriterion("minutes <>", value, "minutes");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinutesGreaterThan(Double value) {
+            addCriterion("minutes >", value, "minutes");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinutesGreaterThanOrEqualTo(Double value) {
+            addCriterion("minutes >=", value, "minutes");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinutesLessThan(Double value) {
+            addCriterion("minutes <", value, "minutes");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinutesLessThanOrEqualTo(Double value) {
+            addCriterion("minutes <=", value, "minutes");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinutesIn(List<Double> values) {
+            addCriterion("minutes in", values, "minutes");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinutesNotIn(List<Double> values) {
+            addCriterion("minutes not in", values, "minutes");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinutesBetween(Double value1, Double value2) {
+            addCriterion("minutes between", value1, value2, "minutes");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinutesNotBetween(Double value1, Double value2) {
+            addCriterion("minutes not between", value1, value2, "minutes");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeIsNull() {
+            addCriterion("createTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeIsNotNull() {
+            addCriterion("createTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeEqualTo(Date value) {
+            addCriterion("createTime =", value, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeNotEqualTo(Date value) {
+            addCriterion("createTime <>", value, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeGreaterThan(Date value) {
+            addCriterion("createTime >", value, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("createTime >=", value, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeLessThan(Date value) {
+            addCriterion("createTime <", value, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeLessThanOrEqualTo(Date value) {
+            addCriterion("createTime <=", value, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeIn(List<Date> values) {
+            addCriterion("createTime in", values, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeNotIn(List<Date> values) {
+            addCriterion("createTime not in", values, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeBetween(Date value1, Date value2) {
+            addCriterion("createTime between", value1, value2, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatetimeNotBetween(Date value1, Date value2) {
+            addCriterion("createTime not between", value1, value2, "createtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifytimeIsNull() {
+            addCriterion("modifyTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifytimeIsNotNull() {
+            addCriterion("modifyTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifytimeEqualTo(Date value) {
+            addCriterion("modifyTime =", value, "modifytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifytimeNotEqualTo(Date value) {
+            addCriterion("modifyTime <>", value, "modifytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifytimeGreaterThan(Date value) {
+            addCriterion("modifyTime >", value, "modifytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifytimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("modifyTime >=", value, "modifytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifytimeLessThan(Date value) {
+            addCriterion("modifyTime <", value, "modifytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifytimeLessThanOrEqualTo(Date value) {
+            addCriterion("modifyTime <=", value, "modifytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifytimeIn(List<Date> values) {
+            addCriterion("modifyTime in", values, "modifytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifytimeNotIn(List<Date> values) {
+            addCriterion("modifyTime not in", values, "modifytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifytimeBetween(Date value1, Date value2) {
+            addCriterion("modifyTime between", value1, value2, "modifytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifytimeNotBetween(Date value1, Date value2) {
+            addCriterion("modifyTime not between", value1, value2, "modifytime");
+            return (Criteria) this;
+        }
+    }
+
+    /**
+     */
+    public static class Criteria extends GeneratedCriteria {
+
+        protected Criteria() {
+            super();
+        }
+    }
+
+    public static class Criterion {
+        private String condition;
+
+        private Object value;
+
+        private Object secondValue;
+
+        private boolean noValue;
+
+        private boolean singleValue;
+
+        private boolean betweenValue;
+
+        private boolean listValue;
+
+        private String typeHandler;
+
+        public String getCondition() {
+            return condition;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public Object getSecondValue() {
+            return secondValue;
+        }
+
+        public boolean isNoValue() {
+            return noValue;
+        }
+
+        public boolean isSingleValue() {
+            return singleValue;
+        }
+
+        public boolean isBetweenValue() {
+            return betweenValue;
+        }
+
+        public boolean isListValue() {
+            return listValue;
+        }
+
+        public String getTypeHandler() {
+            return typeHandler;
+        }
+
+        protected Criterion(String condition) {
+            super();
+            this.condition = condition;
+            this.typeHandler = null;
+            this.noValue = true;
+        }
+
+        protected Criterion(String condition, Object value, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.typeHandler = typeHandler;
+            if (value instanceof List<?>) {
+                this.listValue = true;
+            } else {
+                this.singleValue = true;
+            }
+        }
+
+        protected Criterion(String condition, Object value) {
+            this(condition, value, null);
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.secondValue = secondValue;
+            this.typeHandler = typeHandler;
+            this.betweenValue = true;
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue) {
+            this(condition, value, secondValue, null);
+        }
+    }
+}

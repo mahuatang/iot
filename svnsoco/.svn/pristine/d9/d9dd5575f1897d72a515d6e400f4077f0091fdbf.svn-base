@@ -1,0 +1,50 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:GpsConvert.java
+ * Package Name:com.soco.car.iot.message.car.convert
+ * Date:2018年7月17日上午9:12:07
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.message.car.convert;
+
+import java.util.Arrays;
+
+import com.soco.car.iot.message.AbstractMessageConverter;
+import com.soco.car.iot.message.BaseMsg;
+import com.soco.car.iot.message.car.msg.GpsMsg;
+
+/**
+ * ClassName:GpsConvert <br/>
+ * Reason: GPS位置信息上传 <br/>
+ * Date: 2018年7月17日 上午9:12:07 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public class GpsConvert extends AbstractMessageConverter {
+	
+	private String msgType = "gps";
+
+	@Override
+	public BaseMsg convert2Message(byte[] msg) {
+		GpsMsg gpsMsg = new GpsMsg();
+		byte[] command = Arrays.copyOfRange(msg, 0, 2);
+		byte contentLength = Arrays.copyOfRange(msg, 2, 3)[0];
+		
+		gpsMsg.setMsgType(msgType);
+		return gpsMsg;
+	}
+	/**
+	 * 
+	 * 报警协议
+	 * @see com.soco.car.iot.message.MessageConverter#supportProcotol()
+	 */
+	@Override
+	public byte supportProcotol() {
+		return 0x26;
+	}
+
+}

@@ -1,0 +1,58 @@
+package com.soco.car.user.service;
+
+import com.alibaba.dubbo.config.annotation.Service;
+import com.soco.car.user.api.RepairstationApi;
+import com.soco.car.user.dao.RepairstationMapper;
+import com.soco.car.user.entity.Repairstation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
+
+import java.util.List;
+
+@Service(interfaceClass = RepairstationApi.class, timeout = 30000)
+public class RepairstationService implements RepairstationApi {
+    @Autowired
+    private RepairstationMapper repairstationMapper;
+
+    @Override
+    public List<Repairstation> selectCurrLocationRepairStations(Double currLng, Double currLat) {
+        Assert.notNull(currLng, "经度信息不能为空");
+        Assert.notNull(currLat, "纬度信息不能为空");
+        return repairstationMapper.selectCurrLocationRepairStations(currLng, currLat);
+    }
+
+    @Override
+    public List<Repairstation> selectFieldVisionRepairStations(Double leftTopLng, Double rightFootLng, Double rightFootLat, Double leftTopLat) {
+        Assert.notNull(leftTopLng, "最小经度范围不能为空");
+        Assert.notNull(rightFootLng, "最大经度范围不能为空");
+        Assert.notNull(rightFootLat, "最小纬度范围不能为空");
+        Assert.notNull(leftTopLat, "最大纬度范围不能为空");
+        return repairstationMapper.selectFieldVisionRepairStations(leftTopLng, rightFootLng, rightFootLat, leftTopLat);
+    }
+
+    @Override
+    public List<Repairstation> selectRepairStationsByArea(Integer areaId, Integer startWith, Integer pageSize) {
+        Assert.notNull(areaId, "地区id不能为空");
+        Assert.notNull(startWith, "当前页面不能为空");
+        Assert.notNull(pageSize, "页面大小不能为空");
+        Integer start = (startWith-1)*pageSize;
+        return repairstationMapper.selectRepairStationsByArea(areaId, start, pageSize);
+    }
+
+    @Override
+    public List<Repairstation> selectRepairStationByProvince(String stationName, Integer startWith, Integer pageSize) {
+        Assert.notNull(stationName, "站点名字不能为空");
+        Assert.notNull(startWith, "当前页面不能为空");
+        Assert.notNull(pageSize, "页面大小不能为空");
+        Integer start = (startWith-1)*pageSize;
+        return repairstationMapper.selectRepairStationByProvince(stationName, start, pageSize);
+    }
+
+    @Override
+    public List<Repairstation> selectNearByRepairstation(Double currLng, Double currLat, Double distance) {
+        Assert.notNull(currLng, "经度信息不能为空");
+        Assert.notNull(currLat, "纬度信息不能为空");
+        Assert.notNull(distance, "距离信息不能为空");
+        return repairstationMapper.selectNearByRepairstation(currLng, currLat, distance);
+    }
+}

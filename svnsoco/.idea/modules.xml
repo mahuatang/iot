@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/device/device.iml" filepath="$PROJECT_DIR$/device/device.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iot.iml" filepath="$PROJECT_DIR$/iot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/report/report.iml" filepath="$PROJECT_DIR$/report/report.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/soco_api/soco_api.iml" filepath="$PROJECT_DIR$/api/soco_api/soco_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/soco_app/soco_app.iml" filepath="$PROJECT_DIR$/web/soco_app/soco_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/device/soco_iot/soco_iot.iml" filepath="$PROJECT_DIR$/device/soco_iot/soco_iot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/report/soco_report/soco_report.iml" filepath="$PROJECT_DIR$/report/soco_report/soco_report.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
+    </modules>
+  </component>
+</project>

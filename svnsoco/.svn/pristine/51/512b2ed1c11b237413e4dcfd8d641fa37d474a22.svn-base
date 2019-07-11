@@ -1,0 +1,56 @@
+/**
+ * Project Name:SOCO_APP
+ * File Name:UserCache.java
+ * Package Name:com.soco.car.app.cache
+ * Date:2018年7月20日下午4:05:43
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.cache;
+
+import javax.annotation.Resource;
+
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
+
+import com.soco.car.app.cache.pojo.TokenPOJO;
+
+/**
+ * ClassName:UserCache <br/>
+ * Reason: 用户相关缓存 ,目前用户信息操作时间设置为永久<br/>
+ * Date: 2018年7月20日 下午4:05:43 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class TokenCache implements CacheI<TokenPOJO> {
+
+	private final String hash_key = "user_token";
+
+	@Resource
+	private RedisTemplate<String, TokenPOJO> redisTemplate;
+
+	@Override
+	public void save(TokenPOJO t) {
+		redisTemplate.opsForHash().put(hash_key, t.getPhone(), t);
+	}
+
+	@Override
+	public void save(TokenPOJO t, int expire) {
+		redisTemplate.opsForHash().put(hash_key, t.getPhone(), t);
+	}
+
+	@Override
+	public void remove(String key) {
+		redisTemplate.opsForHash().delete(hash_key, key);
+	}
+
+	@Override
+	public TokenPOJO get(String key) {
+		return (TokenPOJO) redisTemplate.opsForHash().get(hash_key, key);
+	}
+
+}

@@ -1,0 +1,36 @@
+package com.soco.car.app.api.request;
+
+import io.swagger.annotations.ApiModelProperty;
+
+import java.io.Serializable;
+
+public class BindedDeviceRequest extends BaseRequest{
+    @ApiModelProperty(value = "用户id", required = true, example = "1")
+    private Integer userId;
+    @ApiModelProperty(value = "用户状态", required = true, example = "0")
+    private String state;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        return "BindedDeviceRequest{" +
+                "userId=" + userId +
+                ", state='" + state + '\'' +
+                '}';
+    }
+}

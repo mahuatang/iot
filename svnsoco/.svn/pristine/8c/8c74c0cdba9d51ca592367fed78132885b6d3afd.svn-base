@@ -1,0 +1,63 @@
+/**
+ * Project Name:soco_iot
+ * File Name:AppLoginService.java
+ * Package Name:com.soco.car.iot.service.app
+ * Date:2018年8月8日下午3:59:22
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.service.app;
+
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import com.soco.car.iot.constants.AppChannelContext;
+import com.soco.car.iot.server.car.message.BaseMsg;
+
+import io.jsonwebtoken.Jwts;
+import io.netty.channel.Channel;
+
+/**
+ * ClassName:AppLoginService <br/>
+ * Reason: TODO ADD REASON. <br/>
+ * Date: 2018年8月8日 下午3:59:22 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class AppLoginService implements IAppService {
+
+	private static final Logger logger = LoggerFactory.getLogger(AppLoginService.class);
+
+	@Value("${jwt.secret}")
+	private String SECRET;
+
+	@Override
+	public BaseMsg exec(Channel channel, BaseMsg baseMsg) {
+		Map<String, Object> tokenMap = validateToken(baseMsg.getToken());
+		logger.info("account:{}", tokenMap.get("account"));
+		AppChannelContext.putApp(tokenMap.get("account") + "", channel);
+		AppChannelContext.setAttrbute(channel, baseMsg.getDeviceNo());
+		return baseMsg;
+	}
+
+	private Map<String, Object> validateToken(String token) {
+		Map<String, Object> body = null;
+		try {
+			String t = token.replace("Bearer ", "");
+			// 将token转换
+			body = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(t).getBody();
+			String account = body.get("account") + "";
+		} catch (Exception e) {
+			logger.info("token验证失败,token:{},错误描述为:{}", token, e.getMessage());
+		}
+		return body;
+	}
+}

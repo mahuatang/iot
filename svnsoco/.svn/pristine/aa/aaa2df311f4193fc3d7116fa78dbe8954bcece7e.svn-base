@@ -1,0 +1,52 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:RedisConfig.java
+ * Package Name:com.soco.car.iot.config
+ * Date:2018年7月9日下午3:17:48
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+/**
+ * ClassName:RedisConfig <br/>
+ * Reason: redis配置中心. <br/>
+ * Date: 2018年7月9日 下午3:17:48 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Configuration
+@EnableRedisRepositories
+public class RedisConfig {
+	/**
+	 * RedisTemplate配置
+	 * 
+	 * @param factory
+	 * @return
+	 */
+	@Bean
+	public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+		RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
+		redisTemplate.setConnectionFactory(redisConnectionFactory);
+		RedisSerializer redisSerializer = new GenericJackson2JsonRedisSerializer();
+		// 设置value的序列化规则和 key的序列化规则
+		redisTemplate.setKeySerializer(new StringRedisSerializer());
+		redisTemplate.setHashKeySerializer(new StringRedisSerializer());
+		redisTemplate.setValueSerializer(redisSerializer);
+		redisTemplate.setHashValueSerializer(redisSerializer);
+		redisTemplate.afterPropertiesSet();
+		return redisTemplate;
+	}
+}

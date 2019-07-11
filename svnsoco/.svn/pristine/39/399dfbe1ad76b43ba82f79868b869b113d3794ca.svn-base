@@ -1,0 +1,37 @@
+/**
+ * Project Name:soco_iot
+ * File Name:ExpiredMessageListener.java
+ * Package Name:com.soco.car.iot.cache.entity.listener
+ * Date:2018年8月10日下午12:03:55
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.cache.entity.listener;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.redis.connection.Message;
+import org.springframework.data.redis.connection.MessageListener;
+import org.springframework.stereotype.Service;
+
+/**
+ * ClassName:ExpiredMessageListener <br/>
+ * Reason: 缓存过期监听器,用于处理各种维度数据处理<br/>
+ * Date: 2018年8月10日 下午12:03:55 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class ExpiredMessageListener implements MessageListener {
+
+	private final static Logger logger = LoggerFactory.getLogger(ExpiredMessageListener.class);
+
+	@Override
+	public void onMessage(Message message, byte[] pattern) {
+		logger.info("过期的key为:{},pattern:{}", new String(message.getBody()), new String(pattern));
+	}
+
+}

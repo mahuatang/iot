@@ -1,0 +1,65 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:BaseService.java
+ * Package Name:com.soco.car.iot.service
+ * Date:2018年7月12日下午3:02:58
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.service.car;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.soco.car.iot.mq.prod.LogMessage;
+import com.soco.car.iot.server.car.message.BaseMsg;
+
+import io.netty.channel.Channel;
+
+/**
+ * ClassName:BaseService <br/>
+ * Reason: TODO ADD REASON. <br/>
+ * Date: 2018年7月12日 下午3:02:58 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public abstract class AbstractCarBaseService implements ICarService {
+
+	private static final Logger logger = LoggerFactory.getLogger(AbstractCarBaseService.class);
+
+	@Autowired
+	private LogMessage logMessage;
+
+	@Override
+	public void sendMessage(BaseMsg baseMsg) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("发送消息:{}", baseMsg);
+		}
+		logMessage.send(baseMsg);
+	}
+
+	/**
+	 * 
+	 * 抽象出执行
+	 * 
+	 * @see com.soco.car.iot.service.car.ICarService#exec(io.netty.channel.Channel,
+	 *      com.soco.car.iot.server.car.message.BaseMsg)
+	 */
+	@Override
+	public BaseMsg exec(Channel channel, BaseMsg baseMsg) {
+		// 检查校验位
+		checkCode(baseMsg.getRequestContent());
+		// 处理业务流程
+		processBusiness(channel, baseMsg);
+		// 将处理结果相应客户端
+		response(channel, baseMsg);
+		// 发送消息保留日志，日志包含 请求与响应报文
+		sendMessage(baseMsg);
+		return baseMsg;
+	}
+
+}

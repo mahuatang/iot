@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.device.dao.DevicestateMapper">
+  <resultMap id="BaseResultMap" type="com.soco.car.device.entity.Devicestate">
+    <id column="stateId" jdbcType="BIGINT" property="stateid" />
+    <result column="deviceId" jdbcType="BIGINT" property="deviceid" />
+    <result column="start_mileage" jdbcType="DOUBLE" property="startMileage" />
+    <result column="start_power" jdbcType="DOUBLE" property="startPower" />
+    <result column="end_mileage" jdbcType="DOUBLE" property="endMileage" />
+    <result column="end_power" jdbcType="DOUBLE" property="endPower" />
+    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="endTime" jdbcType="TIMESTAMP" property="endtime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    stateId, deviceId, start_mileage, start_power, end_mileage, end_power, startTime, 
+    endTime
+  </sql>
+  <select id="selectByExample" parameterType="com.soco.car.device.entity.DevicestateExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ts01_devicestate
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ts01_devicestate
+    where stateId = #{stateid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ts01_devicestate
+    where stateId = #{stateid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.soco.car.device.entity.DevicestateExample">
+    delete from ts01_devicestate
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.soco.car.device.entity.Devicestate">
+    <selectKey keyProperty="stateid" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_devicestate (deviceId, start_mileage, start_power, 
+      end_mileage, end_power, startTime, 
+      endTime)
+    values (#{deviceid,jdbcType=BIGINT}, #{startMileage,jdbcType=DOUBLE}, #{startPower,jdbcType=DOUBLE}, 
+      #{endMileage,jdbcType=DOUBLE}, #{endPower,jdbcType=DOUBLE}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{endtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.soco.car.device.entity.Devicestate">
+    <selectKey keyProperty="stateid" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_devicestate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceid != null">
+        deviceId,
+      </if>
+      <if test="startMileage != null">
+        start_mileage,
+      </if>
+      <if test="startPower != null">
+        start_power,
+      </if>
+      <if test="endMileage != null">
+        end_mileage,
+      </if>
+      <if test="endPower != null">
+        end_power,
+      </if>
+      <if test="starttime != null">
+        startTime,
+      </if>
+      <if test="endtime != null">
+        endTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceid != null">
+        #{deviceid,jdbcType=BIGINT},
+      </if>
+      <if test="startMileage != null">
+        #{startMileage,jdbcType=DOUBLE},
+      </if>
+      <if test="startPower != null">
+        #{startPower,jdbcType=DOUBLE},
+      </if>
+      <if test="endMileage != null">
+        #{endMileage,jdbcType=DOUBLE},
+      </if>
+      <if test="endPower != null">
+        #{endPower,jdbcType=DOUBLE},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.soco.car.device.entity.DevicestateExample" resultType="java.lang.Long">
+    select count(*) from ts01_devicestate
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ts01_devicestate
+    <set>
+      <if test="record.stateid != null">
+        stateId = #{record.stateid,jdbcType=BIGINT},
+      </if>
+      <if test="record.deviceid != null">
+        deviceId = #{record.deviceid,jdbcType=BIGINT},
+      </if>
+      <if test="record.startMileage != null">
+        start_mileage = #{record.startMileage,jdbcType=DOUBLE},
+      </if>
+      <if test="record.startPower != null">
+        start_power = #{record.startPower,jdbcType=DOUBLE},
+      </if>
+      <if test="record.endMileage != null">
+        end_mileage = #{record.endMileage,jdbcType=DOUBLE},
+      </if>
+      <if test="record.endPower != null">
+        end_power = #{record.endPower,jdbcType=DOUBLE},
+      </if>
+      <if test="record.starttime != null">
+        startTime = #{record.starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endtime != null">
+        endTime = #{record.endtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ts01_devicestate
+    set stateId = #{record.stateid,jdbcType=BIGINT},
+      deviceId = #{record.deviceid,jdbcType=BIGINT},
+      start_mileage = #{record.startMileage,jdbcType=DOUBLE},
+      start_power = #{record.startPower,jdbcType=DOUBLE},
+      end_mileage = #{record.endMileage,jdbcType=DOUBLE},
+      end_power = #{record.endPower,jdbcType=DOUBLE},
+      startTime = #{record.starttime,jdbcType=TIMESTAMP},
+      endTime = #{record.endtime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.soco.car.device.entity.Devicestate">
+    update ts01_devicestate
+    <set>
+      <if test="deviceid != null">
+        deviceId = #{deviceid,jdbcType=BIGINT},
+      </if>
+      <if test="startMileage != null">
+        start_mileage = #{startMileage,jdbcType=DOUBLE},
+      </if>
+      <if test="startPower != null">
+        start_power = #{startPower,jdbcType=DOUBLE},
+      </if>
+      <if test="endMileage != null">
+        end_mileage = #{endMileage,jdbcType=DOUBLE},
+      </if>
+      <if test="endPower != null">
+        end_power = #{endPower,jdbcType=DOUBLE},
+      </if>
+      <if test="starttime != null">
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where stateId = #{stateid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.soco.car.device.entity.Devicestate">
+    update ts01_devicestate
+    set deviceId = #{deviceid,jdbcType=BIGINT},
+      start_mileage = #{startMileage,jdbcType=DOUBLE},
+      start_power = #{startPower,jdbcType=DOUBLE},
+      end_mileage = #{endMileage,jdbcType=DOUBLE},
+      end_power = #{endPower,jdbcType=DOUBLE},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP}
+    where stateId = #{stateid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,40 @@
+package com.soco.car.device.dao;
+
+import com.soco.car.device.entity.DeviceStatisMsg;
+import com.soco.car.device.entity.DeviceWarn;
+import com.soco.car.device.entity.Devicestate;
+import com.soco.car.device.entity.DevicestateExample;
+
+import java.util.Date;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface DevicestateMapper {
+    long countByExample(DevicestateExample example);
+
+    int deleteByExample(DevicestateExample example);
+
+    int deleteByPrimaryKey(Long stateid);
+
+    int insert(Devicestate record);
+
+    int insertSelective(Devicestate record);
+
+    List<Devicestate> selectByExample(DevicestateExample example);
+
+    Devicestate selectByPrimaryKey(Long stateid);
+
+    int updateByExampleSelective(@Param("record") Devicestate record, @Param("example") DevicestateExample example);
+
+    int updateByExample(@Param("record") Devicestate record, @Param("example") DevicestateExample example);
+
+    int updateByPrimaryKeySelective(Devicestate record);
+
+    int updateByPrimaryKey(Devicestate record);
+
+    public List<Devicestate> selectDeviceStateByDeviceId(Integer deviceId);
+
+    public DeviceStatisMsg queryDeviceStatisMsg(@Param("deviceId") Integer deviceId, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
+
+    public DeviceWarn selectDeviceWarnInfo(Integer userId);
+}

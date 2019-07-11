@@ -1,0 +1,6 @@
+com/soco/car/iot/message/car/convert/GpsConvertTest.class
+com/soco/car/SoCoIOTApplicatoinTest.class
+com/soco/car/iot/base/BaseTest.class
+com/soco/car/iot/server/plat/PlatServerTest.class
+com/soco/car/iot/cache/repostiory/DeviceCacheReposioryTest.class
+com/soco/car/iot/utils/CRC16Test.class

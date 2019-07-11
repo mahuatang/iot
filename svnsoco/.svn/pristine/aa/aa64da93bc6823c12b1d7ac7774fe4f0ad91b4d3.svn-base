@@ -1,0 +1,68 @@
+/**
+ * Project Name:SOCO_APP
+ * File Name:LoginRequest.java
+ * Package Name:com.soco.car.app.api.request
+ * Date:2018年7月24日下午7:32:12
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.api.request;
+
+import java.io.Serializable;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+/**
+ * ClassName:LoginRequest <br/>
+ * Reason: 登录请求相关 <br/>
+ * Date: 2018年7月24日 下午7:32:12 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@ApiModel(value = "登录请求详情")
+public class LoginRequest implements Serializable {
+	private static final long serialVersionUID = 3115190446703525711L;
+
+	/**
+	 * 手机号码
+	 */
+	@ApiModelProperty(value = "手机号码", required = true, example = "17602109468")
+	private String phone;
+	/**
+	 * 密码
+	 */
+	@ApiModelProperty(value = "密码", required = true, example = "123456")
+	private String password;
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("LoginRequest [phone=");
+		builder.append(phone);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append("]");
+		return builder.toString();
+	}
+
+}

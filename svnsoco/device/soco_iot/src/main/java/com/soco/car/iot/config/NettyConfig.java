@@ -1,0 +1,60 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:NettyConfig.java
+ * Package Name:com.soco.car.iot.config
+ * Date:2018年7月12日上午11:48:56
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
+
+/**
+ * ClassName:NettyConfig <br/>
+ * Reason: Netty服务配置中心 <br/>
+ * Date: 2018年7月12日 上午11:48:56 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Configuration
+public class NettyConfig {
+	
+	@Value("${boss.threads}")
+	private Integer bossThreads;
+	
+	@Value("${worker.threads}")
+	private Integer workerTheads;
+
+	/**
+	 * 
+	 * initBoss: 初始化管理进程
+	 *
+	 * @author sunlangping
+	 * @return
+	 */
+	@Bean("boss")
+	public EventLoopGroup initBoss() {
+		return new NioEventLoopGroup(bossThreads);
+	}
+
+	/**
+	 * 
+	 * initWorker: 初始化工作进程
+	 *
+	 * @author sunlangping
+	 * @return
+	 */
+	@Bean("worker")
+	public EventLoopGroup initWorker() {
+		return new NioEventLoopGroup(workerTheads);
+	}
+}

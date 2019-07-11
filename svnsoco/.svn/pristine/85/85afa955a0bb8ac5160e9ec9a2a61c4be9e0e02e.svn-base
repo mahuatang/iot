@@ -1,0 +1,102 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:BaseCache.java
+ * Package Name:com.soco.car.iot.cache.entity
+ * Date:2018年7月12日下午5:22:06
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.cache.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import com.soco.car.iot.service.ServiceI;
+
+/**
+ * ClassName:BaseCache <br/>
+ * Reason: 与设备人相关的基础类 <br/>
+ * Date: 2018年7月12日 下午5:22:06 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public abstract class BaseCache implements Serializable {
+
+	private static final long serialVersionUID = 1634079477691658107L;
+
+	/**
+	 * 设备号
+	 */
+	private String deviceNo;
+	/**
+	 * 手机号码
+	 */
+	private String mobile;
+
+	/**
+	 * 缓存的创建时间
+	 */
+	private Date createTime;
+	/**
+	 * 缓存的修改时间
+	 */
+	private Date modifyTime;
+	/**
+	 * 当前通道ID
+	 */
+	private String channelId;
+	
+	public String getDeviceNo() {
+		return deviceNo;
+	}
+	public void setDeviceNo(String deviceNo) {
+		this.deviceNo = deviceNo;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public Date getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+	public Date getModifyTime() {
+		return modifyTime;
+	}
+	public void setModifyTime(Date modifyTime) {
+		this.modifyTime = modifyTime;
+	}
+	
+	public String getChannelId() {
+		return channelId;
+	}
+	public void setChannelId(String channelId) {
+		this.channelId = channelId;
+	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("BaseCache [deviceNo=");
+		builder.append(deviceNo);
+		builder.append(", mobile=");
+		builder.append(mobile);
+		builder.append(", createTime=");
+		builder.append(createTime);
+		builder.append(", modifyTime=");
+		builder.append(modifyTime);
+		builder.append(", channelId=");
+		builder.append(channelId);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
+	
+}

@@ -1,0 +1,36 @@
+/**
+ * Project Name:soco_iot
+ * File Name:VehicleCheckupService.java
+ * Package Name:com.soco.car.iot.service.car
+ * Date:2018年8月7日上午9:17:43
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.service.car;
+
+import org.springframework.stereotype.Service;
+
+import com.soco.car.iot.message.BaseMsg;
+import com.soco.car.iot.service.AbstractBaseService;
+
+import io.netty.channel.Channel;
+
+/**
+ * ClassName:VehicleCheckupService <br/>
+ * Reason: 整车体检服务 <br/>
+ * Date: 2018年8月7日 上午9:17:43 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class VehicleCheckupService extends AbstractBaseService {
+
+	@Override
+	public void processBusiness(Channel channel, BaseMsg baseMsg) {
+
+	}
+
+}

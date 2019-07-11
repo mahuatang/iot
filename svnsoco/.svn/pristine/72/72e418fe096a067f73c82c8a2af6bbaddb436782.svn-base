@@ -1,0 +1,14 @@
+message.login.success=Login success
+message.login.failure=Login failed, invalid account or password
+message.register.failure=Registration failed
+message.register.account.exist=Account registered exist
+message.register.account.not.exist=Account not exist
+message.token.expire=Verification expired, please log in again
+message.params.error=Input parameters error
+message.success=Success processed
+message.error=Timeout, please try again later!
+message.account.failure=Invalid account or password
+message.max.upload.size.exceeded=Uploading file oversize (max. 10MB)
+message.verification.code.expire=Verify code expired! Please regain
+message.verification.code.error=Verify code input error, please try again!
+message.find.new.version=find new version

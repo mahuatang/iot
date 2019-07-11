@@ -1,0 +1,40 @@
+/**
+ * Project Name:SOCO_Report
+ * File Name:SOCOReportConstant.java
+ * Package Name:com.soco.car.report.constants
+ * Date:2018年6月22日下午2:33:25
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.constants;
+
+/**
+ * ClassName:SOCOReportConstant <br/>
+ * Reason: 报表相关常量库 <br/>
+ * Date: 2018年6月22日 下午2:33:25 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public class SOCOAppConstant {
+
+	/**
+	 * 请求成功状态200 区间
+	 */
+	public final static String ERROR_CODE_200 = "200";
+	/**
+	 * 参数错误，业务错误400区间
+	 */
+	public final static String ERROR_CODE_400 = "400";
+	/**
+	 * 权限认证错误
+	 */
+	public final static String ERROR_CODE_403 = "403";
+	/**
+	 * 系统错误，500区间
+	 */
+	public final static String ERROR_CODE_500 = "500";
+
+}

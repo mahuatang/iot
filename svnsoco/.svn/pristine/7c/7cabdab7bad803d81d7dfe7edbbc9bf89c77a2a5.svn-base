@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.car.dao.Ts01ConfigVersionMapper">
+  <resultMap id="BaseResultMap" type="com.soco.car.car.entity.Ts01ConfigVersion">
+    <id column="configId" jdbcType="BIGINT" property="configid" />
+    <result column="confType" jdbcType="INTEGER" property="conftype" />
+    <result column="objectType" jdbcType="INTEGER" property="objecttype" />
+    <result column="versionNo" jdbcType="INTEGER" property="versionno" />
+    <result column="versionShow" jdbcType="VARCHAR" property="versionshow" />
+    <result column="versionDesc" jdbcType="VARCHAR" property="versiondesc" />
+    <result column="downUrl" jdbcType="VARCHAR" property="downurl" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="isUpgradeVersion" jdbcType="INTEGER" property="isupgradeversion" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    configId, confType, objectType, versionNo, versionShow, versionDesc, downUrl, createTime, 
+    updateTime, status, isUpgradeVersion
+  </sql>
+  <select id="selectByExample" parameterType="com.soco.car.car.entity.Ts01ConfigVersionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ts01_config_version
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ts01_config_version
+    where configId = #{configid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ts01_config_version
+    where configId = #{configid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.soco.car.car.entity.Ts01ConfigVersionExample">
+    delete from ts01_config_version
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.soco.car.car.entity.Ts01ConfigVersion">
+    <selectKey keyProperty="configid" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_config_version (confType, objectType, versionNo, 
+      versionShow, versionDesc, downUrl, 
+      createTime, updateTime, status, 
+      isUpgradeVersion)
+    values (#{conftype,jdbcType=INTEGER}, #{objecttype,jdbcType=INTEGER}, #{versionno,jdbcType=INTEGER}, 
+      #{versionshow,jdbcType=VARCHAR}, #{versiondesc,jdbcType=VARCHAR}, #{downurl,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{isupgradeversion,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.soco.car.car.entity.Ts01ConfigVersion">
+    <selectKey keyProperty="configid" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_config_version
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="conftype != null">
+        confType,
+      </if>
+      <if test="objecttype != null">
+        objectType,
+      </if>
+      <if test="versionno != null">
+        versionNo,
+      </if>
+      <if test="versionshow != null">
+        versionShow,
+      </if>
+      <if test="versiondesc != null">
+        versionDesc,
+      </if>
+      <if test="downurl != null">
+        downUrl,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isupgradeversion != null">
+        isUpgradeVersion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="conftype != null">
+        #{conftype,jdbcType=INTEGER},
+      </if>
+      <if test="objecttype != null">
+        #{objecttype,jdbcType=INTEGER},
+      </if>
+      <if test="versionno != null">
+        #{versionno,jdbcType=INTEGER},
+      </if>
+      <if test="versionshow != null">
+        #{versionshow,jdbcType=VARCHAR},
+      </if>
+      <if test="versiondesc != null">
+        #{versiondesc,jdbcType=VARCHAR},
+      </if>
+      <if test="downurl != null">
+        #{downurl,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isupgradeversion != null">
+        #{isupgradeversion,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.soco.car.car.entity.Ts01ConfigVersionExample" resultType="java.lang.Long">
+    select count(*) from ts01_config_version
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ts01_config_version
+    <set>
+      <if test="record.configid != null">
+        configId = #{record.configid,jdbcType=BIGINT},
+      </if>
+      <if test="record.conftype != null">
+        confType = #{record.conftype,jdbcType=INTEGER},
+      </if>
+      <if test="record.objecttype != null">
+        objectType = #{record.objecttype,jdbcType=INTEGER},
+      </if>
+      <if test="record.versionno != null">
+        versionNo = #{record.versionno,jdbcType=INTEGER},
+      </if>
+      <if test="record.versionshow != null">
+        versionShow = #{record.versionshow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.versiondesc != null">
+        versionDesc = #{record.versiondesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.downurl != null">
+        downUrl = #{record.downurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatetime != null">
+        updateTime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.isupgradeversion != null">
+        isUpgradeVersion = #{record.isupgradeversion,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ts01_config_version
+    set configId = #{record.configid,jdbcType=BIGINT},
+      confType = #{record.conftype,jdbcType=INTEGER},
+      objectType = #{record.objecttype,jdbcType=INTEGER},
+      versionNo = #{record.versionno,jdbcType=INTEGER},
+      versionShow = #{record.versionshow,jdbcType=VARCHAR},
+      versionDesc = #{record.versiondesc,jdbcType=VARCHAR},
+      downUrl = #{record.downurl,jdbcType=VARCHAR},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      updateTime = #{record.updatetime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      isUpgradeVersion = #{record.isupgradeversion,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.soco.car.car.entity.Ts01ConfigVersion">
+    update ts01_config_version
+    <set>
+      <if test="conftype != null">
+        confType = #{conftype,jdbcType=INTEGER},
+      </if>
+      <if test="objecttype != null">
+        objectType = #{objecttype,jdbcType=INTEGER},
+      </if>
+      <if test="versionno != null">
+        versionNo = #{versionno,jdbcType=INTEGER},
+      </if>
+      <if test="versionshow != null">
+        versionShow = #{versionshow,jdbcType=VARCHAR},
+      </if>
+      <if test="versiondesc != null">
+        versionDesc = #{versiondesc,jdbcType=VARCHAR},
+      </if>
+      <if test="downurl != null">
+        downUrl = #{downurl,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isupgradeversion != null">
+        isUpgradeVersion = #{isupgradeversion,jdbcType=INTEGER},
+      </if>
+    </set>
+    where configId = #{configid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.soco.car.car.entity.Ts01ConfigVersion">
+    update ts01_config_version
+    set confType = #{conftype,jdbcType=INTEGER},
+      objectType = #{objecttype,jdbcType=INTEGER},
+      versionNo = #{versionno,jdbcType=INTEGER},
+      versionShow = #{versionshow,jdbcType=VARCHAR},
+      versionDesc = #{versiondesc,jdbcType=VARCHAR},
+      downUrl = #{downurl,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      isUpgradeVersion = #{isupgradeversion,jdbcType=INTEGER}
+    where configId = #{configid,jdbcType=BIGINT}
+  </update>
+</mapper>

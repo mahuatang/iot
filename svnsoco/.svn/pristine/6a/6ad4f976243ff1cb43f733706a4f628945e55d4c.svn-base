@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.user.dao.UserRunPointMapper">
+  <resultMap id="BaseResultMap" type="com.soco.car.user.entity.UserRunPoint">
+    <id column="pointId" jdbcType="BIGINT" property="pointid" />
+    <result column="userId" jdbcType="BIGINT" property="userid" />
+    <result column="beginTime" jdbcType="TIMESTAMP" property="begintime" />
+    <result column="beginLatitude" jdbcType="DOUBLE" property="beginlatitude" />
+    <result column="beginLongitude" jdbcType="DOUBLE" property="beginlongitude" />
+    <result column="endTime" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="endLatitude" jdbcType="DOUBLE" property="endlatitude" />
+    <result column="endLongitude" jdbcType="DOUBLE" property="endlongitude" />
+    <result column="mileage" jdbcType="DOUBLE" property="mileage" />
+    <result column="minutes" jdbcType="DOUBLE" property="minutes" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="modifyTime" jdbcType="TIMESTAMP" property="modifytime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    pointId, userId, beginTime, beginLatitude, beginLongitude, endTime, endLatitude, 
+    endLongitude, mileage, minutes, createTime, modifyTime
+  </sql>
+  <select id="selectByExample" parameterType="com.soco.car.user.entity.UserRunPointExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ts01_user_run_point
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ts01_user_run_point
+    where pointId = #{pointid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ts01_user_run_point
+    where pointId = #{pointid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.soco.car.user.entity.UserRunPointExample">
+    delete from ts01_user_run_point
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.soco.car.user.entity.UserRunPoint">
+    <selectKey keyProperty="pointid" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_user_run_point (userId, beginTime, beginLatitude, 
+      beginLongitude, endTime, endLatitude, 
+      endLongitude, mileage, minutes, 
+      createTime, modifyTime)
+    values (#{userid,jdbcType=BIGINT}, #{begintime,jdbcType=TIMESTAMP}, #{beginlatitude,jdbcType=DOUBLE}, 
+      #{beginlongitude,jdbcType=DOUBLE}, #{endtime,jdbcType=TIMESTAMP}, #{endlatitude,jdbcType=DOUBLE}, 
+      #{endlongitude,jdbcType=DOUBLE}, #{mileage,jdbcType=DOUBLE}, #{minutes,jdbcType=DOUBLE}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{modifytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.soco.car.user.entity.UserRunPoint">
+    <selectKey keyProperty="pointid" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_user_run_point
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="begintime != null">
+        beginTime,
+      </if>
+      <if test="beginlatitude != null">
+        beginLatitude,
+      </if>
+      <if test="beginlongitude != null">
+        beginLongitude,
+      </if>
+      <if test="endtime != null">
+        endTime,
+      </if>
+      <if test="endlatitude != null">
+        endLatitude,
+      </if>
+      <if test="endlongitude != null">
+        endLongitude,
+      </if>
+      <if test="mileage != null">
+        mileage,
+      </if>
+      <if test="minutes != null">
+        minutes,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="modifytime != null">
+        modifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="begintime != null">
+        #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginlatitude != null">
+        #{beginlatitude,jdbcType=DOUBLE},
+      </if>
+      <if test="beginlongitude != null">
+        #{beginlongitude,jdbcType=DOUBLE},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endlatitude != null">
+        #{endlatitude,jdbcType=DOUBLE},
+      </if>
+      <if test="endlongitude != null">
+        #{endlongitude,jdbcType=DOUBLE},
+      </if>
+      <if test="mileage != null">
+        #{mileage,jdbcType=DOUBLE},
+      </if>
+      <if test="minutes != null">
+        #{minutes,jdbcType=DOUBLE},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifytime != null">
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.soco.car.user.entity.UserRunPointExample" resultType="java.lang.Long">
+    select count(*) from ts01_user_run_point
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ts01_user_run_point
+    <set>
+      <if test="record.pointid != null">
+        pointId = #{record.pointid,jdbcType=BIGINT},
+      </if>
+      <if test="record.userid != null">
+        userId = #{record.userid,jdbcType=BIGINT},
+      </if>
+      <if test="record.begintime != null">
+        beginTime = #{record.begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.beginlatitude != null">
+        beginLatitude = #{record.beginlatitude,jdbcType=DOUBLE},
+      </if>
+      <if test="record.beginlongitude != null">
+        beginLongitude = #{record.beginlongitude,jdbcType=DOUBLE},
+      </if>
+      <if test="record.endtime != null">
+        endTime = #{record.endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endlatitude != null">
+        endLatitude = #{record.endlatitude,jdbcType=DOUBLE},
+      </if>
+      <if test="record.endlongitude != null">
+        endLongitude = #{record.endlongitude,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mileage != null">
+        mileage = #{record.mileage,jdbcType=DOUBLE},
+      </if>
+      <if test="record.minutes != null">
+        minutes = #{record.minutes,jdbcType=DOUBLE},
+      </if>
+      <if test="record.createtime != null">
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifytime != null">
+        modifyTime = #{record.modifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ts01_user_run_point
+    set pointId = #{record.pointid,jdbcType=BIGINT},
+      userId = #{record.userid,jdbcType=BIGINT},
+      beginTime = #{record.begintime,jdbcType=TIMESTAMP},
+      beginLatitude = #{record.beginlatitude,jdbcType=DOUBLE},
+      beginLongitude = #{record.beginlongitude,jdbcType=DOUBLE},
+      endTime = #{record.endtime,jdbcType=TIMESTAMP},
+      endLatitude = #{record.endlatitude,jdbcType=DOUBLE},
+      endLongitude = #{record.endlongitude,jdbcType=DOUBLE},
+      mileage = #{record.mileage,jdbcType=DOUBLE},
+      minutes = #{record.minutes,jdbcType=DOUBLE},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      modifyTime = #{record.modifytime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.soco.car.user.entity.UserRunPoint">
+    update ts01_user_run_point
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="begintime != null">
+        beginTime = #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginlatitude != null">
+        beginLatitude = #{beginlatitude,jdbcType=DOUBLE},
+      </if>
+      <if test="beginlongitude != null">
+        beginLongitude = #{beginlongitude,jdbcType=DOUBLE},
+      </if>
+      <if test="endtime != null">
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endlatitude != null">
+        endLatitude = #{endlatitude,jdbcType=DOUBLE},
+      </if>
+      <if test="endlongitude != null">
+        endLongitude = #{endlongitude,jdbcType=DOUBLE},
+      </if>
+      <if test="mileage != null">
+        mileage = #{mileage,jdbcType=DOUBLE},
+      </if>
+      <if test="minutes != null">
+        minutes = #{minutes,jdbcType=DOUBLE},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifytime != null">
+        modifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pointId = #{pointid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.soco.car.user.entity.UserRunPoint">
+    update ts01_user_run_point
+    set userId = #{userid,jdbcType=BIGINT},
+      beginTime = #{begintime,jdbcType=TIMESTAMP},
+      beginLatitude = #{beginlatitude,jdbcType=DOUBLE},
+      beginLongitude = #{beginlongitude,jdbcType=DOUBLE},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      endLatitude = #{endlatitude,jdbcType=DOUBLE},
+      endLongitude = #{endlongitude,jdbcType=DOUBLE},
+      mileage = #{mileage,jdbcType=DOUBLE},
+      minutes = #{minutes,jdbcType=DOUBLE},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      modifyTime = #{modifytime,jdbcType=TIMESTAMP}
+    where pointId = #{pointid,jdbcType=BIGINT}
+  </update>
+</mapper>

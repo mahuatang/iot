@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.car.dao.CarTypeMapper">
+	<select id="findByPage" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from ts01_car_type
+	</select>
+	
+	<select id="findChildAll" resultType="String">
+		SELECT carModelName FROM  alsfox_car_baseinfo GROUP BY carModelName
+	</select>
+	<select id="findByDeviceNo" resultMap="BaseResultMap">
+		SELECT ct.* FROM
+		ts01_car_type ct
+		LEFT JOIN ts01_car_type_mapping ctm
+		ON(ct.carTypeCode=ctm.carTypeCode)
+		LEFT JOIN alsfox_car_baseinfo cbi
+		ON(ctm.carModelName=cbi.carModelName)
+		WHERE cbi.deviceNo=#{deviceNo}
+		LIMIT 1
+	</select>
+</mapper>

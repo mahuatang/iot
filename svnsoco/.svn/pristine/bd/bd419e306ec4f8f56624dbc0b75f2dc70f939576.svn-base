@@ -1,0 +1,25 @@
+package com.soco.car.app.api.request;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "用户区域位置")
+public class RepairAreaRequest extends BaseRequest {
+    @ApiModelProperty(value = "区域id", required = true, example = "4")
+    private Integer areaId;
+
+    public Integer getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(Integer areaId) {
+        this.areaId = areaId;
+    }
+
+    @Override
+    public String toString() {
+        return "RepairAreaRequest{" +
+                "areaId=" + areaId +
+                '}';
+    }
+}

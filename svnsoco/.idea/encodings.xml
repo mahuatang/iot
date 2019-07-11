@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api/soco_api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/service/UserbinddeviceService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/device" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/device/soco_iot" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/report" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/report/soco_report" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/soco_app" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/UserController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserbinddeviceServicecc.java" charset="UTF-8" />
+  </component>
+</project>

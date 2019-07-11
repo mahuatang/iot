@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.car.dao.CarBaseinfoMapper">
+  <resultMap id="BaseResultMap" type="com.soco.car.car.entity.CarBaseinfo">
+    <id column="vehicleBarcode" jdbcType="VARCHAR" property="vehiclebarcode" />
+    <result column="carFrameNumber" jdbcType="VARCHAR" property="carframenumber" />
+    <result column="deviceNo" jdbcType="VARCHAR" property="deviceno" />
+    <result column="carMotorNumber" jdbcType="VARCHAR" property="carmotornumber" />
+    <result column="vehicleCode" jdbcType="VARCHAR" property="vehiclecode" />
+    <result column="carModelName" jdbcType="VARCHAR" property="carmodelname" />
+    <result column="colorCode" jdbcType="VARCHAR" property="colorcode" />
+    <result column="dateManufacture" jdbcType="VARCHAR" property="datemanufacture" />
+    <result column="colorDesc" jdbcType="VARCHAR" property="colordesc" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    vehicleBarcode, carFrameNumber, deviceNo, carMotorNumber, vehicleCode, carModelName, 
+    colorCode, dateManufacture, colorDesc
+  </sql>
+  <select id="selectByExample" parameterType="com.soco.car.car.entity.CarBaseinfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ts01_car_baseinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ts01_car_baseinfo
+    where vehicleBarcode = #{vehiclebarcode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ts01_car_baseinfo
+    where vehicleBarcode = #{vehiclebarcode,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.soco.car.car.entity.CarBaseinfoExample">
+    delete from ts01_car_baseinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.soco.car.car.entity.CarBaseinfo">
+    <selectKey keyProperty="vehiclebarcode" order="AFTER" resultType="java.lang.String">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_car_baseinfo (carFrameNumber, deviceNo, carMotorNumber, 
+      vehicleCode, carModelName, colorCode, 
+      dateManufacture, colorDesc)
+    values (#{carframenumber,jdbcType=VARCHAR}, #{deviceno,jdbcType=VARCHAR}, #{carmotornumber,jdbcType=VARCHAR}, 
+      #{vehiclecode,jdbcType=VARCHAR}, #{carmodelname,jdbcType=VARCHAR}, #{colorcode,jdbcType=VARCHAR}, 
+      #{datemanufacture,jdbcType=VARCHAR}, #{colordesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.soco.car.car.entity.CarBaseinfo">
+    <selectKey keyProperty="vehiclebarcode" order="AFTER" resultType="java.lang.String">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_car_baseinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carframenumber != null">
+        carFrameNumber,
+      </if>
+      <if test="deviceno != null">
+        deviceNo,
+      </if>
+      <if test="carmotornumber != null">
+        carMotorNumber,
+      </if>
+      <if test="vehiclecode != null">
+        vehicleCode,
+      </if>
+      <if test="carmodelname != null">
+        carModelName,
+      </if>
+      <if test="colorcode != null">
+        colorCode,
+      </if>
+      <if test="datemanufacture != null">
+        dateManufacture,
+      </if>
+      <if test="colordesc != null">
+        colorDesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carframenumber != null">
+        #{carframenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceno != null">
+        #{deviceno,jdbcType=VARCHAR},
+      </if>
+      <if test="carmotornumber != null">
+        #{carmotornumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehiclecode != null">
+        #{vehiclecode,jdbcType=VARCHAR},
+      </if>
+      <if test="carmodelname != null">
+        #{carmodelname,jdbcType=VARCHAR},
+      </if>
+      <if test="colorcode != null">
+        #{colorcode,jdbcType=VARCHAR},
+      </if>
+      <if test="datemanufacture != null">
+        #{datemanufacture,jdbcType=VARCHAR},
+      </if>
+      <if test="colordesc != null">
+        #{colordesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.soco.car.car.entity.CarBaseinfoExample" resultType="java.lang.Long">
+    select count(*) from ts01_car_baseinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ts01_car_baseinfo
+    <set>
+      <if test="record.vehiclebarcode != null">
+        vehicleBarcode = #{record.vehiclebarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carframenumber != null">
+        carFrameNumber = #{record.carframenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceno != null">
+        deviceNo = #{record.deviceno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carmotornumber != null">
+        carMotorNumber = #{record.carmotornumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vehiclecode != null">
+        vehicleCode = #{record.vehiclecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carmodelname != null">
+        carModelName = #{record.carmodelname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.colorcode != null">
+        colorCode = #{record.colorcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datemanufacture != null">
+        dateManufacture = #{record.datemanufacture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.colordesc != null">
+        colorDesc = #{record.colordesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ts01_car_baseinfo
+    set vehicleBarcode = #{record.vehiclebarcode,jdbcType=VARCHAR},
+      carFrameNumber = #{record.carframenumber,jdbcType=VARCHAR},
+      deviceNo = #{record.deviceno,jdbcType=VARCHAR},
+      carMotorNumber = #{record.carmotornumber,jdbcType=VARCHAR},
+      vehicleCode = #{record.vehiclecode,jdbcType=VARCHAR},
+      carModelName = #{record.carmodelname,jdbcType=VARCHAR},
+      colorCode = #{record.colorcode,jdbcType=VARCHAR},
+      dateManufacture = #{record.datemanufacture,jdbcType=VARCHAR},
+      colorDesc = #{record.colordesc,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.soco.car.car.entity.CarBaseinfo">
+    update ts01_car_baseinfo
+    <set>
+      <if test="carframenumber != null">
+        carFrameNumber = #{carframenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceno != null">
+        deviceNo = #{deviceno,jdbcType=VARCHAR},
+      </if>
+      <if test="carmotornumber != null">
+        carMotorNumber = #{carmotornumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehiclecode != null">
+        vehicleCode = #{vehiclecode,jdbcType=VARCHAR},
+      </if>
+      <if test="carmodelname != null">
+        carModelName = #{carmodelname,jdbcType=VARCHAR},
+      </if>
+      <if test="colorcode != null">
+        colorCode = #{colorcode,jdbcType=VARCHAR},
+      </if>
+      <if test="datemanufacture != null">
+        dateManufacture = #{datemanufacture,jdbcType=VARCHAR},
+      </if>
+      <if test="colordesc != null">
+        colorDesc = #{colordesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where vehicleBarcode = #{vehiclebarcode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.soco.car.car.entity.CarBaseinfo">
+    update ts01_car_baseinfo
+    set carFrameNumber = #{carframenumber,jdbcType=VARCHAR},
+      deviceNo = #{deviceno,jdbcType=VARCHAR},
+      carMotorNumber = #{carmotornumber,jdbcType=VARCHAR},
+      vehicleCode = #{vehiclecode,jdbcType=VARCHAR},
+      carModelName = #{carmodelname,jdbcType=VARCHAR},
+      colorCode = #{colorcode,jdbcType=VARCHAR},
+      dateManufacture = #{datemanufacture,jdbcType=VARCHAR},
+      colorDesc = #{colordesc,jdbcType=VARCHAR}
+    where vehicleBarcode = #{vehiclebarcode,jdbcType=VARCHAR}
+  </update>
+</mapper>

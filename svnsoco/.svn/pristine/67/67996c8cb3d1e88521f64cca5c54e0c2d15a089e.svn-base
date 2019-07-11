@@ -1,0 +1,416 @@
+package com.soco.car.user.entity;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
+
+/**
+ * @author 
+ */
+public class User implements Serializable {
+    /**
+     * 用户数据ID
+     */
+    private Long userid;
+
+    /**
+     * 用户昵称
+     */
+    private String username;
+
+    /**
+     * 手机号码，作为登陆用户名
+     */
+    private String phone;
+
+    /**
+     * 用户密码，MD5 32位大写加密
+     */
+    private String password;
+
+    /**
+     * 用户头像地址
+     */
+    private String useravatar;
+
+    /**
+     * 用户上一个记录的点的位置
+     */
+    private String pointprevious;
+
+    private Integer sex;
+
+    private Date birthday;
+
+    private String address;
+
+    private String userdesc;
+
+    /**
+     * 行业
+     */
+    private String industry;
+
+    /**
+     * 是否公开自己的资料
+     */
+    private Integer isopen;
+
+    /**
+     * 用户等级
+     */
+    private Integer level;
+
+    /**
+     * 用户积分
+     */
+    private Integer score;
+
+    /**
+     * 注册时间
+     */
+    private Date rgstime;
+
+    /**
+     * 上次登录时间
+     */
+    private Date lastlogintime;
+
+    /**
+     * 用户登录标识，用于单点登录
+     */
+    private Date signloginmark;
+
+    /**
+     * 修改时间
+     */
+    private String updatetime;
+
+    /**
+     * 状态（-1禁止，0为正常）
+     */
+    private Integer status;
+
+    /**
+     * 纬度
+     */
+    private BigDecimal lat;
+
+    /**
+     * 经度
+     */
+    private BigDecimal lng;
+
+    /**
+     * 是否公开地理位置（0：公开，1：不公开）
+     */
+    private Integer openposition;
+
+    /**
+     * 骑行的总路程（KM）
+     */
+    private Double totalmileage;
+
+    /**
+     * 骑行的总时间（分钟）
+     */
+    private Double totalminutes;
+
+    private static final long serialVersionUID = 1L;
+
+    public Long getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Long userid) {
+        this.userid = userid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUseravatar() {
+        return useravatar;
+    }
+
+    public void setUseravatar(String useravatar) {
+        this.useravatar = useravatar;
+    }
+
+    public String getPointprevious() {
+        return pointprevious;
+    }
+
+    public void setPointprevious(String pointprevious) {
+        this.pointprevious = pointprevious;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getUserdesc() {
+        return userdesc;
+    }
+
+    public void setUserdesc(String userdesc) {
+        this.userdesc = userdesc;
+    }
+
+    public String getIndustry() {
+        return industry;
+    }
+
+    public void setIndustry(String industry) {
+        this.industry = industry;
+    }
+
+    public Integer getIsopen() {
+        return isopen;
+    }
+
+    public void setIsopen(Integer isopen) {
+        this.isopen = isopen;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public Date getRgstime() {
+        return rgstime;
+    }
+
+    public void setRgstime(Date rgstime) {
+        this.rgstime = rgstime;
+    }
+
+    public Date getLastlogintime() {
+        return lastlogintime;
+    }
+
+    public void setLastlogintime(Date lastlogintime) {
+        this.lastlogintime = lastlogintime;
+    }
+
+    public Date getSignloginmark() {
+        return signloginmark;
+    }
+
+    public void setSignloginmark(Date signloginmark) {
+        this.signloginmark = signloginmark;
+    }
+
+    public String getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(String updatetime) {
+        this.updatetime = updatetime;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public BigDecimal getLat() {
+        return lat;
+    }
+
+    public void setLat(BigDecimal lat) {
+        this.lat = lat;
+    }
+
+    public BigDecimal getLng() {
+        return lng;
+    }
+
+    public void setLng(BigDecimal lng) {
+        this.lng = lng;
+    }
+
+    public Integer getOpenposition() {
+        return openposition;
+    }
+
+    public void setOpenposition(Integer openposition) {
+        this.openposition = openposition;
+    }
+
+    public Double getTotalmileage() {
+        return totalmileage;
+    }
+
+    public void setTotalmileage(Double totalmileage) {
+        this.totalmileage = totalmileage;
+    }
+
+    public Double getTotalminutes() {
+        return totalminutes;
+    }
+
+    public void setTotalminutes(Double totalminutes) {
+        this.totalminutes = totalminutes;
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
+        User other = (User) that;
+        return (this.getUserid() == null ? other.getUserid() == null : this.getUserid().equals(other.getUserid()))
+            && (this.getUsername() == null ? other.getUsername() == null : this.getUsername().equals(other.getUsername()))
+            && (this.getPhone() == null ? other.getPhone() == null : this.getPhone().equals(other.getPhone()))
+            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
+            && (this.getUseravatar() == null ? other.getUseravatar() == null : this.getUseravatar().equals(other.getUseravatar()))
+            && (this.getPointprevious() == null ? other.getPointprevious() == null : this.getPointprevious().equals(other.getPointprevious()))
+            && (this.getSex() == null ? other.getSex() == null : this.getSex().equals(other.getSex()))
+            && (this.getBirthday() == null ? other.getBirthday() == null : this.getBirthday().equals(other.getBirthday()))
+            && (this.getAddress() == null ? other.getAddress() == null : this.getAddress().equals(other.getAddress()))
+            && (this.getUserdesc() == null ? other.getUserdesc() == null : this.getUserdesc().equals(other.getUserdesc()))
+            && (this.getIndustry() == null ? other.getIndustry() == null : this.getIndustry().equals(other.getIndustry()))
+            && (this.getIsopen() == null ? other.getIsopen() == null : this.getIsopen().equals(other.getIsopen()))
+            && (this.getLevel() == null ? other.getLevel() == null : this.getLevel().equals(other.getLevel()))
+            && (this.getScore() == null ? other.getScore() == null : this.getScore().equals(other.getScore()))
+            && (this.getRgstime() == null ? other.getRgstime() == null : this.getRgstime().equals(other.getRgstime()))
+            && (this.getLastlogintime() == null ? other.getLastlogintime() == null : this.getLastlogintime().equals(other.getLastlogintime()))
+            && (this.getSignloginmark() == null ? other.getSignloginmark() == null : this.getSignloginmark().equals(other.getSignloginmark()))
+            && (this.getUpdatetime() == null ? other.getUpdatetime() == null : this.getUpdatetime().equals(other.getUpdatetime()))
+            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
+            && (this.getLat() == null ? other.getLat() == null : this.getLat().equals(other.getLat()))
+            && (this.getLng() == null ? other.getLng() == null : this.getLng().equals(other.getLng()))
+            && (this.getOpenposition() == null ? other.getOpenposition() == null : this.getOpenposition().equals(other.getOpenposition()))
+            && (this.getTotalmileage() == null ? other.getTotalmileage() == null : this.getTotalmileage().equals(other.getTotalmileage()))
+            && (this.getTotalminutes() == null ? other.getTotalminutes() == null : this.getTotalminutes().equals(other.getTotalminutes()));
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((getUserid() == null) ? 0 : getUserid().hashCode());
+        result = prime * result + ((getUsername() == null) ? 0 : getUsername().hashCode());
+        result = prime * result + ((getPhone() == null) ? 0 : getPhone().hashCode());
+        result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
+        result = prime * result + ((getUseravatar() == null) ? 0 : getUseravatar().hashCode());
+        result = prime * result + ((getPointprevious() == null) ? 0 : getPointprevious().hashCode());
+        result = prime * result + ((getSex() == null) ? 0 : getSex().hashCode());
+        result = prime * result + ((getBirthday() == null) ? 0 : getBirthday().hashCode());
+        result = prime * result + ((getAddress() == null) ? 0 : getAddress().hashCode());
+        result = prime * result + ((getUserdesc() == null) ? 0 : getUserdesc().hashCode());
+        result = prime * result + ((getIndustry() == null) ? 0 : getIndustry().hashCode());
+        result = prime * result + ((getIsopen() == null) ? 0 : getIsopen().hashCode());
+        result = prime * result + ((getLevel() == null) ? 0 : getLevel().hashCode());
+        result = prime * result + ((getScore() == null) ? 0 : getScore().hashCode());
+        result = prime * result + ((getRgstime() == null) ? 0 : getRgstime().hashCode());
+        result = prime * result + ((getLastlogintime() == null) ? 0 : getLastlogintime().hashCode());
+        result = prime * result + ((getSignloginmark() == null) ? 0 : getSignloginmark().hashCode());
+        result = prime * result + ((getUpdatetime() == null) ? 0 : getUpdatetime().hashCode());
+        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        result = prime * result + ((getLat() == null) ? 0 : getLat().hashCode());
+        result = prime * result + ((getLng() == null) ? 0 : getLng().hashCode());
+        result = prime * result + ((getOpenposition() == null) ? 0 : getOpenposition().hashCode());
+        result = prime * result + ((getTotalmileage() == null) ? 0 : getTotalmileage().hashCode());
+        result = prime * result + ((getTotalminutes() == null) ? 0 : getTotalminutes().hashCode());
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", userid=").append(userid);
+        sb.append(", username=").append(username);
+        sb.append(", phone=").append(phone);
+        sb.append(", password=").append(password);
+        sb.append(", useravatar=").append(useravatar);
+        sb.append(", pointprevious=").append(pointprevious);
+        sb.append(", sex=").append(sex);
+        sb.append(", birthday=").append(birthday);
+        sb.append(", address=").append(address);
+        sb.append(", userdesc=").append(userdesc);
+        sb.append(", industry=").append(industry);
+        sb.append(", isopen=").append(isopen);
+        sb.append(", level=").append(level);
+        sb.append(", score=").append(score);
+        sb.append(", rgstime=").append(rgstime);
+        sb.append(", lastlogintime=").append(lastlogintime);
+        sb.append(", signloginmark=").append(signloginmark);
+        sb.append(", updatetime=").append(updatetime);
+        sb.append(", status=").append(status);
+        sb.append(", lat=").append(lat);
+        sb.append(", lng=").append(lng);
+        sb.append(", openposition=").append(openposition);
+        sb.append(", totalmileage=").append(totalmileage);
+        sb.append(", totalminutes=").append(totalminutes);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}

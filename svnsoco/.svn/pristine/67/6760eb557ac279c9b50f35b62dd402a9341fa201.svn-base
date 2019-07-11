@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.user.dao.SmsLogMapper">
+  <resultMap id="BaseResultMap" type="com.soco.car.user.entity.SmsLog">
+    <id column="id" jdbcType="DOUBLE" property="id" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="templateId" jdbcType="VARCHAR" property="templateId" />
+    <result column="requestId" jdbcType="VARCHAR" property="requestId" />
+    <result column="bizId" jdbcType="VARCHAR" property="bizId" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="variable" jdbcType="VARCHAR" property="variable" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modifyTime" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, account, templateId, requestId, bizId, code, message, variable, createTime, modifyTime
+  </sql>
+  <select id="selectByExample" parameterType="com.soco.car.user.entity.SmsLogExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ts01_sms_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Double" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ts01_sms_log
+    where id = #{id,jdbcType=DOUBLE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Double">
+    delete from ts01_sms_log
+    where id = #{id,jdbcType=DOUBLE}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.soco.car.user.entity.SmsLogExample">
+    delete from ts01_sms_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.soco.car.user.entity.SmsLog">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Double">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_sms_log (account, templateId, requestId, 
+      bizId, code, message, 
+      variable, createTime, modifyTime
+      )
+    values (#{account,jdbcType=VARCHAR}, #{templateId,jdbcType=VARCHAR}, #{requestId,jdbcType=VARCHAR}, 
+      #{bizId,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, 
+      #{variable,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.soco.car.user.entity.SmsLog">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Double">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_sms_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="account != null">
+        account,
+      </if>
+      <if test="templateId != null">
+        templateId,
+      </if>
+      <if test="requestId != null">
+        requestId,
+      </if>
+      <if test="bizId != null">
+        bizId,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+      <if test="variable != null">
+        variable,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="modifyTime != null">
+        modifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="requestId != null">
+        #{requestId,jdbcType=VARCHAR},
+      </if>
+      <if test="bizId != null">
+        #{bizId,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="variable != null">
+        #{variable,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.soco.car.user.entity.SmsLogExample" resultType="java.lang.Long">
+    select count(*) from ts01_sms_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ts01_sms_log
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=DOUBLE},
+      </if>
+      <if test="record.account != null">
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.templateId != null">
+        templateId = #{record.templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestId != null">
+        requestId = #{record.requestId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bizId != null">
+        bizId = #{record.bizId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.code != null">
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+      <if test="record.variable != null">
+        variable = #{record.variable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyTime != null">
+        modifyTime = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ts01_sms_log
+    set id = #{record.id,jdbcType=DOUBLE},
+      account = #{record.account,jdbcType=VARCHAR},
+      templateId = #{record.templateId,jdbcType=VARCHAR},
+      requestId = #{record.requestId,jdbcType=VARCHAR},
+      bizId = #{record.bizId,jdbcType=VARCHAR},
+      code = #{record.code,jdbcType=VARCHAR},
+      message = #{record.message,jdbcType=VARCHAR},
+      variable = #{record.variable,jdbcType=VARCHAR},
+      createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      modifyTime = #{record.modifyTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.soco.car.user.entity.SmsLog">
+    update ts01_sms_log
+    <set>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        templateId = #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="requestId != null">
+        requestId = #{requestId,jdbcType=VARCHAR},
+      </if>
+      <if test="bizId != null">
+        bizId = #{bizId,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="variable != null">
+        variable = #{variable,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DOUBLE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.soco.car.user.entity.SmsLog">
+    update ts01_sms_log
+    set account = #{account,jdbcType=VARCHAR},
+      templateId = #{templateId,jdbcType=VARCHAR},
+      requestId = #{requestId,jdbcType=VARCHAR},
+      bizId = #{bizId,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      variable = #{variable,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      modifyTime = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=DOUBLE}
+  </update>
+</mapper>

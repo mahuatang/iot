@@ -1,0 +1,49 @@
+package com.soco.car.app.api.request;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import java.io.Serializable;
+
+@ApiModel(value = "设备状态详情")
+public class DeviceStateRequest implements Serializable {
+    @ApiModelProperty(value = "查询类型", required = true, example = "day")
+    private String model;
+    @ApiModelProperty(value = "数值类型", required = true, example = "1")
+    private Integer numValue;
+    @ApiModelProperty(value = "设备号", required = true, example = "1")
+    private Integer deviceId;
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public Integer getNumValue() {
+        return numValue;
+    }
+
+    public void setNumValue(Integer numValue) {
+        this.numValue = numValue;
+    }
+
+    public Integer getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(Integer deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    @Override
+    public String toString() {
+        return "DeviceStateRequest{" +
+                "model='" + model + '\'' +
+                ", numValue=" + numValue +
+                ", deviceId=" + deviceId +
+                '}';
+    }
+}

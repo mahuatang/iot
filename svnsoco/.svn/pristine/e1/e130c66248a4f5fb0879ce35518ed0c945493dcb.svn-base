@@ -1,0 +1,29 @@
+package com.soco.car.app.service;
+
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.soco.car.app.api.response.BaseResponse;
+import com.soco.car.app.constants.ResponseMessageEnum;
+import com.soco.car.app.constants.SOCOAppConstant;
+import com.soco.car.app.handler.BaseResponseGenerator;
+import com.soco.car.car.api.ConfigStartApi;
+import com.soco.car.car.entity.ConfigStart;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ConfigStartService {
+    @Reference
+    private ConfigStartApi configStartApi;
+
+    /**
+     * APP前端，查询启动画面图片
+     */
+    public BaseResponse selectStartInfo() {
+        ConfigStart start = configStartApi.selectStartInfo();
+        if (start == null) {
+            return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+                    ResponseMessageEnum.start_info_not_exist.getValue());
+        }
+        return BaseResponseGenerator.genSuccessResult(start);
+    }
+
+}

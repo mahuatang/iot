@@ -1,0 +1,70 @@
+package com.soco.car.iot.message;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.soco.car.iot.constants.CommandConstatns;
+import com.soco.car.iot.constants.SOCOIotConstant;
+import com.soco.car.iot.service.AbstractBaseService;
+import com.soco.car.iot.utils.ByteUtils;
+import com.soco.car.iot.utils.Hex;
+
+/**
+ * 
+ * ClassName: MessageConverterContext <br/>
+ * Function: 处理消息内容. <br/>
+ * date: 2018年7月12日 上午10:26:39 <br/>
+ *
+ * @author sunlangping
+ * @version
+ */
+@Component
+public class MessageConverterContext {
+	private static final Logger logger = LoggerFactory.getLogger(AbstractBaseService.class);
+
+	@Autowired
+	private Map<String, MessageConverter> cs;
+
+	private Map<Byte, MessageConverter> converters;
+
+	@PostConstruct
+	public void initConverters() {
+		logger.info("支持处理的协议清单");
+		this.converters = new HashMap<>();
+		for (MessageConverter c : this.cs.values()) {
+			logger.info("协议号为:" + Hex.encodeHexStr(new byte[] { c.supportProcotol() }));
+			this.converters.put(Byte.valueOf(c.supportProcotol()), c);
+		}
+		cs = null;
+	}
+
+	public MessageConverter get(byte[] msg) {
+		// 获取命令类型，基本上可概括为7878 7979
+		short command = ByteUtils.byte2ToShort(Arrays.copyOfRange(msg, 0, 2));
+		byte procotol = 0x00;
+		MessageConverter convert = null;
+		// 如果是透传协议则走透传协议中的协议入口
+		if (command == CommandConstatns.COMMAND_7979) {
+			// 79 79 00 22 9c 02 2c c2 00 32 00 16 01 00 00 00 00 00 00 3c 00 00 00 00 00 00
+			// 00 00 00 00 24 00 54 0a 02 66 77 72 0d 0a
+			procotol = Arrays.copyOfRange(msg, 4, 5)[0];
+			if (CommandConstatns.PASSTHROUGH_AGREEMENT == procotol) {
+				// 根据透传协议指令中，获取 2cc2 指令 32协议
+				procotol = Arrays.copyOfRange(msg, 9, 10)[0];
+			}
+		} else if (command == CommandConstatns.COMMAND_7878) {
+			// 获取78 78 × 协议号
+			procotol = Arrays.copyOfRange(msg, 3, 4)[0];
+		}
+		convert = this.converters.get(Byte.valueOf(procotol));
+		return convert;
+	}
+}

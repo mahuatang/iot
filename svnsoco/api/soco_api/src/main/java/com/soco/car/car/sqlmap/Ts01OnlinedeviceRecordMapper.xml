@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.car.dao.Ts01OnlinedeviceRecordMapper">
+  <resultMap id="BaseResultMap" type="com.soco.car.car.entity.Ts01OnlinedeviceRecord">
+    <id column="recordId" jdbcType="BIGINT" property="recordid" />
+    <result column="deviceNo" jdbcType="VARCHAR" property="deviceno" />
+    <result column="channelId" jdbcType="VARCHAR" property="channelid" />
+    <result column="isOnline" jdbcType="INTEGER" property="isonline" />
+    <result column="lastTime" jdbcType="TIMESTAMP" property="lasttime" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="delflag" jdbcType="INTEGER" property="delflag" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    recordId, deviceNo, channelId, isOnline, lastTime, createTime, delflag
+  </sql>
+  <select id="selectByExample" parameterType="com.soco.car.car.entity.Ts01OnlinedeviceRecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ts01_onlinedevice_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ts01_onlinedevice_record
+    where recordId = #{recordid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ts01_onlinedevice_record
+    where recordId = #{recordid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.soco.car.car.entity.Ts01OnlinedeviceRecordExample">
+    delete from ts01_onlinedevice_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.soco.car.car.entity.Ts01OnlinedeviceRecord">
+    insert into ts01_onlinedevice_record (recordId, deviceNo, channelId, 
+      isOnline, lastTime, createTime, 
+      delflag)
+    values (#{recordid,jdbcType=BIGINT}, #{deviceno,jdbcType=VARCHAR}, #{channelid,jdbcType=VARCHAR}, 
+      #{isonline,jdbcType=INTEGER}, #{lasttime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{delflag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.soco.car.car.entity.Ts01OnlinedeviceRecord">
+    insert into ts01_onlinedevice_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordid != null">
+        recordId,
+      </if>
+      <if test="deviceno != null">
+        deviceNo,
+      </if>
+      <if test="channelid != null">
+        channelId,
+      </if>
+      <if test="isonline != null">
+        isOnline,
+      </if>
+      <if test="lasttime != null">
+        lastTime,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="delflag != null">
+        delflag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordid != null">
+        #{recordid,jdbcType=BIGINT},
+      </if>
+      <if test="deviceno != null">
+        #{deviceno,jdbcType=VARCHAR},
+      </if>
+      <if test="channelid != null">
+        #{channelid,jdbcType=VARCHAR},
+      </if>
+      <if test="isonline != null">
+        #{isonline,jdbcType=INTEGER},
+      </if>
+      <if test="lasttime != null">
+        #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delflag != null">
+        #{delflag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.soco.car.car.entity.Ts01OnlinedeviceRecordExample" resultType="java.lang.Long">
+    select count(*) from ts01_onlinedevice_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ts01_onlinedevice_record
+    <set>
+      <if test="record.recordid != null">
+        recordId = #{record.recordid,jdbcType=BIGINT},
+      </if>
+      <if test="record.deviceno != null">
+        deviceNo = #{record.deviceno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.channelid != null">
+        channelId = #{record.channelid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isonline != null">
+        isOnline = #{record.isonline,jdbcType=INTEGER},
+      </if>
+      <if test="record.lasttime != null">
+        lastTime = #{record.lasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createtime != null">
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.delflag != null">
+        delflag = #{record.delflag,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ts01_onlinedevice_record
+    set recordId = #{record.recordid,jdbcType=BIGINT},
+      deviceNo = #{record.deviceno,jdbcType=VARCHAR},
+      channelId = #{record.channelid,jdbcType=VARCHAR},
+      isOnline = #{record.isonline,jdbcType=INTEGER},
+      lastTime = #{record.lasttime,jdbcType=TIMESTAMP},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      delflag = #{record.delflag,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.soco.car.car.entity.Ts01OnlinedeviceRecord">
+    update ts01_onlinedevice_record
+    <set>
+      <if test="deviceno != null">
+        deviceNo = #{deviceno,jdbcType=VARCHAR},
+      </if>
+      <if test="channelid != null">
+        channelId = #{channelid,jdbcType=VARCHAR},
+      </if>
+      <if test="isonline != null">
+        isOnline = #{isonline,jdbcType=INTEGER},
+      </if>
+      <if test="lasttime != null">
+        lastTime = #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delflag != null">
+        delflag = #{delflag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where recordId = #{recordid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.soco.car.car.entity.Ts01OnlinedeviceRecord">
+    update ts01_onlinedevice_record
+    set deviceNo = #{deviceno,jdbcType=VARCHAR},
+      channelId = #{channelid,jdbcType=VARCHAR},
+      isOnline = #{isonline,jdbcType=INTEGER},
+      lastTime = #{lasttime,jdbcType=TIMESTAMP},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      delflag = #{delflag,jdbcType=INTEGER}
+    where recordId = #{recordid,jdbcType=BIGINT}
+  </update>
+</mapper>

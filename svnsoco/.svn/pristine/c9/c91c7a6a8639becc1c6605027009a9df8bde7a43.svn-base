@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.device.dao.DeviceMapper">
+  <resultMap id="BaseResultMap" type="com.soco.car.device.entity.Device">
+    <id column="deviceId" jdbcType="BIGINT" property="deviceid" />
+    <result column="deviceNo" jdbcType="VARCHAR" property="deviceno" />
+    <result column="proDate" jdbcType="TIMESTAMP" property="prodate" />
+    <result column="qrCode" jdbcType="VARCHAR" property="qrcode" />
+    <result column="snCode" jdbcType="VARCHAR" property="sncode" />
+    <result column="activationDate" jdbcType="TIMESTAMP" property="activationdate" />
+    <result column="iccid" jdbcType="VARCHAR" property="iccid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    deviceId, deviceNo, proDate, qrCode, snCode, activationDate, iccid
+  </sql>
+  <select id="selectByExample" parameterType="com.soco.car.device.entity.DeviceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ts01_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ts01_device
+    where deviceId = #{deviceid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ts01_device
+    where deviceId = #{deviceid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.soco.car.device.entity.DeviceExample">
+    delete from ts01_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.soco.car.device.entity.Device">
+    <selectKey keyProperty="deviceid" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_device (deviceNo, proDate, qrCode, 
+      snCode, activationDate, iccid
+      )
+    values (#{deviceno,jdbcType=VARCHAR}, #{prodate,jdbcType=TIMESTAMP}, #{qrcode,jdbcType=VARCHAR}, 
+      #{sncode,jdbcType=VARCHAR}, #{activationdate,jdbcType=TIMESTAMP}, #{iccid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.soco.car.device.entity.Device">
+    <selectKey keyProperty="deviceid" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_device
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceno != null">
+        deviceNo,
+      </if>
+      <if test="prodate != null">
+        proDate,
+      </if>
+      <if test="qrcode != null">
+        qrCode,
+      </if>
+      <if test="sncode != null">
+        snCode,
+      </if>
+      <if test="activationdate != null">
+        activationDate,
+      </if>
+      <if test="iccid != null">
+        iccid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceno != null">
+        #{deviceno,jdbcType=VARCHAR},
+      </if>
+      <if test="prodate != null">
+        #{prodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qrcode != null">
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="sncode != null">
+        #{sncode,jdbcType=VARCHAR},
+      </if>
+      <if test="activationdate != null">
+        #{activationdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iccid != null">
+        #{iccid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.soco.car.device.entity.DeviceExample" resultType="java.lang.Long">
+    select count(*) from ts01_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ts01_device
+    <set>
+      <if test="record.deviceid != null">
+        deviceId = #{record.deviceid,jdbcType=BIGINT},
+      </if>
+      <if test="record.deviceno != null">
+        deviceNo = #{record.deviceno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prodate != null">
+        proDate = #{record.prodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.qrcode != null">
+        qrCode = #{record.qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sncode != null">
+        snCode = #{record.sncode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activationdate != null">
+        activationDate = #{record.activationdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.iccid != null">
+        iccid = #{record.iccid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ts01_device
+    set deviceId = #{record.deviceid,jdbcType=BIGINT},
+      deviceNo = #{record.deviceno,jdbcType=VARCHAR},
+      proDate = #{record.prodate,jdbcType=TIMESTAMP},
+      qrCode = #{record.qrcode,jdbcType=VARCHAR},
+      snCode = #{record.sncode,jdbcType=VARCHAR},
+      activationDate = #{record.activationdate,jdbcType=TIMESTAMP},
+      iccid = #{record.iccid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.soco.car.device.entity.Device">
+    update ts01_device
+    <set>
+      <if test="deviceno != null">
+        deviceNo = #{deviceno,jdbcType=VARCHAR},
+      </if>
+      <if test="prodate != null">
+        proDate = #{prodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qrcode != null">
+        qrCode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="sncode != null">
+        snCode = #{sncode,jdbcType=VARCHAR},
+      </if>
+      <if test="activationdate != null">
+        activationDate = #{activationdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iccid != null">
+        iccid = #{iccid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where deviceId = #{deviceid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.soco.car.device.entity.Device">
+    update ts01_device
+    set deviceNo = #{deviceno,jdbcType=VARCHAR},
+      proDate = #{prodate,jdbcType=TIMESTAMP},
+      qrCode = #{qrcode,jdbcType=VARCHAR},
+      snCode = #{sncode,jdbcType=VARCHAR},
+      activationDate = #{activationdate,jdbcType=TIMESTAMP},
+      iccid = #{iccid,jdbcType=VARCHAR}
+    where deviceId = #{deviceid,jdbcType=BIGINT}
+  </update>
+</mapper>

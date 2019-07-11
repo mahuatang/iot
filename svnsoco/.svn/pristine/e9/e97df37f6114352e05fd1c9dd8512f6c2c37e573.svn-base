@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.user.dao.UserMapper">
+    <!--
+    <select id="selectUserPointPrevious" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select pointPrevious from ts01_user where userId = #{userId}
+    </select>
+
+    <select id="selectDeviceInfoByDeviceNo" parameterType="com.soco.car.car.entity.UserBindDevice" resultType="com.soco.car.car.entity.Device">
+        SELECT d.*,
+        ifnull(acp.imgUrl,"SOCOUploadImg/APPImg/car/ts.png") as imgUrls,
+        ifnull(acb.carModelName,"TS") as carModelName, acb.carMotorNumber, acb.dateManufacture AS colorCode, acb.carFrameNumber
+        FROM ts01_device d
+        LEFT JOIN ts01_car_baseinfo acb on acb.deviceNo=d.deviceNo
+        LEFT JOIN ts01_car_picture acp on acp.carModelName=acb.carModelName and acp.colorCode=acb.colorCode
+        WHERE d.deviceNo=#{deviceNo}
+    </select>-->
+
+    <select id="selectUserBasicInfoById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        t.userId,t.userName,t.phone,t.password,t.userAvatar,t.sex,t.birthday,t.address,t.userDesc,t.isOpen,t.level,t.score,t.rgsTime,t.lastLoginTime,t.signLoginMark,t.industry,t.openPosition
+        ,(SELECT count(d.bindId)from ts01_userbinddevice d where d.userId = t.userId and d.state=0) as isBind ,(SELECT d.deviceId from ts01_userbinddevice d where d.userId = t.userId and d.state=0) as deviceId
+        from
+        ts01_user t
+        where t.userId = #{userId}
+    </select>
+</mapper>

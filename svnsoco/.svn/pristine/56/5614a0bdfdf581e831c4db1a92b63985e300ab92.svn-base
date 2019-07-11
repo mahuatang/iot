@@ -1,0 +1,44 @@
+package com.soco.car.device.entity;
+
+import java.io.Serializable;
+
+public class DeviceStatisMsg implements Serializable {
+	private Double conPower;		// 消耗电量(单位:千瓦时)
+	private Double emissReduc;		// 减少排放(单位:千克)
+	private Double rideTimeLong;	// 骑行时间(单位：小时)
+	private Double avgSpeed;		// 平均速度(单位:千米/时 kw/h)
+	private Double mileage;			// 里程数   (单位:km)
+	public Double getConPower() {
+		return conPower;
+	}
+	public void setConPower(Double conPower) {
+		this.conPower = conPower;
+	}
+	public Double getEmissReduc() {
+		return emissReduc;
+	}
+	public void setEmissReduc(Double emissReduc) {
+		this.emissReduc = emissReduc;
+	}
+	public Double getRideTimeLong() {
+		return rideTimeLong;
+	}
+	public void setRideTimeLong(Double rideTimeLong) {
+		this.rideTimeLong = rideTimeLong;
+	}
+	public Double getAvgSpeed() {
+		return avgSpeed;
+	}
+	public void setAvgSpeed(Double avgSpeed) {
+		this.avgSpeed = avgSpeed;
+	}
+	public Double getMileage() {
+		return mileage;
+	}
+	public void setMileage(Double mileage) {
+		this.mileage = mileage;
+	}
+	
+	
+	
+}

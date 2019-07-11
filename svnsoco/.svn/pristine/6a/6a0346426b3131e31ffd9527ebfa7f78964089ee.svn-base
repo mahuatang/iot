@@ -1,0 +1,36 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:HeartbeatService.java
+ * Package Name:com.soco.car.iot.service.car
+ * Date:2018年7月16日下午7:10:33
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.service.car;
+
+import org.springframework.stereotype.Service;
+
+import com.soco.car.iot.message.BaseMsg;
+import com.soco.car.iot.service.BaseService;
+
+import io.netty.channel.Channel;
+
+/**
+ * ClassName:HeartbeatService <br/>
+ * Reason: KKS心跳包,目前无业务处理 <br/>
+ * Date: 2018年7月16日 下午7:10:33 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class HeartbeatService extends BaseService {
+
+	@Override
+	public void processBusiness(Channel channel, BaseMsg baseMsg) {
+		String channelId = channel.id().asLongText();
+	}
+
+}

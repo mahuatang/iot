@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.repair.dao.RepairstationMapper">
+    <select id="selectCurrLocationRepairStations" resultMap="BaseResultMap">
+        SELECT b.stationName,b.contacts,b.phoneNo,b.pointLat,b.pointLng,b.address,b.workTime from(SELECT t.*,getDistance(t.pointLng,t.pointLat,#{currLng},#{currLat}) as distance from ts01_repairstation t where t.status = 0) b
+        <![CDATA[
+			where b.distance < 1000
+			]]>
+    </select>
+
+    <select id="selectFieldVisionRepairStations" resultMap="BaseResultMap">
+        select t.stationName,t.contacts,t.phoneNo,t.pointLat,t.pointLng,t.address,t.workTime from ts01_repairstation t where t.status=0
+        <![CDATA[
+			and t.pointLng > #{leftTopLng}
+			and t.pointLng < #{rightFootLng}
+			and t.pointLat > #{rightFootLat}
+			and t.pointLat < #{leftTopLat}
+			]]>
+    </select>
+
+    <select id="selectRepairStationsByArea" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ts01_repairstation where status = 0 and areaId = #{areaId} limit #{startWith}, #{pageSize}
+    </select>
+
+    <select id="selectRepairStationByProvince" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ts01_repairstation
+        where status = 0
+        <if test="stationName != null">
+            and locate(#stationName#,stationName) > 0
+        </if>
+        limit #{startWith}, #{pageSize}
+    </select>
+
+    <select id="selectNearByRepairstation" resultMap="BaseResultMap">
+        SELECT b.stationName,b.contacts,b.phoneNo,b.pointLat,b.pointLng,b.address,b.workTime
+        FROM(SELECT t.*,newGetDistance(t.pointLng,t.pointLat,#{currLng},#{currLat}) AS distance FROM ts01_repairstation t WHERE t.status = 0) b
+        <![CDATA[
+			WHERE b.distance < #{distance}
+			]]>
+        ORDER BY b.distance ASC
+    </select>
+</mapper>

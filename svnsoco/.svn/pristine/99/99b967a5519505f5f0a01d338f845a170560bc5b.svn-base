@@ -1,0 +1,110 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:HeartbeatMsg.java
+ * Package Name:com.soco.car.iot.message.car
+ * Date:2018年7月9日下午4:05:39
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.message.car.msg;
+
+import java.util.Arrays;
+
+import com.soco.car.iot.message.Base7878Msg;
+
+/**
+ * ClassName:HeartbeatMsg <br/>
+ * Reason: 心跳包. <br/>
+ * Date: 2018年7月9日 下午4:05:39 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public class HeartbeatMsg extends Base7878Msg {
+
+	private static final long serialVersionUID = 8529212440446296604L;
+	/**
+	 * 终端信息
+	 */
+	private Byte terminal;
+	/**
+	 * 电压等级
+	 */
+	private Byte voltageLevel;
+	/**
+	 * GSM信号强度
+	 */
+	private Byte gsm;
+	/**
+	 * 语言扩展
+	 */
+	private Byte languge;
+
+	public Byte getTerminal() {
+		return terminal;
+	}
+
+	public void setTerminal(Byte terminal) {
+		this.terminal = terminal;
+	}
+
+	public Byte getVoltageLevel() {
+		return voltageLevel;
+	}
+
+	public void setVoltageLevel(Byte voltageLevel) {
+		this.voltageLevel = voltageLevel;
+	}
+
+	public Byte getGsm() {
+		return gsm;
+	}
+
+	public void setGsm(Byte gsm) {
+		this.gsm = gsm;
+	}
+
+	public Byte getLanguge() {
+		return languge;
+	}
+
+	public void setLanguge(Byte languge) {
+		this.languge = languge;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("HeartbeatMsg [terminal=");
+		builder.append(terminal);
+		builder.append(", voltageLevel=");
+		builder.append(voltageLevel);
+		builder.append(", gsm=");
+		builder.append(gsm);
+		builder.append(", languge=");
+		builder.append(languge);
+		builder.append(", getCommand()=");
+		builder.append(getCommand());
+		builder.append(", getProtocol()=");
+		builder.append(getProtocol());
+		builder.append(", getContentLength()=");
+		builder.append(getContentLength());
+		builder.append(", getMessageSerialNumber()=");
+		builder.append(getMessageSerialNumber());
+		builder.append(", getCheckCode()=");
+		builder.append(getCheckCode());
+		builder.append(", getDeviceNo()=");
+		builder.append(getDeviceNo());
+		builder.append(", getMsgType()=");
+		builder.append(getMsgType());
+		builder.append(", getRequestContent()=");
+		builder.append(Arrays.toString(getRequestContent()));
+		builder.append(", getResponseContent()=");
+		builder.append(Arrays.toString(getResponseContent()));
+		builder.append("]");
+		return builder.toString();
+	}
+
+}

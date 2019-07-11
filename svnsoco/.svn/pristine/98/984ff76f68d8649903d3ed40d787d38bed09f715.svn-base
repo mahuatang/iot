@@ -1,0 +1,52 @@
+package com.soco.car.user.api;
+
+import com.soco.car.user.entity.Repairstation;
+
+import java.util.List;
+
+public interface RepairstationApi {
+    /**
+     * 根据当前位置获取周围范围内的维修站列表
+     * @param currLng
+     * @param currLat
+     * @return
+     */
+    public List<Repairstation> selectCurrLocationRepairStations(Double currLng, Double currLat);
+
+    /**
+     * 根据视野范围获取范围内的维修站列表
+     * @param leftTopLng
+     * @param rightFootLng
+     * @param rightFootLat
+     * @param leftTopLat
+     * @return
+     */
+    public List<Repairstation> selectFieldVisionRepairStations(Double leftTopLng, Double rightFootLng, Double rightFootLat, Double leftTopLat);
+
+    /**
+     * 根据地区Id查询维修站列表
+     * @param areaId
+     * @param startWith
+     * @param pageSize
+     * @return
+     */
+    public List<Repairstation> selectRepairStationsByArea(Integer areaId, Integer startWith, Integer pageSize);
+
+    /**
+     * 根据地区名称查询维修站列表
+     * @param stationName
+     * @param startWith
+     * @param pageSize
+     * @return
+     */
+    public List<Repairstation> selectRepairStationByProvince(String stationName, Integer startWith, Integer pageSize);
+
+    /**
+     * 根据经纬度参数查询附近维修站
+     * @param currLng
+     * @param currLat
+     * @param distance
+     * @return
+     */
+    List<Repairstation> selectNearByRepairstation(Double currLng, Double currLat, Double distance);
+}

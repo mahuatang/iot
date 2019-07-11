@@ -1,0 +1,25 @@
+package com.soco.car.app.api.request;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "服务网点查询条件")
+public class RepairProvinceRequest extends BaseRequest {
+    @ApiModelProperty(value = "服务站点名称", required = true, example = "速珂")
+    private String stationName;
+
+    public String getStationName() {
+        return stationName;
+    }
+
+    public void setStationName(String stationName) {
+        this.stationName = stationName;
+    }
+
+    @Override
+    public String toString() {
+        return "RepairProvinceRequest{" +
+                "stationName='" + stationName + '\'' +
+                '}';
+    }
+}

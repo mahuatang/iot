@@ -1,0 +1,117 @@
+/**
+ * Project Name:soco_api
+ * File Name:DeviceApi.java
+ * Package Name:com.soco.car.device.api
+ * Date:2018年7月26日下午3:55:53
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.device.api;
+
+import com.github.pagehelper.PageInfo;
+import com.soco.car.device.entity.*;
+import com.soco.car.user.entity.Userbinddevice;
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * ClassName:DeviceApi <br/>
+ * Reason: 与设备相关的接口API <br/>
+ * Date: 2018年7月26日 下午3:55:53 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public interface DeviceApi {
+
+	/**
+	 * 
+	 * findDeviceWarnByPage:查询设备告警中的列表
+	 *
+	 * @author sunlangping
+	 * @param userId		用户ID
+	 * @param delFlag		传空查询全部
+	 * @param pageNum		第×页
+	 * @param pageSize		每页显示的条数
+	 * @return
+	 */
+	public PageInfo<DeviceWarn> findDeviceWarnByPage(Long userId,Integer delFlag,Integer pageNum,Integer pageSize);
+	/**
+	 * 
+	 * removeWarnIds:删除告警列表(逻辑删除)
+	 *
+	 * @author sunlangping
+	 * @param warnIds
+	 */
+	public void removeWarnIds(String warnIds);
+	/**
+	 * 
+	 * removePointIds:删除轨迹列表(逻辑删除)
+	 *
+	 * @author sunlangping
+	 * @param pointIds
+	 */
+	public void removePointIds(String pointIds);
+	/**
+	 * 根据设备Id查询设备状态
+	 * @param deviceId		设备ID
+	 * @throws Exception
+	 */
+	public List<Devicestate> selectDeviceStateByDeviceId(Integer deviceId);
+
+	/**
+	 * 查询设备消耗统计信息
+	 * @param deviceId		设备ID
+	 * @param startTime		起始时间
+	 * @param endTime		结束时间
+	 * @return
+	 */
+	public DeviceStatisMsg queryDeviceStatisMsg(Integer deviceId, Date startTime, Date endTime);
+
+	/**
+	 * 获取新手教程url
+	 * @param protype		设备类型
+	 */
+	public List<DeviceCourseUrl> getCourseUrl(String protype);
+
+	/**
+	 * 修改设备信息，激活时间
+	 * @param device		设备信息
+	 * @throws Exception
+	 */
+	public void updateDeviceInfo(Device device);
+
+	/**
+	 * APP前端，查询设备信息
+	 * @param deviceId		设备ID
+	 * @throws Exception
+	 */
+	public Device selectDeviceInfoById(Long deviceId);
+
+	/**
+	 * 根据设备编号查询设备信息
+	 * @param deviceNo		设备号
+	 * @throws Exception
+	 */
+	public Device selectDeviceInfoByDeviceNo(String deviceNo);
+
+	/**
+	 * 根据sn码查询设备信息
+	 * @param ubd			绑定信息
+	 * @throws Exception
+	 */
+	public Device selectDeviceInfoBysnCode(Userbinddevice ubd);//此接口暂时没有开通
+	
+	public void removeUserRunPointByUserId(Long userId);
+	/**
+	 * 
+	 * saveDeviceWarn:	保存告警信息
+	 *
+	 * @author sunlangping
+	 * @param deviceWarn
+	 */
+	public void saveDeviceWarn(DeviceWarn deviceWarn);
+}

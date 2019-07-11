@@ -1,0 +1,77 @@
+package com.soco.car.app.controller;
+
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.github.pagehelper.PageInfo;
+import com.soco.car.app.api.request.*;
+import com.soco.car.app.api.response.BaseResponse;
+import com.soco.car.app.handler.BaseResponseGenerator;
+import com.soco.car.app.utils.LocationUtils;
+import com.soco.car.user.api.RepairstationApi;
+import com.soco.car.user.entity.Repairstation;
+import io.swagger.annotations.Api;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(value = "/rest/v1/repairService")
+@Api(value = "/rest/v1/repairService", tags = { "网点服务相关接口" })
+public class RepairServiceController {
+    private static final Logger logger = LoggerFactory.getLogger(UserbinddeviceController.class);
+
+    @Reference
+    private RepairstationApi repairstationApi;
+
+    /**
+     * 根据视野范围获取范围内的维修站列表
+     * @param locationInfoRequest
+     * @return
+     */
+
+    @PostMapping("selectFieldVision")
+    public BaseResponse selectFieldVision(@RequestBody LocationInfoRequest locationInfoRequest) {
+        return BaseResponseGenerator.genSuccessResult(repairstationApi.selectFieldVisionRepairStations(locationInfoRequest.getLeftTopLng(),
+                locationInfoRequest.getRightFootLng(), locationInfoRequest.getRightFootLat(), locationInfoRequest.getLeftTopLat()));
+    }
+
+    /**
+     * 设置默认查询附近50公里范围内的数据
+     * @param nearByLocationRequest
+     * @return
+     */
+    @PostMapping("selectNearBy")
+    public BaseResponse selectNearBy(@RequestBody NearByLocationRequest nearByLocationRequest) {
+        Double currLat = nearByLocationRequest.getCurrLat();
+        Double currLng = nearByLocationRequest.getCurrLng();
+        Integer distance = nearByLocationRequest.getDistance();
+        Integer pageNo = nearByLocationRequest.getPageNum();
+        Integer pageSize = nearByLocationRequest.getPageSize();
+        if (distance == null) {
+            distance = 50;
+        }
+
+        PageInfo<Repairstation> pageInfo = repairstationApi.selectNearByRepairstation(nearByLocationRequest.getCurrLng(), nearByLocationRequest.getCurrLat(), distance, pageNo, pageSize);
+        List<Repairstation> list = pageInfo.getList();
+
+        for (Repairstation repairstation : list) {
+            Double d= LocationUtils.getDistance(currLat, currLng, repairstation.getPointlat(), repairstation.getPointlng());
+            repairstation.setDistance(d);
+        }
+
+        pageInfo.setList(list);
+        return BaseResponseGenerator.genSuccessResult(pageInfo);
+    }
+
+    /**
+     * 根据地区名称查询维修站列表
+     * @param repairProvinceRequest
+     * @return
+     */
+    @PostMapping("selectByProvince")
+    public BaseResponse selectByProvince(@RequestBody RepairProvinceRequest repairProvinceRequest) {
+        return BaseResponseGenerator.genSuccessResult(repairstationApi.selectRepairStationByProvince
+                (repairProvinceRequest.getStationName(), repairProvinceRequest.getPageNum(), repairProvinceRequest.getPageSize()));
+    }
+}

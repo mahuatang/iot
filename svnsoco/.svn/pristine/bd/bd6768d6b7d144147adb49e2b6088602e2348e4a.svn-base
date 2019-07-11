@@ -1,0 +1,100 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:BaseMsg.java
+ * Package Name:com.soco.car.iot.message
+ * Date:2018年7月9日上午3:28:11
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.message;
+/**
+ * ClassName:BaseMsg <br/>
+ * Reason:	 所有类基础消息 <br/>
+ * Date:     2018年7月9日 上午3:28:11 <br/>
+ * @author   sunlangping
+ * @version  
+ * @see 	 
+ */
+
+import java.io.Serializable;
+import java.util.Arrays;
+
+/**
+ * 
+ * ClassName: BaseMsg <br/>
+ * Function: 所有消息的基础类 <br/>
+ * date: 2018年7月9日 上午3:29:09 <br/>
+ *
+ * @author sunlangping
+ * @version
+ */
+public abstract class BaseMsg implements Serializable {
+
+	private static final long serialVersionUID = 2889224488668672727L;
+	/**
+	 * 设备ID
+	 */
+
+	private String deviceNo;
+	/**
+	 * 消息类型
+	 */
+	private String msgType;
+	/**
+	 * 请求的报文内容,校验位检查与日志记录需要用到
+	 */
+	private byte[] requestContent;
+	/**
+	 * 返回的报文内容,校验位检查与日志记录需要用到
+	 */
+	private byte[] responseContent;
+
+	public String getDeviceNo() {
+		return deviceNo;
+	}
+
+	public void setDeviceNo(String deviceNo) {
+		this.deviceNo = deviceNo;
+	}
+
+	public String getMsgType() {
+		return msgType;
+	}
+
+	public void setMsgType(String msgType) {
+		this.msgType = msgType;
+	}
+
+	public byte[] getRequestContent() {
+		return requestContent;
+	}
+
+	public void setRequestContent(byte[] requestContent) {
+		this.requestContent = requestContent;
+	}
+
+	public byte[] getResponseContent() {
+		return responseContent;
+	}
+
+	public void setResponseContent(byte[] responseContent) {
+		this.responseContent = responseContent;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("BaseMsg [deviceNo=");
+		builder.append(deviceNo);
+		builder.append(", msgType=");
+		builder.append(msgType);
+		builder.append(", requestContent=");
+		builder.append(Arrays.toString(requestContent));
+		builder.append(", responseContent=");
+		builder.append(Arrays.toString(responseContent));
+		builder.append("]");
+		return builder.toString();
+	}
+
+}

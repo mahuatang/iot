@@ -1,0 +1,78 @@
+/**
+ * Project Name:SOCO_API
+ * File Name:UserApi.java
+ * Package Name:com.soco.car.user.api
+ * Date:2018年7月24日下午1:08:36
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.user.api;
+
+import com.github.pagehelper.PageInfo;
+import com.soco.car.user.entity.PhoneVersion;
+import com.soco.car.user.entity.User;
+import com.soco.car.user.entity.UserRunPoint;
+
+/**
+ * ClassName:UserApi <br/>
+ * Reason: 用户相关接口 <br/>
+ * Date: 2018年7月24日 下午1:08:36 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public interface UserApi {
+	
+	/**
+	 * 
+	 * findByPhone:根据手机号码查询用户
+	 *
+	 * @author sunlangping
+	 * @param phoneCode TODO
+	 * @param phone
+	 * @return
+	 */
+	public User findByPhone(String phoneCode, String phone);
+	/**
+	 * 
+	 * save:	新增用户
+	 *
+	 * @author sunlangping
+	 * @param user
+	 * @return
+	 */
+	public User save(User user);
+
+	/**
+	 * APP前端，查询用户基本信息，根据用户ID
+	 * @param userId
+	 * @return
+	 */
+	public User selectUserBasicInfoById(Long userId);
+	/**
+	 * 
+	 * findHistryList:
+	 *
+	 * @author sunlangping
+	 * @param userId
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 */
+	public PageInfo<UserRunPoint> findRunHistryList(Long userId, Integer pageNo, Integer pageSize);
+
+	/**
+	 * 添加APP安装的手机信息
+	 * @param phoneVersion
+	 */
+	public void insertPhoneVersion(PhoneVersion phoneVersion);
+
+	/**
+	 * 查看用户产品说明书
+	 * @param carType
+	 * @return
+	 */
+	public String getUserProductInstructions(String carType);
+}

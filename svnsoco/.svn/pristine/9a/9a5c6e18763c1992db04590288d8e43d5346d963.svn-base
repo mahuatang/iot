@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.device.dao.DeviceWarnMapper">
+    <select id="selectDeviceWarnInfo" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ts01_device_warn where userId = #{userId}
+    </select>
+
+    <delete id="deleteDeviceWarnInfo" parameterType="java.lang.Long">
+        delete from ts01_device_warn where userId = #{userId}
+    </delete>
+</mapper>

@@ -1,0 +1,242 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:UploadCarStateMsg.java
+ * Package Name:com.soco.car.iot.message.car.msg
+ * Date:2018年7月17日上午11:04:32
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.message.car.msg;
+
+import java.util.Arrays;
+
+import com.soco.car.iot.message.Base7979Msg;
+
+/**
+ * ClassName:UploadCarStateMsg <br/>
+ * Reason: 上传一次电动车状态接口 <br/>
+ * Date: 2018年7月17日 上午11:04:32 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public class UploadCarStateMsg extends Base7979Msg {
+
+	private static final long serialVersionUID = 142520564971471781L;
+	/**
+	 * 0x00：关闭(熄火) 0x01：启动
+	 */
+	private Byte powerState;
+	/**
+	 * 本次骑行里程(圈数/每10圈记一次)
+	 */
+	private Short currentRideCircle;
+	/**
+	 * 总骑行里程(圈数/每10圈记一次)
+	 */
+	private Integer sumRideCircle;
+	/**
+	 * 电量
+	 */
+	private Byte electric;
+	/**
+	 * 电压标识：(预警) 0x00表示正常 0x01表示过低
+	 * 
+	 */
+	private Byte voltage;
+	/**
+	 * 温度标识：(预警)
+	 * 
+	 * 0x00表示正常 0x01表示过高
+	 * 
+	 */
+	private Byte temperature;
+	/**
+	 * 0x00 表5min上传一次 0x01 表示30分钟上传一次
+	 * 
+	 */
+	private Byte uploadRate;
+	/**
+	 * 移动标识;(预警) 0x00 表示正常 0x1 表示异常
+	 * 
+	 */
+	private Byte move;
+	/**
+	 * 待定4个字节
+	 */
+	private Integer default_1;
+	/**
+	 * 待定单字节
+	 */
+	private Byte default_2;
+	/**
+	 * 续航能力(KM) 高位在前，低位在后
+	 * 
+	 */
+	private Short endurance;
+	/**
+	 * 锁定状态 0x00表示解锁状态 0x01表示上锁状态
+	 * 
+	 */
+	private Byte lock;
+	
+	
+
+	public Byte getPowerState() {
+		return powerState;
+	}
+
+	public void setPowerState(Byte powerState) {
+		this.powerState = powerState;
+	}
+
+	public Short getCurrentRideCircle() {
+		return currentRideCircle;
+	}
+
+	public void setCurrentRideCircle(Short currentRideCircle) {
+		this.currentRideCircle = currentRideCircle;
+	}
+
+	public Integer getSumRideCircle() {
+		return sumRideCircle;
+	}
+
+	public void setSumRideCircle(Integer sumRideCircle) {
+		this.sumRideCircle = sumRideCircle;
+	}
+
+	public Byte getElectric() {
+		return electric;
+	}
+
+	public void setElectric(Byte electric) {
+		this.electric = electric;
+	}
+
+	public Byte getVoltage() {
+		return voltage;
+	}
+
+	public void setVoltage(Byte voltage) {
+		this.voltage = voltage;
+	}
+
+	public Byte getTemperature() {
+		return temperature;
+	}
+
+	public void setTemperature(Byte temperature) {
+		this.temperature = temperature;
+	}
+
+	public Byte getUploadRate() {
+		return uploadRate;
+	}
+
+	public void setUploadRate(Byte uploadRate) {
+		this.uploadRate = uploadRate;
+	}
+
+	public Byte getMove() {
+		return move;
+	}
+
+	public void setMove(Byte move) {
+		this.move = move;
+	}
+
+	public Integer getDefault_1() {
+		return default_1;
+	}
+
+	public void setDefault_1(Integer default_1) {
+		this.default_1 = default_1;
+	}
+
+	public Byte getDefault_2() {
+		return default_2;
+	}
+
+	public void setDefault_2(Byte default_2) {
+		this.default_2 = default_2;
+	}
+
+	public Short getEndurance() {
+		return endurance;
+	}
+
+	public void setEndurance(Short endurance) {
+		this.endurance = endurance;
+	}
+
+	public Byte getLock() {
+		return lock;
+	}
+
+	public void setLock(Byte lock) {
+		this.lock = lock;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("UploadCarStateMsg [powerState=");
+		builder.append(powerState);
+		builder.append(", currentRideCircle=");
+		builder.append(currentRideCircle);
+		builder.append(", sumRideCircle=");
+		builder.append(sumRideCircle);
+		builder.append(", electric=");
+		builder.append(electric);
+		builder.append(", voltage=");
+		builder.append(voltage);
+		builder.append(", temperature=");
+		builder.append(temperature);
+		builder.append(", uploadRate=");
+		builder.append(uploadRate);
+		builder.append(", move=");
+		builder.append(move);
+		builder.append(", default_1=");
+		builder.append(default_1);
+		builder.append(", default_2=");
+		builder.append(default_2);
+		builder.append(", endurance=");
+		builder.append(endurance);
+		builder.append(", lock=");
+		builder.append(lock);
+		builder.append(", getCommand()=");
+		builder.append(getCommand());
+		builder.append(", getContentLength()=");
+		builder.append(getContentLength());
+		builder.append(", getProtocol()=");
+		builder.append(getProtocol());
+		builder.append(", getModelProtocol()=");
+		builder.append(getModelProtocol());
+		builder.append(", getCheckCode()=");
+		builder.append(getCheckCode());
+		builder.append(", getStopCode()=");
+		builder.append(getStopCode());
+		builder.append(", getChildCommand()=");
+		builder.append(getChildCommand());
+		builder.append(", getChildProtocol()=");
+		builder.append(getChildProtocol());
+		builder.append(", getChildContentLength()=");
+		builder.append(getChildContentLength());
+		builder.append(", getChildCheckCode()=");
+		builder.append(getChildCheckCode());
+		builder.append(", getDeviceNo()=");
+		builder.append(getDeviceNo());
+		builder.append(", getMsgType()=");
+		builder.append(getMsgType());
+		builder.append(", getRequestContent()=");
+		builder.append(Arrays.toString(getRequestContent()));
+		builder.append(", getResponseContent()=");
+		builder.append(Arrays.toString(getResponseContent()));
+		builder.append("]");
+		return builder.toString();
+	}
+
+}

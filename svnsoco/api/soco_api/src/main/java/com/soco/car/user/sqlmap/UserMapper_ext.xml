@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.user.dao.UserMapper">
+    
+    <select id="findByDeviceNo" resultMap="BaseResultMap">
+		SELECT u.*
+			FROM ts01_user u
+			LEFT JOIN ts01_userbinddevice ubd ON(u.userId=ubd.userId)
+			LEFT JOIN ts01_device d ON(d.deviceId=ubd.deviceId)
+			<where>
+				d.deviceNo=#{deviceNo}
+			</where>
+			<if test="state!=null"> 
+				AND ubd.state=#{state}
+			</if>
+			limit 1
+	</select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.device.dao.DeviceMapper">
+
+    <select id="selectDeviceInfoByDeviceNo" parameterType="com.soco.car.user.entity.Userbinddevice" resultMap="BaseResultMap">
+        SELECT d.*,
+        ifnull(acp.imgUrl,"SOCOUploadImg/APPImg/car/ts.png") as imgUrls,
+        ifnull(acb.carModelName,"TS") as carModelName, acb.carMotorNumber, acb.dateManufacture AS colorCode, acb.carFrameNumber
+        FROM ts01_device d
+        LEFT JOIN ts01_car_baseinfo acb on acb.deviceNo=d.deviceNo
+        LEFT JOIN ts01_car_picture acp on acp.carModelName=acb.carModelName and acp.colorCode=acb.colorCode
+        WHERE d.deviceNo=#{deviceNo}
+    </select>
+
+    <update id="updateDeviceInfo">
+        update ts01_device set activationDate=now() where deviceId=#{deviceId} and activationDate is null
+    </update>
+</mapper>

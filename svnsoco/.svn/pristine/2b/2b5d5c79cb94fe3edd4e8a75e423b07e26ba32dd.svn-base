@@ -1,0 +1,25 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:WarningMsg.java
+ * Package Name:com.soco.car.iot.message.car.msg
+ * Date:2018年7月17日上午9:07:14
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.message.car.msg;
+
+import com.soco.car.iot.message.Base7878Msg;
+
+/**
+ * ClassName:WarningMsg <br/>
+ * Reason:	 报警包处理. <br/>
+ * Date:     2018年7月17日 上午9:07:14 <br/>
+ * @author   sunlangping
+ * @version  
+ * @see 	 
+ */
+public class WarningMsg  extends Base7878Msg {
+
+}
+

@@ -1,0 +1,44 @@
+/**
+ * Project Name:SOCO_APP
+ * File Name:TemplateEnum.java
+ * Package Name:com.soco.car.app.constants
+ * Date:2018年7月24日下午4:03:49
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.constants;
+
+/**
+ * ClassName:TemplateEnum <br/>
+ * Reason: 短信模板 <br/>
+ * Date: 2018年7月24日 下午4:03:49 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public enum AliSmsTemplateEnum {
+	/**
+	 * 找密码模板
+	 */
+	retrieve_password("1"),
+	/**
+	 * 注册帐号密码
+	 */
+	register_account("2");
+
+	private String value;
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+	private AliSmsTemplateEnum(String value) {
+		this.value = value;
+	}
+}

@@ -1,0 +1,91 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:ServiceI.java
+ * Package Name:com.soco.car.iot.service
+ * Date:2018年7月12日下午2:51:32
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.service.car;
+
+import java.util.Arrays;
+
+import com.soco.car.iot.server.car.message.BaseMsg;
+import com.soco.car.iot.utils.ByteUtils;
+import com.soco.car.iot.utils.CRC16;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.Channel;
+
+/**
+ * 
+ * ClassName: ServiceI <br/>
+ * Function: 公共接口处理具体业务. <br/>
+ * date: 2018年7月12日 下午2:52:10 <br/>
+ *
+ * @author sunlangping
+ * @version
+ */
+public interface ICarService {
+	
+	/**
+	 * 
+	 * exec: 执行业务
+	 *
+	 * @author sunlangping
+	 * @param channel
+	 *            来源通道
+	 * @param baseMsg
+	 *            基础消息
+	 * @return
+	 */
+	public BaseMsg exec(Channel channel, BaseMsg baseMsg);
+
+	/**
+	 * 
+	 * sendMessage: 发送消息
+	 *
+	 * @author sunlangping
+	 * @param baseMsg
+	 */
+	public void sendMessage(BaseMsg baseMsg);
+
+	/**
+	 * 
+	 * response: 相应给当前客户端，无需回复直接在reponseContent设置为空即可
+	 *
+	 * @author sunlangping
+	 * @param channel
+	 * @param baseMsg
+	 */
+	public default void response(Channel channel, BaseMsg baseMsg) {
+		if (null != channel && channel.isActive() && baseMsg != null && baseMsg.getResponseContent() != null) {
+			ByteBuf bf = Unpooled.copiedBuffer(baseMsg.getResponseContent());
+			if (channel.isOpen()) {
+				channel.writeAndFlush(bf);
+			}
+		}
+	}
+
+	/**
+	 * 
+	 * checkCode: 检查CRC16校验是否成功
+	 *
+	 * @author sunlangping
+	 */
+	public default void checkCode(byte[] bytes) {
+		if (null == bytes || bytes.length < 8) {
+			return;
+		}
+		byte[] checkContext = Arrays.copyOfRange(bytes, 2, bytes.length - 2);
+		byte[] checkCode = Arrays.copyOfRange(bytes, bytes.length - 2, bytes.length);
+		byte[] newCheCheckCode = CRC16.crc16Bytes7878(checkContext);
+		if (ByteUtils.byte2ToShort(checkCode) != ByteUtils.byte2ToShort(newCheCheckCode)) {
+			throw new RuntimeException("请求CRC16校验失败！");
+		}
+	}
+
+	public void processBusiness(Channel channel, BaseMsg baseMsg);
+}

@@ -1,0 +1,72 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:HeartbeatConvert.java
+ * Package Name:com.soco.car.iot.message.car.convert
+ * Date:2018年7月12日上午9:41:21
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.message.car.convert;
+
+import java.util.Arrays;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import com.soco.car.iot.constants.SOCOIotConstant;
+import com.soco.car.iot.message.BaseMsg;
+import com.soco.car.iot.message.MessageConverter;
+import com.soco.car.iot.message.car.msg.LoginMsg;
+import com.soco.car.iot.utils.ByteUtils;
+import com.soco.car.iot.utils.CRC16;
+import com.soco.car.iot.utils.Hex;
+
+/**
+ * ClassName:HeartbeatConvert <br/>
+ * Reason: 心跳消息转换类 <br/>
+ * Date: 2018年7月12日 上午9:41:21 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class LoginConvert implements MessageConverter {
+
+	private String msgType = "login";
+
+	private static final Logger logger = LoggerFactory.getLogger(LoginConvert.class);
+
+	@Override
+	public BaseMsg convert2Message(byte[] msg) {
+		byte[] command = Arrays.copyOfRange(msg, 0, 2);
+		byte contentLength = Arrays.copyOfRange(msg, 2, 3)[0];
+		String deviceNo = Hex.byte2HexStr(Arrays.copyOfRange(msg, 4, 12));
+		byte[] deviceType = Arrays.copyOfRange(msg, 12, 14);
+		byte[] timezone = Arrays.copyOfRange(msg, 14, 16);
+		byte[] messageSerialNumber = Arrays.copyOfRange(msg, 16, 18);
+		LoginMsg loginMsg = new LoginMsg();
+		loginMsg.setRequestContent(msg);
+		loginMsg.setCommand(ByteUtils.byte2ToShort(command));
+		loginMsg.setContentLength(contentLength);
+		loginMsg.setDeviceNo(deviceNo);
+		loginMsg.setDeviceType(ByteUtils.byte2ToShort(deviceType));
+		loginMsg.setMsgType(msgType);
+		loginMsg.setProtocol(supportProcotol());
+		loginMsg.setTimezone(ByteUtils.byte2ToShort(timezone));
+		loginMsg.setMessageSerialNumber(ByteUtils.byte2ToShort(messageSerialNumber));
+		byte[] content = ByteUtils.addAll(new byte[] { 0x05 }, new byte[] { supportProcotol() }, messageSerialNumber);
+		byte[] checkCode=CRC16.crc16Bytes7878(content);
+		byte[] responseContent = ByteUtils.addAll(command, content,checkCode, SOCOIotConstant.STOP_INDEX);
+		loginMsg.setResponseContent(responseContent);
+		return loginMsg;
+	}
+
+	@Override
+	public byte supportProcotol() {
+		return 0x01;
+	}
+
+}

@@ -1,0 +1,131 @@
+/**
+ * Project Name:soco_iot
+ * File Name:Jpush.java
+ * Package Name:com.soco.car.iot.sdk.jg
+ * Date:2018年8月11日下午6:51:14
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.sdk.jg;
+
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.soco.car.device.api.DeviceApi;
+import com.soco.car.device.entity.DeviceWarn;
+import com.soco.car.iot.constants.SOCOIotConstant;
+import com.soco.car.iot.sdk.jg.pojo.PushPOJO;
+
+import cn.jiguang.common.resp.APIConnectionException;
+import cn.jiguang.common.resp.APIRequestException;
+import cn.jpush.api.JPushClient;
+import cn.jpush.api.push.PushResult;
+import cn.jpush.api.push.model.Message;
+import cn.jpush.api.push.model.Options;
+import cn.jpush.api.push.model.Platform;
+import cn.jpush.api.push.model.PushPayload;
+import cn.jpush.api.push.model.audience.Audience;
+import cn.jpush.api.push.model.notification.IosNotification;
+import cn.jpush.api.push.model.notification.Notification;
+
+/**
+ * ClassName:Jpush <br/>
+ * Reason: 极光推送相关API接口服务 <br/>
+ * Date: 2018年8月11日 下午6:51:14 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class JpushSdk {
+
+	private final static Logger logger = LoggerFactory.getLogger(JpushSdk.class);
+
+	@Value("${jg.environment.prod}")
+	private boolean environmentProd;
+
+	@Autowired
+	private JPushClient jpushClient;
+	
+	@Reference
+	private DeviceApi deviceApi;
+
+	/**
+	 * 
+	 * push: 手机APP推送
+	 *
+	 * @author sunlangping
+	 * @param pushPOJO
+	 */
+	public void push(PushPOJO pushPOJO) {
+		Assert.isTrue(StringUtils.isNotBlank(pushPOJO.getSystemName()), "手机系统不能为空");
+		Assert.isTrue(StringUtils.isNotBlank(pushPOJO.getAudience() + ""), "推送人不能为空");
+		Assert.isTrue(StringUtils.isNotBlank(pushPOJO.getTitle()), "推送标题不能为空");
+		Assert.isTrue(StringUtils.isNotBlank(pushPOJO.getContent()), "推送内容不能为空");
+		PushResult pushResult = null;
+		try {
+			if (pushPOJO.getSystemName().toUpperCase().contains(SOCOIotConstant.APP_SYSTEM_IOS)) {
+				pushResult = jpushClient.sendPush(buildPushAndroid(pushPOJO.getAudience() + "", pushPOJO.getContent(),
+						pushPOJO.getTitle(), environmentProd));
+			} else if (pushPOJO.getSystemName().toUpperCase().contains(SOCOIotConstant.APP_SYSTEM_ANDROID)) {
+				pushResult = jpushClient.sendPush(buildPushAndroid(pushPOJO.getAudience() + "", pushPOJO.getContent(),
+						pushPOJO.getTitle(), environmentProd));
+			} else {
+				pushResult = jpushClient.sendPush(buildPushAll(pushPOJO.getAudience() + "", pushPOJO.getContent(),
+						pushPOJO.getTitle(), environmentProd));
+			}
+
+			DeviceWarn deviceWarn = new DeviceWarn();
+			deviceWarn.setDeviceNo(pushPOJO.getDeviceNo());
+			deviceWarn.setUserId(pushPOJO.getAudience());
+			deviceWarn.setDelFlag(SOCOIotConstant.N);
+			deviceWarn.setContent(pushPOJO.getContent());
+			
+			if (pushResult.isResultOK()) {
+				deviceWarn.setPushStatus(SOCOIotConstant.Y);
+			} else {
+				deviceWarn.setPushStatus(SOCOIotConstant.N);
+			}
+			
+			deviceApi.saveDeviceWarn(deviceWarn);
+			
+		} catch (APIConnectionException e) {
+			logger.error("极光推送发生错误参数为:{},错误描述为:{}", pushPOJO, e.getMessage());
+		} catch (APIRequestException e) {
+			logger.error("极光推送发生错误参数为:{},错误描述为:{}", pushPOJO, e.getMessage());
+		}
+	}
+
+	public static PushPayload buildPushAndroid(String audience, String alert, String title, boolean environmentProd) {
+		return PushPayload.newBuilder().setPlatform(Platform.android()).setAudience(Audience.alias(audience))
+				.setNotification(Notification.android(alert, title, null))
+				.setOptions(Options.newBuilder().setApnsProduction(environmentProd).build()).build();
+	}
+
+	public static PushPayload buildPushIOS(String audience, String alert, String title, boolean environmentProd) {
+		return PushPayload.newBuilder().setPlatform(Platform.ios()).setAudience(Audience.alias(audience))
+				.setNotification(Notification.newBuilder()
+						.addPlatformNotification(IosNotification.newBuilder().setAlert(title)
+								// .setBadge(5)
+								// .setSound("happy")
+								// .addExtra("from", "JPush")
+								.build())
+						.build())
+				.setMessage(Message.content(title)).setOptions(Options.newBuilder().setApnsProduction(true).build())
+				.build();
+	}
+
+	public static PushPayload buildPushAll(String audience, String alert, String title, boolean environmentProd) {
+		return PushPayload.newBuilder().setPlatform(Platform.all()).setAudience(Audience.alias(audience))
+				.setNotification(Notification.alert(alert))
+				.setOptions(Options.newBuilder().setApnsProduction(environmentProd).build()).build();
+	}
+}

@@ -1,0 +1,48 @@
+/**
+ * Project Name:SOCO_APP
+ * File Name:BaseController.java
+ * Package Name:com.soco.car.app.controller
+ * Date:2018年7月25日下午2:11:13
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.controller;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.soco.car.app.cache.TokenCache;
+import com.soco.car.app.cache.pojo.TokenPOJO;
+import com.soco.car.app.service.JwtService;
+
+/**
+ * ClassName:BaseController <br/>
+ * Reason: 抽象接口 <br/>
+ * Date: 2018年7月25日 下午2:11:13 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public abstract class BaseController {
+
+	@Autowired
+	private HttpServletRequest request;
+
+	@Autowired
+	private JwtService jwtService;
+
+	@Autowired
+	private TokenCache tokenCache;
+
+	public TokenPOJO getUser() {
+		String token = request.getHeader("Authorization");
+		Map<String, Object> tokenMap = jwtService.validateToken(token);
+		String account = tokenMap.get("account") + "";
+		return tokenCache.get(account);
+	}
+}

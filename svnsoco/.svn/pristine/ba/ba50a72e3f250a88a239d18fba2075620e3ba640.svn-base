@@ -1,0 +1,9 @@
+message.login.success=login success
+message.login.failure=login failure,account or password error.
+message.register.failure=register error
+message.register.account.exist=register Account phone number already exists
+message.token.expire=message.token.expire
+message.params.error=message.params.error
+message.success=message.success
+message.error=message.error
+message.account.failure=message.account.failure

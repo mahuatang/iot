@@ -1,0 +1,230 @@
+package com.soco.car.repair.entity;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
+
+/**
+ * @author 
+ */
+public class Repairstation implements Serializable {
+    /**
+     * 站点Id
+     */
+    private Long stationId;
+
+    /**
+     * 站点名称
+     */
+    private String stationName;
+
+    /**
+     * 联系人
+     */
+    private String contacts;
+
+    /**
+     * 联系电话
+     */
+    private String phoneNo;
+
+    /**
+     * 维度
+     */
+    private BigDecimal pointLat;
+
+    /**
+     * 经度
+     */
+    private BigDecimal pointLng;
+
+    /**
+     * 地址文本
+     */
+    private String address;
+
+    private Integer areaId;
+
+    private String workTime;
+
+    /**
+     * 创建时间
+     */
+    private Date createTime;
+
+    /**
+     * 修改时间
+     */
+    private Date updateTime;
+
+    /**
+     * 状态(0正常,-1禁止)
+     */
+    private Integer status;
+
+    private static final long serialVersionUID = 1L;
+
+    public Long getStationId() {
+        return stationId;
+    }
+
+    public void setStationId(Long stationId) {
+        this.stationId = stationId;
+    }
+
+    public String getStationName() {
+        return stationName;
+    }
+
+    public void setStationName(String stationName) {
+        this.stationName = stationName;
+    }
+
+    public String getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(String contacts) {
+        this.contacts = contacts;
+    }
+
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public BigDecimal getPointLat() {
+        return pointLat;
+    }
+
+    public void setPointLat(BigDecimal pointLat) {
+        this.pointLat = pointLat;
+    }
+
+    public BigDecimal getPointLng() {
+        return pointLng;
+    }
+
+    public void setPointLng(BigDecimal pointLng) {
+        this.pointLng = pointLng;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(Integer areaId) {
+        this.areaId = areaId;
+    }
+
+    public String getWorkTime() {
+        return workTime;
+    }
+
+    public void setWorkTime(String workTime) {
+        this.workTime = workTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
+        Repairstation other = (Repairstation) that;
+        return (this.getStationId() == null ? other.getStationId() == null : this.getStationId().equals(other.getStationId()))
+            && (this.getStationName() == null ? other.getStationName() == null : this.getStationName().equals(other.getStationName()))
+            && (this.getContacts() == null ? other.getContacts() == null : this.getContacts().equals(other.getContacts()))
+            && (this.getPhoneNo() == null ? other.getPhoneNo() == null : this.getPhoneNo().equals(other.getPhoneNo()))
+            && (this.getPointLat() == null ? other.getPointLat() == null : this.getPointLat().equals(other.getPointLat()))
+            && (this.getPointLng() == null ? other.getPointLng() == null : this.getPointLng().equals(other.getPointLng()))
+            && (this.getAddress() == null ? other.getAddress() == null : this.getAddress().equals(other.getAddress()))
+            && (this.getAreaId() == null ? other.getAreaId() == null : this.getAreaId().equals(other.getAreaId()))
+            && (this.getWorkTime() == null ? other.getWorkTime() == null : this.getWorkTime().equals(other.getWorkTime()))
+            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
+            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()));
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((getStationId() == null) ? 0 : getStationId().hashCode());
+        result = prime * result + ((getStationName() == null) ? 0 : getStationName().hashCode());
+        result = prime * result + ((getContacts() == null) ? 0 : getContacts().hashCode());
+        result = prime * result + ((getPhoneNo() == null) ? 0 : getPhoneNo().hashCode());
+        result = prime * result + ((getPointLat() == null) ? 0 : getPointLat().hashCode());
+        result = prime * result + ((getPointLng() == null) ? 0 : getPointLng().hashCode());
+        result = prime * result + ((getAddress() == null) ? 0 : getAddress().hashCode());
+        result = prime * result + ((getAreaId() == null) ? 0 : getAreaId().hashCode());
+        result = prime * result + ((getWorkTime() == null) ? 0 : getWorkTime().hashCode());
+        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
+        result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
+        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", stationId=").append(stationId);
+        sb.append(", stationName=").append(stationName);
+        sb.append(", contacts=").append(contacts);
+        sb.append(", phoneNo=").append(phoneNo);
+        sb.append(", pointLat=").append(pointLat);
+        sb.append(", pointLng=").append(pointLng);
+        sb.append(", address=").append(address);
+        sb.append(", areaId=").append(areaId);
+        sb.append(", workTime=").append(workTime);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append(", status=").append(status);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}

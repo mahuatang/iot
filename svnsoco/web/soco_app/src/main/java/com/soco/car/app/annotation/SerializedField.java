@@ -1,0 +1,43 @@
+/**
+ * Project Name:soco_app
+ * File Name:SerializedField.java
+ * Package Name:com.soco.car.app.handler
+ * Date:2018年7月30日下午7:16:35
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * ClassName:SerializedField <br/>
+ * Reason: TODO ADD REASON. <br/>
+ * Date: 2018年7月30日 下午7:16:35 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface SerializedField {
+	/**
+	 * 需要返回的字段
+	 * 
+	 * @return
+	 */
+	String[] includes() default {};
+
+	/**
+	 * 需要去除的字段
+	 * 
+	 * @return
+	 */
+	String[] excludes() default {};
+
+}

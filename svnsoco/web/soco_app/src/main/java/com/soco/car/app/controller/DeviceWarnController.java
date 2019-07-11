@@ -1,0 +1,84 @@
+/**
+ * Project Name:soco_app
+ * File Name:DeviceWarnController.java
+ * Package Name:com.soco.car.app.controller
+ * Date:2018年7月28日下午7:31:02
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.controller;
+
+import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.soco.car.app.api.request.BaseRequest;
+import com.soco.car.app.api.response.BaseResponse;
+import com.soco.car.app.constants.ResponseMessageEnum;
+import com.soco.car.app.constants.SOCOAppConstant;
+import com.soco.car.app.handler.BaseResponseGenerator;
+import com.soco.car.app.service.UserService;
+import com.soco.car.device.api.DeviceApi;
+
+import io.swagger.annotations.Api;
+
+/**
+ * ClassName:DeviceWarnController <br/>
+ * Reason: 设备告警相关工具类 <br/>
+ * Date: 2018年7月28日 下午7:31:02 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@RestController
+@RequestMapping(value = "/rest/v1/deviceWarn")
+@Api(value = "/rest/v1/deviceWarn", tags = { "设备告警相关接口" })
+public class DeviceWarnController extends BaseController {
+
+	@Reference
+	private DeviceApi deviceApi;
+
+	@Autowired
+	private UserService userService;
+
+	@PostMapping("list")
+	@ApiOperation("查询设备告警中的列表")
+	public BaseResponse list(@RequestBody BaseRequest baseRequet) {
+		return BaseResponseGenerator.genSuccessResult(deviceApi.findDeviceWarnByPage(getUser().getUserId(),
+				SOCOAppConstant.DELETE_FLAG_N, baseRequet.getPageNum(), baseRequet.getPageSize()));
+	}
+
+	@PostMapping("removeIds/{warnIds}")
+	@ApiOperation("删除告警列表(逻辑删除)")
+	public BaseResponse removeIds(@PathVariable String warnIds) {
+		if (StringUtils.isNotEmpty(warnIds)) {
+			deviceApi.removeWarnIds(warnIds);
+		}
+		return BaseResponseGenerator.genSuccessResult(null);
+	}
+
+	/**
+	 * 
+	 * sw: 告警推送开关
+	 *
+	 * @author sunlangping
+	 * @return
+	 */
+	@PostMapping("sw/{isWarnPush}")
+	@ApiOperation("告警推送开关")
+	public BaseResponse sw(@PathVariable Integer isWarnPush) {
+		if (isWarnPush != SOCOAppConstant.DELETE_FLAG_Y && isWarnPush != SOCOAppConstant.DELETE_FLAG_N) {
+			return BaseResponseGenerator.genErrorResult(SOCOAppConstant.ERROR_CODE_400,
+					ResponseMessageEnum.params_error.getValue());
+		}
+		return userService.switchOffNO(getUser(), isWarnPush);
+	}
+}

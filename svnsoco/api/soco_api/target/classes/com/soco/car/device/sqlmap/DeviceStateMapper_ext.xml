@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.device.dao.DevicestateMapper">
+
+    <select id="selectDeviceStateByDeviceId" parameterType="int" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ts01_devicestate where deviceId = #{deviceId}
+    </select>
+
+    <select id="queryDeviceStatisMsg" resultType="com.soco.car.device.entity.DeviceStatisMsg">
+        SELECT
+        case when sum(t.start_power - t.end_power) is null then 0 else sum(t.start_power - t.end_power) end AS conPower,
+        case when sum(t.end_mileage - t.start_mileage) is null then 0 else sum(t.end_mileage - t.start_mileage) end AS mileage,
+        case when sum(t.end_mileage - t.start_mileage)*0.055 is null then 0 else sum(t.end_mileage - t.start_mileage)*0.055 end as emissReduc,
+        case when round(sum((t.endTime - t.startTime)/ 1000 / 60 / 60),2) is null then 0 else round(sum((t.endTime - t.startTime)/ 1000 / 60 / 60),2) end AS rideTimeLong,
+        case when round((sum(t.end_mileage - t.start_mileage))/ (sum((t.endTime - t.startTime)/ 1000 / 60 / 60)),2)is null then 0 else round((sum(t.end_mileage - t.start_mileage))/ (sum((t.endTime - t.startTime)/ 1000 / 60 / 60)),2) end AS avgSpeed
+        FROM
+        ts01_devicestate t
+        where t.deviceId = #{deviceId} and t.end_mileage is not null and t.end_power is not null and t.endTime is not null and t.endTime!=''
+        <![CDATA[
+		and startTime>#{startTime}
+		and endTime<#{endTime}
+		]]>
+    </select>
+</mapper>

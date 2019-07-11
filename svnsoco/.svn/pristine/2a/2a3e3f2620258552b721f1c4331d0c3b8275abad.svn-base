@@ -1,0 +1,57 @@
+/**
+ * Project Name:SOCO_API
+ * File Name:CarTypeMappingService.java
+ * Package Name:com.soco.car.car.service
+ * Date:2018年6月14日上午10:31:19
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.car.service;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.alibaba.dubbo.config.annotation.Service;
+import com.soco.car.car.api.CarTypeMappingApi;
+import com.soco.car.car.dao.CarTypeMappingMapper;
+import com.soco.car.car.entity.CarTypeMapping;
+import com.soco.car.car.entity.CarTypeMappingExample;
+
+/**
+ * ClassName:CarTypeMappingService <br/>
+ * Reason: TODO ADD REASON. <br/>
+ * Date: 2018年6月14日 上午10:31:19 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service(interfaceClass = CarTypeMappingApi.class,timeout=30000)
+public class CarTypeMappingService implements CarTypeMappingApi {
+
+	@Autowired
+	private CarTypeMappingMapper carTypeMappingMapper;
+
+	@Override
+	public List<CarTypeMapping> findByCarTypeCode(String carTypeCode) {
+		CarTypeMappingExample example = new CarTypeMappingExample();
+		example.createCriteria().andCarTypeCodeEqualTo(carTypeCode);
+		return carTypeMappingMapper.selectByExample(example);
+	}
+
+	@Override
+	@Transactional
+	public void batchSave(String carTypeCode, List<CarTypeMapping> carTypeMappingList) {
+		CarTypeMappingExample example = new CarTypeMappingExample();
+		example.createCriteria().andCarTypeCodeEqualTo(carTypeCode);
+		carTypeMappingMapper.deleteByExample(example);
+		for (CarTypeMapping ct : carTypeMappingList) {
+			ct.setCreateTime(new Date());
+			carTypeMappingMapper.insertSelective(ct);
+		}
+	}
+}

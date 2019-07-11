@@ -1,0 +1,235 @@
+package com.soco.car.user.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @author 
+ */
+public class UserRunPoint implements Serializable {
+    /**
+     * 主键ID
+     */
+    private Long pointid;
+
+    /**
+     * 用户ID
+     */
+    private Long userid;
+
+    /**
+     * 骑行开始时间
+     */
+    private Date begintime;
+
+    /**
+     * 开始纬度
+     */
+    private Double beginlatitude;
+
+    /**
+     * 开始经度
+     */
+    private Double beginlongitude;
+
+    /**
+     * 骑行结束时间
+     */
+    private Date endtime;
+
+    /**
+     * 结束纬度
+     */
+    private Double endlatitude;
+
+    /**
+     * 结束经度
+     */
+    private Double endlongitude;
+
+    /**
+     * 此次骑行的距离（KM）
+     */
+    private Double mileage;
+
+    /**
+     * 骑行时长（分钟）
+     */
+    private Double minutes;
+
+    /**
+     * 创建时间
+     */
+    private Date createtime;
+
+    /**
+     * 修改时间
+     */
+    private Date modifytime;
+
+    private static final long serialVersionUID = 1L;
+
+    public Long getPointid() {
+        return pointid;
+    }
+
+    public void setPointid(Long pointid) {
+        this.pointid = pointid;
+    }
+
+    public Long getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Long userid) {
+        this.userid = userid;
+    }
+
+    public Date getBegintime() {
+        return begintime;
+    }
+
+    public void setBegintime(Date begintime) {
+        this.begintime = begintime;
+    }
+
+    public Double getBeginlatitude() {
+        return beginlatitude;
+    }
+
+    public void setBeginlatitude(Double beginlatitude) {
+        this.beginlatitude = beginlatitude;
+    }
+
+    public Double getBeginlongitude() {
+        return beginlongitude;
+    }
+
+    public void setBeginlongitude(Double beginlongitude) {
+        this.beginlongitude = beginlongitude;
+    }
+
+    public Date getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(Date endtime) {
+        this.endtime = endtime;
+    }
+
+    public Double getEndlatitude() {
+        return endlatitude;
+    }
+
+    public void setEndlatitude(Double endlatitude) {
+        this.endlatitude = endlatitude;
+    }
+
+    public Double getEndlongitude() {
+        return endlongitude;
+    }
+
+    public void setEndlongitude(Double endlongitude) {
+        this.endlongitude = endlongitude;
+    }
+
+    public Double getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(Double mileage) {
+        this.mileage = mileage;
+    }
+
+    public Double getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(Double minutes) {
+        this.minutes = minutes;
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    public Date getModifytime() {
+        return modifytime;
+    }
+
+    public void setModifytime(Date modifytime) {
+        this.modifytime = modifytime;
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
+        UserRunPoint other = (UserRunPoint) that;
+        return (this.getPointid() == null ? other.getPointid() == null : this.getPointid().equals(other.getPointid()))
+            && (this.getUserid() == null ? other.getUserid() == null : this.getUserid().equals(other.getUserid()))
+            && (this.getBegintime() == null ? other.getBegintime() == null : this.getBegintime().equals(other.getBegintime()))
+            && (this.getBeginlatitude() == null ? other.getBeginlatitude() == null : this.getBeginlatitude().equals(other.getBeginlatitude()))
+            && (this.getBeginlongitude() == null ? other.getBeginlongitude() == null : this.getBeginlongitude().equals(other.getBeginlongitude()))
+            && (this.getEndtime() == null ? other.getEndtime() == null : this.getEndtime().equals(other.getEndtime()))
+            && (this.getEndlatitude() == null ? other.getEndlatitude() == null : this.getEndlatitude().equals(other.getEndlatitude()))
+            && (this.getEndlongitude() == null ? other.getEndlongitude() == null : this.getEndlongitude().equals(other.getEndlongitude()))
+            && (this.getMileage() == null ? other.getMileage() == null : this.getMileage().equals(other.getMileage()))
+            && (this.getMinutes() == null ? other.getMinutes() == null : this.getMinutes().equals(other.getMinutes()))
+            && (this.getCreatetime() == null ? other.getCreatetime() == null : this.getCreatetime().equals(other.getCreatetime()))
+            && (this.getModifytime() == null ? other.getModifytime() == null : this.getModifytime().equals(other.getModifytime()));
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((getPointid() == null) ? 0 : getPointid().hashCode());
+        result = prime * result + ((getUserid() == null) ? 0 : getUserid().hashCode());
+        result = prime * result + ((getBegintime() == null) ? 0 : getBegintime().hashCode());
+        result = prime * result + ((getBeginlatitude() == null) ? 0 : getBeginlatitude().hashCode());
+        result = prime * result + ((getBeginlongitude() == null) ? 0 : getBeginlongitude().hashCode());
+        result = prime * result + ((getEndtime() == null) ? 0 : getEndtime().hashCode());
+        result = prime * result + ((getEndlatitude() == null) ? 0 : getEndlatitude().hashCode());
+        result = prime * result + ((getEndlongitude() == null) ? 0 : getEndlongitude().hashCode());
+        result = prime * result + ((getMileage() == null) ? 0 : getMileage().hashCode());
+        result = prime * result + ((getMinutes() == null) ? 0 : getMinutes().hashCode());
+        result = prime * result + ((getCreatetime() == null) ? 0 : getCreatetime().hashCode());
+        result = prime * result + ((getModifytime() == null) ? 0 : getModifytime().hashCode());
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", pointid=").append(pointid);
+        sb.append(", userid=").append(userid);
+        sb.append(", begintime=").append(begintime);
+        sb.append(", beginlatitude=").append(beginlatitude);
+        sb.append(", beginlongitude=").append(beginlongitude);
+        sb.append(", endtime=").append(endtime);
+        sb.append(", endlatitude=").append(endlatitude);
+        sb.append(", endlongitude=").append(endlongitude);
+        sb.append(", mileage=").append(mileage);
+        sb.append(", minutes=").append(minutes);
+        sb.append(", createtime=").append(createtime);
+        sb.append(", modifytime=").append(modifytime);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}

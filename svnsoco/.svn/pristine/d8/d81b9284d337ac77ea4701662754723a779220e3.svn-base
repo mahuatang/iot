@@ -1,0 +1,39 @@
+/**
+ * Project Name:SOCO_APP
+ * File Name:ImageConfig.java
+ * Package Name:com.soco.car.app.config
+ * Date:2018年7月25日下午9:36:09
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.config;
+
+import javax.servlet.MultipartConfigElement;
+
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
+import org.springframework.context.annotation.Bean;
+
+/**
+ * ClassName:ImageConfig <br/>
+ * Reason: 上传图片配置中心. <br/>
+ * Date: 2018年7月25日 下午9:36:09 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Configurable
+public class ImageConfig {
+
+	@Bean
+	public MultipartConfigElement multipartConfigElement() {
+		MultipartConfigFactory factory = new MultipartConfigFactory();
+		// 文件最大KB,MB
+		factory.setMaxFileSize("2MB");
+		// 设置总上传数据总大小
+		factory.setMaxRequestSize("10MB");
+		return factory.createMultipartConfig();
+	}
+}

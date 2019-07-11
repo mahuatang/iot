@@ -1,0 +1,16 @@
+com/soco/car/car/rest/BaseMessage.class
+com/soco/car/base/BaseTest.class
+com/soco/car/user/service/DictServiceTest.class
+com/soco/car/car/service/CarTypeServiceTest.class
+com/soco/car/repair/service/RepairServiceTest.class
+com/soco/car/SoCoApiApplicatoinTest.class
+com/soco/car/car/service/CarTypeMappingServiceTest.class
+com/soco/car/car/dao/CarTypeMapperTest.class
+com/soco/car/user/service/ConfigServiceTest.class
+com/soco/car/user/service/RepairServiceTest.class
+com/soco/car/user/service/SmsCountryServiceTest.class
+com/soco/car/user/service/UserServiceTest.class
+com/soco/car/device/service/DeviceServiceTest.class
+com/soco/car/user/service/UserbinddeviceServiceTest.class
+com/soco/car/car/rest/TestTemplateTest.class
+com/soco/car/user/service/RepairstationServiceTest.class

@@ -1,0 +1,102 @@
+/**
+ * Project Name:soco_app
+ * File Name:CodePOJO.java
+ * Package Name:com.soco.car.app.cache.pojo
+ * Date:2018年7月28日下午2:49:08
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.cache.pojo;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * ClassName:CodePOJO <br/>
+ * Reason: 验证码对象 <br/>
+ * Date: 2018年7月28日 下午2:49:08 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public class CodePOJO implements Serializable {
+
+	private static final long serialVersionUID = -2328464946086887480L;
+	/**
+	 * 手机代码
+	 */
+	private String phoneCode;
+	/**
+	 * 手机号码
+	 */
+	private String phone;
+	/**
+	 * 验证码
+	 */
+	private String code;
+	/**
+	 * 模板ID
+	 */
+	private String templateId;
+	/**
+	 * 短信发送时间
+	 */
+	private Date sendDate;
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getTemplateId() {
+		return templateId;
+	}
+
+	public void setTemplateId(String templateId) {
+		this.templateId = templateId;
+	}
+
+	public Date getSendDate() {
+		return sendDate;
+	}
+
+	public void setSendDate(Date sendDate) {
+		this.sendDate = sendDate;
+	}
+
+	public String getPhoneCode() {
+		return phoneCode;
+	}
+
+	public void setPhoneCode(String phoneCode) {
+		this.phoneCode = phoneCode;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("CodePOJO [phone=");
+		builder.append(phone);
+		builder.append(", code=");
+		builder.append(code);
+		builder.append(", templateId=");
+		builder.append(templateId);
+		builder.append(", sendDate=");
+		builder.append(sendDate);
+		builder.append("]");
+		return builder.toString();
+	}
+}

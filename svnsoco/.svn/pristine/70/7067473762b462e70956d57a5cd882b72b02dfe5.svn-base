@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.user.dao.UserbinddeviceMapper">
+  <resultMap id="BaseResultMap" type="com.soco.car.user.entity.Userbinddevice">
+    <id column="bindId" jdbcType="INTEGER" property="bindid" />
+    <result column="deviceId" jdbcType="INTEGER" property="deviceid" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="imgUrls" jdbcType="VARCHAR" property="imgurls" />
+    <result column="bindTime" jdbcType="TIMESTAMP" property="bindtime" />
+    <result column="unbindTime" jdbcType="TIMESTAMP" property="unbindtime" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    bindId, deviceId, userId, imgUrls, bindTime, unbindTime, state
+  </sql>
+  <select id="selectByExample" parameterType="com.soco.car.user.entity.UserbinddeviceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ts01_userbinddevice
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ts01_userbinddevice
+    where bindId = #{bindid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ts01_userbinddevice
+    where bindId = #{bindid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.soco.car.user.entity.UserbinddeviceExample">
+    delete from ts01_userbinddevice
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.soco.car.user.entity.Userbinddevice">
+    <selectKey keyProperty="bindid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_userbinddevice (deviceId, userId, imgUrls, 
+      bindTime, unbindTime, state
+      )
+    values (#{deviceid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{imgurls,jdbcType=VARCHAR}, 
+      #{bindtime,jdbcType=TIMESTAMP}, #{unbindtime,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.soco.car.user.entity.Userbinddevice">
+    <selectKey keyProperty="bindid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_userbinddevice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceid != null">
+        deviceId,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="imgurls != null">
+        imgUrls,
+      </if>
+      <if test="bindtime != null">
+        bindTime,
+      </if>
+      <if test="unbindtime != null">
+        unbindTime,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceid != null">
+        #{deviceid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="imgurls != null">
+        #{imgurls,jdbcType=VARCHAR},
+      </if>
+      <if test="bindtime != null">
+        #{bindtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unbindtime != null">
+        #{unbindtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.soco.car.user.entity.UserbinddeviceExample" resultType="java.lang.Long">
+    select count(*) from ts01_userbinddevice
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ts01_userbinddevice
+    <set>
+      <if test="record.bindid != null">
+        bindId = #{record.bindid,jdbcType=INTEGER},
+      </if>
+      <if test="record.deviceid != null">
+        deviceId = #{record.deviceid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userid != null">
+        userId = #{record.userid,jdbcType=INTEGER},
+      </if>
+      <if test="record.imgurls != null">
+        imgUrls = #{record.imgurls,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bindtime != null">
+        bindTime = #{record.bindtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.unbindtime != null">
+        unbindTime = #{record.unbindtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ts01_userbinddevice
+    set bindId = #{record.bindid,jdbcType=INTEGER},
+      deviceId = #{record.deviceid,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=INTEGER},
+      imgUrls = #{record.imgurls,jdbcType=VARCHAR},
+      bindTime = #{record.bindtime,jdbcType=TIMESTAMP},
+      unbindTime = #{record.unbindtime,jdbcType=TIMESTAMP},
+      state = #{record.state,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.soco.car.user.entity.Userbinddevice">
+    update ts01_userbinddevice
+    <set>
+      <if test="deviceid != null">
+        deviceId = #{deviceid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="imgurls != null">
+        imgUrls = #{imgurls,jdbcType=VARCHAR},
+      </if>
+      <if test="bindtime != null">
+        bindTime = #{bindtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unbindtime != null">
+        unbindTime = #{unbindtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bindId = #{bindid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.soco.car.user.entity.Userbinddevice">
+    update ts01_userbinddevice
+    set deviceId = #{deviceid,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=INTEGER},
+      imgUrls = #{imgurls,jdbcType=VARCHAR},
+      bindTime = #{bindtime,jdbcType=TIMESTAMP},
+      unbindTime = #{unbindtime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=VARCHAR}
+    where bindId = #{bindid,jdbcType=INTEGER}
+  </update>
+</mapper>

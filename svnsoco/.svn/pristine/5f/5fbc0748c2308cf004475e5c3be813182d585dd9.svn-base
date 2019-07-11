@@ -1,0 +1,10 @@
+package com.soco.car.car.api;
+
+import com.soco.car.car.entity.ConfigStart;
+
+public interface ConfigStartApi {
+    /**
+     * APP前端，查询启动画面图片
+     */
+    ConfigStart selectStartInfo();
+}

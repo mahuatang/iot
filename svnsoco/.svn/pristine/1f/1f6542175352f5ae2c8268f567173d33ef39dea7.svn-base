@@ -1,0 +1,45 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:ChannelContext.java
+ * Package Name:com.soco.car.iot.constants
+ * Date:2018年7月13日下午1:46:28
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.constants;
+
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
+import io.netty.channel.Channel;
+
+/**
+ * ClassName:ChannelContext <br/>
+ * Reason: 设备通道对象上下文. <br/>
+ * Date: 2018年7月13日 下午1:46:28 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public class DeviceChannelContext {
+	private static final ConcurrentMap<String, Channel> deviceChannel = new ConcurrentHashMap<>();
+
+	public static Channel putDevice(String channelId, Channel channel) {
+		return deviceChannel.put(channelId, channel);
+	}
+
+	public static Channel removeDevice(String channelId) {
+		return deviceChannel.remove(channelId);
+	}
+
+	public static Channel getDevice(String channelId) {
+		return deviceChannel.get(channelId);
+	}
+
+	public static Integer getDeviceSize() {
+		return deviceChannel.size();
+	}
+
+}

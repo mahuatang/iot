@@ -1,0 +1,41 @@
+/**
+ * Project Name:soco_api
+ * File Name:DeviceApi.java
+ * Package Name:com.soco.car.device.api
+ * Date:2018年7月26日下午3:55:53
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.device.api;
+
+import com.github.pagehelper.PageInfo;
+import com.soco.car.device.entity.DeviceWarn;
+
+/**
+ * ClassName:DeviceApi <br/>
+ * Reason: 与设备相关的接口API <br/>
+ * Date: 2018年7月26日 下午3:55:53 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public interface DeviceApi {
+
+	/**
+	 * 
+	 * findDeviceWarnByPage:查询设备告警中的列表
+	 *
+	 * @author sunlangping
+	 * @param userId		用户ID
+	 * @param delFlag		传空查询全部
+	 * @param pageNum		第×页
+	 * @param pageSize		每页显示的条数
+	 * @return
+	 */
+	public PageInfo<DeviceWarn> findDeviceWarnByPage(Long userId,Integer delFlag,Integer pageNum,Integer pageSize);
+	
+	public void removeWarnIds(String warnIds);
+
+}

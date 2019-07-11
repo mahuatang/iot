@@ -1,0 +1,31 @@
+/**
+ * Project Name:SOCO_APP
+ * File Name:RandomUtil.java
+ * Package Name:com.soco.car.app.utils
+ * Date:2018年7月24日下午3:11:24
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.app.utils;
+
+/**
+ * ClassName:RandomUtil <br/>
+ * Reason: 随机数相关工具类. <br/>
+ * Date: 2018年7月24日 下午3:11:24 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public class RandomUtil {
+
+	/**
+	 * 产生随机的六位数
+	 * 
+	 * @return
+	 */
+	public static String getRandoForSix() {
+		return (int) (Math.random() * 899999 + 100000) + "";
+	}
+}

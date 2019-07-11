@@ -1,0 +1,38 @@
+# dev 
+# tomcat config
+server.port=8080
+server.session.timeout=10
+server.tomcat.uri-encoding=UTF-8
+server.contextPath=/
+
+# dubbo config
+spring.dubbo.application.name=SOCO_APP
+spring.dubbo.registry.protocol=zookeeper
+spring.dubbo.registry.address=127.0.0.1:2181
+spring.dubbo.server=true  
+spring.dubbo.protocol.name=dubbo  
+spring.dubbo.protocol.port=21790 
+spring.dubbo.scan=com.soco.car.app
+
+# json format
+spring.jackson.date-format=yyyy-MM-dd HH:mm:ss
+spring.jackson.time-zone=GMT+8
+
+#message-source
+spring.messages.basename=i18n/messages
+# -1 \u6c38\u4e0d\u8fc7\u671f
+spring.messages.cache-seconds= -1
+spring.messages.encoding=UTF-8
+#\u9ed8\u8ba4\u8fd4\u56de\u8bed\u8a00
+default.return.language=zh-CN
+#swagger2  true:show ui debug,false:none ui debug.
+swagger2.isShow=true
+# spring redis
+#cluster1.host.port=147.104.194.214:6379 
+#spring.redis.cluster.nodes=47.104.194.214:6379,47.104.194.214:6379
+#spring.redis.cluster.timeout=5
+#spring.redis.cluster.max-redirects=3
+#spring.redis.cluster.password=soco
+spring.redis.host=47.104.194.214
+spring.redis.port=6379
+spring.redis.password=soco

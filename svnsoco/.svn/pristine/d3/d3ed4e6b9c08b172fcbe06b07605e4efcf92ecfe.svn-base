@@ -1,0 +1,52 @@
+package com.soco.car.app.constants;
+/**
+ * 
+ * ClassName: SiteConstant <br/>
+ * Function: TODO ADD FUNCTION. <br/>
+ * date: 2018年4月20日 下午6:43:35 <br/>
+ *
+ * @author sunlangping
+ * @version
+ */
+public class SiteConstant {
+	/**
+	 * 系统版本安卓
+	 */
+	public static final Long CONFIG_TYPE_ANDROID = 1L;
+	/**
+	 * 系统版本IOS
+	 */
+	public static final Long CONFIG_TYPE_IOS = 2L;
+	/**
+	 * 系统IOS
+	 */
+	public static final String SYSTEM_IOS = "ios";
+	/**
+	 * 系统安卓
+	 */
+	public static final String SYSTEM_ANDROID = "android";
+	/**
+	 * 版本控制不需要升级
+	 */
+	public static final Integer UPGRADE_TYPE_NO = 0;
+	/**
+	 * 默认车型大类，用于新手视频教程返回的数据，匹配不到返回TS类
+	 */
+	public static final String DEFAULT_CAR_MODEL_TYPE = "TS";
+	/**
+	 * 按天
+	 */
+	public static final Integer TIME_TYPE_DAY = 1;
+	/**
+	 * 按月
+	 */
+	public static final Integer TIME_TYPE_MONTH = 2;
+	/**
+	 * 按年
+	 */
+	public static final Integer TIME_TYPE_YEAR = 3;
+	/**
+	 * 默认最大返回数据的条数
+	 */
+	public static final Integer MAX_RETURN_SIZE = 7;
+}

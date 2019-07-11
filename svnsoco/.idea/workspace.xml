@@ -1,0 +1,1384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="324f8ac3-d00c-462d-9401-2806d25430f5" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/web/target/" />
+    <ignored path="$PROJECT_DIR$/report/target/" />
+    <ignored path="$PROJECT_DIR$/api/soco_api/target/" />
+    <ignored path="$PROJECT_DIR$/report/soco_report/target/" />
+    <ignored path="$PROJECT_DIR$/device/target/" />
+    <ignored path="$PROJECT_DIR$/web/soco_app/target/" />
+    <ignored path="$PROJECT_DIR$/device/soco_iot/target/" />
+    <ignored path="$PROJECT_DIR$/api/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="iot" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="BaseRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/BaseRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocationInfoRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/LocationInfoRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MobileLoginRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/MobileLoginRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NearByLocationRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/NearByLocationRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegisterRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/RegisterRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SetPasswordRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/SetPasswordRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserDataRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/UserDataRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseResponse.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/response/BaseResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="117">
+              <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserDeviceResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/response/UserDeviceResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserLoginIntoResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/response/UserLoginIntoResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>80</find>
+      <find>swagger</find>
+      <find>com.soco.car.car.entity</find>
+      <find>UserBindDeviceExample</find>
+      <find>UserBindDevice</find>
+      <find>pointPrevious</find>
+      <find>message</find>
+      <find>selects</find>
+      <find>redis</find>
+      <find>200</find>
+      <find>version</find>
+      <find>getUser</find>
+      <find>getUse</find>
+      <find>cache</find>
+      <find>selectByExample</find>
+      <find>isu</find>
+      <find>isup</find>
+      <find>devi</find>
+      <find>isU</find>
+      <find>ke</find>
+      <find>success</find>
+      <find>kefu</find>
+      <find>countByExample</find>
+      <find>phoneCo</find>
+      <find>logout</find>
+      <find>userbi</find>
+      <find>user</find>
+      <find>ref</find>
+      <find>insert</find>
+      <find>login</find>
+    </findStrings>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/constants/SiteConstant.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/sqlmap/RepairstationMapper_ext.xml" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/dao/RepairstationMapper.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/dao/RepairAreasMapper.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/NearByLocationRequest.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/service/RepairstationService.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/api/RepairstationApi.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/test/java/com/soco/car/user/service/RepairServiceTest.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/test/java/com/soco/car/user/service/UserServiceTest.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/RegisterRequest.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/sqlmap/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/DeviceController.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/entity/Device.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/sqlmap/DeviceMapper_ext.xml" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/ConfigService.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/handler/BaseResponseGenerator.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/response/UserDeviceResponse.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/SoCoApiApplicatoin.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/response/UserLoginIntoResponse.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/response/Animal.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/resources/i18n/messages_en.properties" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/resources/i18n/messages_zh_CN.properties" />
+        <option value="$PROJECT_DIR$/web/soco_app/pom.xml" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/utils/test.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/utils/PhoneNumberUtil.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/config/LoginInterceptorConfig.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/utils/PhoneUtil.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/dao/UserMapper.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/sqlmap/UserMapper_ext.xml" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/api/UserApi.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/service/UserService.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/entity/User.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/sqlmap/UserbinddeviceMapper_ext.xml" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/dao/UserbinddeviceMapper.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/service/UserbinddeviceService.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/api/UserbinddeviceApi.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/dao/DeviceMapper.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/service/DeviceService.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/api/DeviceApi.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/constants/ResponseMessageEnum.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/ConfigController.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/FileController.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/RepairServiceController.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/IndexController.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/UserRunPointController.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/entity/Userbinddevice.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/UserbinddeviceController.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserbinddeviceService.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserService.java" />
+        <option value="$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/DeviceWarnController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="$PROJECT_DIR$/../maven/repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../maven/apache-maven-3.5.3" />
+        <option name="userSettingsFile" value="$PROJECT_DIR$/../maven/setting.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="soco_app" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="soco_app" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="1.8" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="827" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Serialization issuesJava</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>SerializableHasSerialVersionUIDField</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="iot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="svnsoco" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="svnsoco" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="svnsoco" type="462c0819:PsiDirectoryNode" />
+              <item name="report" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="svnsoco" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="svnsoco" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="soco_app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="svnsoco" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="soco_app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="svnsoco" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="soco_app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="svnsoco" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="soco_app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="svnsoco" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="soco_app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="car" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="svnsoco" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="soco_app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="car" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="svnsoco" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="soco_app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="car" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="svnsoco" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="soco_app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="car" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="response" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="SearchEverywhereHistoryKey" value="I18nService&#9;PSI&#9;JAVA://com.soco.car.app.service.I18nService&#10;AuthNullException&#9;PSI&#9;JAVA://com.soco.car.app.exception.AuthNullException&#10;RepairstationApi&#9;FILE&#9;file:///Users/yurui/svnsoco/api/soco_api/src/main/java/com/soco/car/user/api/RepairstationApi.java&#10;RepairServiceTest.java&#9;FILE&#9;file:///Users/yurui/svnsoco/api/soco_api/src/test/java/com/soco/car/user/service/RepairServiceTest.java&#10;version&#9;FILE&#9;file:///Users/yurui/svnsoco/api/soco_api/src/main/java/com/soco/car/car/sqlmap/ConfigVersionMapper_ext.xml&#10;Phone&#9;FILE&#9;file:///Users/yurui/svnsoco/api/soco_api/src/main/java/com/soco/car/user/entity/PhoneVersion.java&#10;problem&#9;PSI&#9;JAVA://com.soco.car.user.entity.ProblemAnalysis&#10;Repairstation&#9;FILE&#9;file:///Users/yurui/svnsoco/api/soco_api/src/main/java/com/soco/car/user/entity/Repairstation.java&#10;en_U&#9;FILE&#9;file:///Users/yurui/svnsoco/report/soco_report/src/main/resources/i18n/messages_en_US.properties&#10;DeviceStatisMsg&#9;FILE&#9;file:///Users/yurui/svnsoco/api/soco_api/src/main/java/com/soco/car/device/entity/DeviceStatisMsg.java&#10;UserbinddeviceService&#9;FILE&#9;file:///Users/yurui/svnsoco/web/soco_app/src/main/java/com/soco/car/app/service/UserbinddeviceService.java&#10;UserbinddeviceApi&#9;PSI&#9;JAVA://com.soco.car.user.api.UserbinddeviceApi&#10;Use&#9;FILE&#9;file:///Users/yurui/svnsoco/web/soco_app/src/main/java/com/soco/car/app/controller/UserController.java&#10;UserCon&#9;FILE&#9;file:///Users/yurui/svnsoco/web/soco_app/src/main/java/com/soco/car/app/controller/UserController.java&#10;Userride&#9;PSI&#9;JAVA://com.hualinfor.soco.pojo.VO.UserRidePointVO&#10;ConfigStartService&#9;PSI&#9;JAVA://com.soco.car.app.service.ConfigStartService&#10;U&#9;FILE&#9;file:///Users/yurui/svnsoco/web/soco_app/src/main/java/com/soco/car/app/service/UserService.java&#10;UserS&#9;FILE&#9;file:///Users/yurui/svnsoco/web/soco_app/src/main/java/com/soco/car/app/service/UserService.java&#10;User&#9;FILE&#9;file:///Users/yurui/svnsoco/web/soco_app/src/main/java/com/soco/car/app/service/UserService.java" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/sqlmap" />
+      <recent name="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/sqlmap" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.soco.car.app.utils" />
+      <recent name="com.soco.car.user.service" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.soco.car.app.utils" />
+      <recent name="com.soco.car.app.constants" />
+      <recent name="com.soco.car.common.utils" />
+      <recent name="com.soco.car.device.entity" />
+      <recent name="com.soco.car.car.api" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/sqlmap" />
+      <recent name="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/sqlmap" />
+      <recent name="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/entity" />
+      <recent name="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/dao" />
+      <recent name="$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/car/sqlmap" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SoCoAppApplicatoin">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SoCoAppTestApplicatoin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.soco.car.app.SoCoAppTestApplicatoin" />
+      <module name="soco_app" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.soco.car.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.soco.car.app.utils.test" />
+      <module name="soco_app" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.soco.car.app.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConfigServiceTest.testListAllProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="soco_api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.soco.car.user.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.soco.car.user.service" />
+      <option name="MAIN_CLASS_NAME" value="com.soco.car.user.service.ConfigServiceTest" />
+      <option name="METHOD_NAME" value="testListAllProblem" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConfigServiceTest.testSelectFirmwareVersionInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="soco_api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.soco.car.user.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.soco.car.user.service" />
+      <option name="MAIN_CLASS_NAME" value="com.soco.car.user.service.ConfigServiceTest" />
+      <option name="METHOD_NAME" value="testSelectFirmwareVersionInfo" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConfigServiceTest.testSelectVersionInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="soco_api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.soco.car.user.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.soco.car.user.service" />
+      <option name="MAIN_CLASS_NAME" value="com.soco.car.user.service.ConfigServiceTest" />
+      <option name="METHOD_NAME" value="testSelectVersionInfo" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SoCoApiApplicatoin" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="soco_api" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.soco.car.SoCoApiApplicatoin" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SoCoAppApplicatoin" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="soco_app" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.soco.car.SoCoAppApplicatoin" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SoCoIOTApplicatoin" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="soco_iot" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.soco.car.SoCoIOTApplicatoin" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SoCoReportApplicatoin" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="soco_report" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.soco.car.SoCoReportApplicatoin" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.SoCoAppTestApplicatoin" />
+      <item itemvalue="Application.test" />
+      <item itemvalue="JUnit.ConfigServiceTest.testListAllProblem" />
+      <item itemvalue="JUnit.ConfigServiceTest.testSelectVersionInfo" />
+      <item itemvalue="JUnit.ConfigServiceTest.testSelectFirmwareVersionInfo" />
+      <item itemvalue="Spring Boot.SoCoApiApplicatoin" />
+      <item itemvalue="Spring Boot.SoCoReportApplicatoin" />
+      <item itemvalue="Spring Boot.SoCoAppApplicatoin" />
+      <item itemvalue="Spring Boot.SoCoIOTApplicatoin" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.SoCoAppTestApplicatoin" />
+        <item itemvalue="JUnit.ConfigServiceTest.testSelectVersionInfo" />
+        <item itemvalue="JUnit.ConfigServiceTest.testSelectFirmwareVersionInfo" />
+        <item itemvalue="JUnit.ConfigServiceTest.testListAllProblem" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>$PROJECT_DIR$/../.subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="324f8ac3-d00c-462d-9401-2806d25430f5" name="Default" comment="" />
+      <created>1532590787029</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1532590787029</updated>
+      <workItem from="1532590788875" duration="13911000" />
+      <workItem from="1532605324745" duration="4199000" />
+      <workItem from="1532609715286" duration="62090000" />
+      <workItem from="1533016048503" duration="557000" />
+      <workItem from="1533018008662" duration="24062000" />
+      <workItem from="1533116636269" duration="38062000" />
+      <workItem from="1533519563885" duration="5707000" />
+      <workItem from="1533525648522" duration="45972000" />
+      <workItem from="1533776991082" duration="20735000" />
+      <workItem from="1533863686864" duration="4234000" />
+      <workItem from="1533871362359" duration="27199000" />
+      <workItem from="1535879204870" duration="6625000" />
+      <workItem from="1537103380420" duration="32000" />
+      <workItem from="1537164892219" duration="1173000" />
+      <workItem from="1537424963106" duration="615000" />
+      <workItem from="1545701620366" duration="1886000" />
+      <workItem from="1546065039827" duration="1440000" />
+      <workItem from="1547880754392" duration="13000" />
+      <workItem from="1554087557957" duration="1163000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="ConfigAboutServiceTest_testSelectKefuConfigInfo - 2018.08.02 at 13h 35m 40s.xml">
+      <configuration name="ConfigAboutServiceTest.testSelectKefuConfigInfo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConfigAboutServiceTest_testSelectThirdUrlMoneyConfigInfo - 2018.08.02 at 13h 36m 16s.xml">
+      <configuration name="ConfigAboutServiceTest.testSelectThirdUrlMoneyConfigInfo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConfigServiceTest_testListAllProblem - 2018.08.02 at 17h 19m 13s.xml">
+      <configuration name="ConfigServiceTest.testListAllProblem" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConfigServiceTest_testSelectFirmwareVersionInfo - 2018.08.02 at 17h 25m 57s.xml">
+      <configuration name="ConfigServiceTest.testSelectFirmwareVersionInfo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConfigServiceTest_testSelectFirmwareVersionInfo - 2018.08.02 at 17h 27m 11s.xml">
+      <configuration name="ConfigServiceTest.testSelectFirmwareVersionInfo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConfigServiceTest_testSelectFirmwareVersionInfo - 2018.08.02 at 17h 32m 31s.xml">
+      <configuration name="ConfigServiceTest.testSelectFirmwareVersionInfo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConfigServiceTest_testSelectFirmwareVersionInfo - 2018.08.02 at 17h 35m 25s.xml">
+      <configuration name="ConfigServiceTest.testSelectFirmwareVersionInfo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConfigServiceTest_testSelectFirmwareVersionInfo - 2018.08.02 at 17h 36m 59s.xml">
+      <configuration name="ConfigServiceTest.testSelectFirmwareVersionInfo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConfigServiceTest_testSelectVersionInfo - 2018.08.02 at 17h 22m 00s.xml">
+      <configuration name="ConfigServiceTest.testSelectVersionInfo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConfigServiceTest_testSelectVersionInfo - 2018.08.02 at 17h 37m 17s.xml">
+      <configuration name="ConfigServiceTest.testSelectVersionInfo" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="259675000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5465538" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963988" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49168974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28540772" sideWeight="0.48891968" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.63850415" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27539343" sideWeight="0.5110803" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32686982" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/SoCoAppApplicatoin.java</url>
+          <line>38</line>
+          <properties />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserbinddeviceService.java</url>
+          <line>121</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserbinddeviceService.java</url>
+          <line>79</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserbinddeviceService.java</url>
+          <line>133</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserbinddeviceService.java</url>
+          <line>132</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserService.java</url>
+          <line>158</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/UserController.java</url>
+          <line>54</line>
+          <properties />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/UserRunPointController.java</url>
+          <line>58</line>
+          <properties />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserService.java</url>
+          <line>134</line>
+          <properties />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserService.java</url>
+          <line>100</line>
+          <properties />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserService.java</url>
+          <line>145</line>
+          <properties />
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserService.java</url>
+          <line>257</line>
+          <properties />
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/IndexController.java</url>
+          <line>88</line>
+          <properties />
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/IndexController.java</url>
+          <line>62</line>
+          <properties />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/UserbinddeviceController.java</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserbinddeviceService.java</url>
+          <line>35</line>
+          <properties />
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../maven/repository/org/springframework/spring-webmvc/5.0.6.RELEASE/spring-webmvc-5.0.6.RELEASE-sources.jar!/org/springframework/web/servlet/HandlerExecutionChain.java</url>
+          <line>137</line>
+          <properties />
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../maven/repository/org/springframework/spring-webmvc/5.0.6.RELEASE/spring-webmvc-5.0.6.RELEASE-sources.jar!/org/springframework/web/servlet/HandlerExecutionChain.java</url>
+          <line>136</line>
+          <properties />
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserbinddeviceService.java</url>
+          <line>44</line>
+          <properties />
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserService.java</url>
+          <line>377</line>
+          <properties />
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="61" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$PROJECT_DIR$/api/soco_api/target/soco_api-client-1.0-SNAPSHOT.jar!/com/soco/car/user/api/UserApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="62" column="34" lean-forward="false" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/sqlmap/UserRunPointMapper_ext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/service/UserbinddeviceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="42" column="65" lean-forward="false" selection-start-line="42" selection-start-column="65" selection-end-line="42" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/sqlmap/UserbinddeviceMapper_ext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="43" column="53" lean-forward="false" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/entity/Userbinddevice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="120" column="35" lean-forward="false" selection-start-line="120" selection-start-column="35" selection-end-line="120" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/SoCoApiApplicatoin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="35" column="15" lean-forward="false" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/constants/ResponseMessageEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="160" column="4" lean-forward="false" selection-start-line="160" selection-start-column="4" selection-end-line="160" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/utils/AccountUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="86" column="20" lean-forward="false" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/IndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="68" column="30" lean-forward="false" selection-start-line="68" selection-start-column="30" selection-end-line="68" selection-end-column="30" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <marker date="1534827593697" expanded="true" signature="4516:4615" ph="@{...}" />
+            <marker date="1534827593697" expanded="false" signature="4650:4655" ph=" { " />
+            <marker date="1534827593697" expanded="false" signature="4736:4739" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/JwtService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="63" column="18" lean-forward="false" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/api/DeviceApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="45" column="33" lean-forward="false" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/UserbinddeviceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="42" lean-forward="false" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/service/DeviceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1650">
+          <caret line="120" column="40" lean-forward="false" selection-start-line="120" selection-start-column="40" selection-end-line="120" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/sqlmap/DeviceMapper_ext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserbinddeviceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-300">
+          <caret line="74" column="22" lean-forward="false" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
+          <folding>
+            <marker date="1534827593795" expanded="true" signature="4722:4723" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/api/soco_api/target/soco_api-client-1.0-SNAPSHOT.jar!/com/soco/car/device/entity/Device.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/sqlmap/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/entity/Device.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/entity/DeviceCourseUrl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/entity/DeviceCourseUrlExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/entity/DevicestateExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/entity/DeviceWarn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/sqlmap/DeviceMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/dao/DeviceCourseUrlMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/entity/DeviceWarnExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="120">
+            <caret line="8" column="50" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="203" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/SoCoAppApplicatoin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="35" column="15" lean-forward="false" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/sqlmap/UserbinddeviceMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1665">
+          <caret line="111" column="9" lean-forward="false" selection-start-line="111" selection-start-column="3" selection-end-line="111" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/device/sqlmap/DeviceCourseUrlMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/resources/springboot.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/resources/logback-spring.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/soco_api/src/main/java/com/soco/car/user/sqlmap/DictMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1845">
+          <caret line="123" column="22" lean-forward="false" selection-start-line="123" selection-start-column="14" selection-end-line="123" selection-end-column="22" />
+          <folding>
+            <marker date="1532658691958" expanded="true" signature="3904:4008" ph="select from ts01_dict" />
+            <marker date="1532658691958" expanded="true" signature="4091:4149" ph="delete from " />
+            <marker date="1532658691958" expanded="true" signature="4251:4272" ph="delete from " />
+            <marker date="1532658691958" expanded="true" signature="6364:6394" ph="select count... ts01_dict" />
+            <marker date="1532658691958" expanded="true" signature="7581:7982" ph="update ts01_... " />
+            <marker date="1532658691958" expanded="true" signature="8191:8885" ph="update ts01_... " />
+            <marker date="1532658691958" expanded="true" signature="8983:9331" ph="update ts01_... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/ConfigController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="93" column="21" lean-forward="false" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/DeviceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/FileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="64" column="21" lean-forward="false" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/UserRunPointController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="78" column="34" lean-forward="false" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="73" column="6" lean-forward="false" selection-start-line="73" selection-start-column="6" selection-end-line="73" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/handler/BaseResponseGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="34" column="24" lean-forward="false" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3030">
+          <caret line="247" column="43" lean-forward="false" selection-start-line="247" selection-start-column="43" selection-end-line="247" selection-end-column="43" />
+          <folding>
+            <marker date="1545794224990" expanded="true" signature="13584:13644" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/controller/DeviceWarnController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="52" column="31" lean-forward="false" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/LocationInfoRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/MobileLoginRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/NearByLocationRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/RegisterRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/SetPasswordRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/UserDataRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/response/UserDeviceResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/response/UserLoginIntoResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/request/BaseRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/soco_app/src/main/java/com/soco/car/app/api/response/BaseResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>soco_app</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: ch.qos.logback:logback-classic:1.2.3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

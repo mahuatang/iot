@@ -1,0 +1,149 @@
+package com.soco.car.device.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @author 
+ */
+public class Device implements Serializable {
+    /**
+     * 设备ID
+     */
+    private Long deviceid;
+
+    /**
+     * 设备编号，系统自动生成，硬件需要进行对应
+     */
+    private String deviceno;
+
+    /**
+     * 生产日期
+     */
+    private Date prodate;
+
+    private String qrcode;
+
+    private String sncode;
+
+    /**
+     * 激活日期，设备首次被绑定时间
+     */
+    private Date activationdate;
+
+    /**
+     * iccid用于充值
+     */
+    private String iccid;
+
+    private static final long serialVersionUID = 1L;
+
+    public Long getDeviceid() {
+        return deviceid;
+    }
+
+    public void setDeviceid(Long deviceid) {
+        this.deviceid = deviceid;
+    }
+
+    public String getDeviceno() {
+        return deviceno;
+    }
+
+    public void setDeviceno(String deviceno) {
+        this.deviceno = deviceno;
+    }
+
+    public Date getProdate() {
+        return prodate;
+    }
+
+    public void setProdate(Date prodate) {
+        this.prodate = prodate;
+    }
+
+    public String getQrcode() {
+        return qrcode;
+    }
+
+    public void setQrcode(String qrcode) {
+        this.qrcode = qrcode;
+    }
+
+    public String getSncode() {
+        return sncode;
+    }
+
+    public void setSncode(String sncode) {
+        this.sncode = sncode;
+    }
+
+    public Date getActivationdate() {
+        return activationdate;
+    }
+
+    public void setActivationdate(Date activationdate) {
+        this.activationdate = activationdate;
+    }
+
+    public String getIccid() {
+        return iccid;
+    }
+
+    public void setIccid(String iccid) {
+        this.iccid = iccid;
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
+        Device other = (Device) that;
+        return (this.getDeviceid() == null ? other.getDeviceid() == null : this.getDeviceid().equals(other.getDeviceid()))
+            && (this.getDeviceno() == null ? other.getDeviceno() == null : this.getDeviceno().equals(other.getDeviceno()))
+            && (this.getProdate() == null ? other.getProdate() == null : this.getProdate().equals(other.getProdate()))
+            && (this.getQrcode() == null ? other.getQrcode() == null : this.getQrcode().equals(other.getQrcode()))
+            && (this.getSncode() == null ? other.getSncode() == null : this.getSncode().equals(other.getSncode()))
+            && (this.getActivationdate() == null ? other.getActivationdate() == null : this.getActivationdate().equals(other.getActivationdate()))
+            && (this.getIccid() == null ? other.getIccid() == null : this.getIccid().equals(other.getIccid()));
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((getDeviceid() == null) ? 0 : getDeviceid().hashCode());
+        result = prime * result + ((getDeviceno() == null) ? 0 : getDeviceno().hashCode());
+        result = prime * result + ((getProdate() == null) ? 0 : getProdate().hashCode());
+        result = prime * result + ((getQrcode() == null) ? 0 : getQrcode().hashCode());
+        result = prime * result + ((getSncode() == null) ? 0 : getSncode().hashCode());
+        result = prime * result + ((getActivationdate() == null) ? 0 : getActivationdate().hashCode());
+        result = prime * result + ((getIccid() == null) ? 0 : getIccid().hashCode());
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", deviceid=").append(deviceid);
+        sb.append(", deviceno=").append(deviceno);
+        sb.append(", prodate=").append(prodate);
+        sb.append(", qrcode=").append(qrcode);
+        sb.append(", sncode=").append(sncode);
+        sb.append(", activationdate=").append(activationdate);
+        sb.append(", iccid=").append(iccid);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}

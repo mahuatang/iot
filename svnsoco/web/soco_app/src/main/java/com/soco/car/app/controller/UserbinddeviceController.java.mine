@@ -1,0 +1,59 @@
+package com.soco.car.app.controller;
+
+import com.soco.car.app.api.request.BindedDeviceRequest;
+import com.soco.car.app.api.request.DeviceStateRequest;
+import com.soco.car.app.api.response.BaseResponse;
+import com.soco.car.app.service.UserbinddeviceService;
+import com.soco.car.user.entity.Userbinddevice;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/rest/v1/Userbinddevice")
+@Api(value = "/rest/v1/Userbinddevice", tags = { "车辆管理相关接口服务" })
+public class UserbinddeviceController extends BaseController{
+    private static final Logger logger = LoggerFactory.getLogger(UserbinddeviceController.class);
+
+    @Autowired
+    private UserbinddeviceService userbinddeviceService;
+
+    @ApiOperation("绑定设备")
+    @PostMapping("userBindDevice/{deviceNo}")
+    public BaseResponse userBindDevice(@PathVariable("deviceNo") String deviceNo) {
+        return userbinddeviceService.userBindDevice(deviceNo, getUser().getUserId());
+    }
+
+    @ApiOperation("解绑设备")
+    @PostMapping("userUnBindDevice/{deviceNo}")
+    public BaseResponse userUnBindDevice(@PathVariable("deviceNo") String deviceNo) {
+        return userbinddeviceService.userUnBindDevice(deviceNo, getUser().getUserId());
+    }
+
+    @ApiOperation("根据条件查询用户的历史绑定信息")
+    @PostMapping("queryMyBindedDevice")
+    public BaseResponse queryMyBindedDevice(@RequestBody BindedDeviceRequest bindedDeviceRequest) {
+        return userbinddeviceService.queryMyBindedDevice(bindedDeviceRequest);
+    }
+
+    @ApiOperation("查询指定设备消耗统计信息")
+    @PostMapping("queryDeviceStatisMsg")
+    public BaseResponse queryDeviceStatisMsg(@RequestBody DeviceStateRequest deviceStateRequest) {
+        return userbinddeviceService.queryDeviceStatisMsg(deviceStateRequest);
+    }
+
+    @ApiOperation("根据设备编号查询设备信息")
+    @PostMapping("selectDeviceInfo/{deviceNo}")
+    public BaseResponse selectDeviceInfo(@PathVariable("deviceNo") String deviceNo) {
+        return userbinddeviceService.selectDeviceInfo(deviceNo);
+    }
+
+    @ApiOperation("获取新手教程url")
+    @PostMapping("getCourseUrl/{protype}")
+    public BaseResponse getCourseUrl(String protype) {
+        return userbinddeviceService.getCourseUrl(protype);
+    }
+}

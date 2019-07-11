@@ -1,0 +1,37 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:AutoTimeService.java
+ * Package Name:com.soco.car.iot.service.car
+ * Date:2018年7月16日下午9:02:56
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.service.car;
+
+import org.springframework.stereotype.Service;
+
+import com.soco.car.iot.server.car.message.BaseMsg;
+import com.soco.car.iot.service.AbstractBaseService;
+
+import io.netty.channel.Channel;
+
+/**
+ * ClassName:AutoTimeService <br/>
+ * Reason: TODO ADD REASON. <br/>
+ * Date: 2018年7月16日 下午9:02:56 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class AutoTimeService extends AbstractBaseService {
+
+	@Override
+	public void processBusiness(Channel channel, BaseMsg baseMsg) {
+		
+//		baseMsg.setResponseContent(responseContent);
+	}
+
+}

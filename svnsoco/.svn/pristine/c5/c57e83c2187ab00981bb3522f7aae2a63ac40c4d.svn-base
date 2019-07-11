@@ -1,0 +1,61 @@
+/**
+ * Project Name:SOCO_API
+ * File Name:UserService.java
+ * Package Name:com.soco.car.user.service
+ * Date:2018年7月24日上午11:21:33
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.user.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
+
+import com.alibaba.dubbo.config.annotation.Service;
+import com.soco.car.common.dsl.DataSourceKey;
+import com.soco.car.common.dsl.TargetDataSource;
+import com.soco.car.user.api.UserApi;
+import com.soco.car.user.dao.UserMapper;
+import com.soco.car.user.entity.User;
+import com.soco.car.user.entity.UserExample;
+
+/**
+ * ClassName:UserService <br/>
+ * Reason: 与用户相关的一些接口 <br/>
+ * Date: 2018年7月24日 上午11:21:33 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service(interfaceClass = UserApi.class, timeout = 30000)
+public class UserService implements UserApi {
+
+	@Autowired
+	private UserMapper userMapper;
+
+	public User findByPhone(String phone) {
+		Assert.isTrue(!StringUtils.isEmpty(phone), "手机号码不能为空!");
+		UserExample example = new UserExample();
+		example.createCriteria().andPhoneEqualTo(phone.trim());
+		List<User> userList = userMapper.selectByExample(example);
+		if (CollectionUtils.isEmpty(userList)) {
+			return null;
+		}
+		return userList.get(0);
+	}
+
+	@TargetDataSource(dataSourceKey = DataSourceKey.MASTER)
+	@Transactional
+	public User save(User user) {
+		userMapper.insertSelective(user);
+		return user;
+	}
+
+}

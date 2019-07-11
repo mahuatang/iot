@@ -1,0 +1,40 @@
+# dev 
+# tomcat config
+server.port=7080
+server.session.timeout=10
+server.tomcat.uri-encoding=UTF-8
+server.contextPath=/
+
+#car netty server
+car.netty.host=127.0.0.1
+car.netty.port=12301
+car.netty.write.timeout=180
+car.netty.read.timeout=0
+car.netty.all.timeout=180
+#app netty server
+app.netty.host=127.0.0.1
+app.netty.port=12302
+#plat netty server
+plat.netty.host=127.0.0.1
+plat.netty.port=12303
+
+# dubbo config
+spring.dubbo.application.name=SOCO_IOT
+spring.dubbo.registry.protocol=zookeeper
+spring.dubbo.registry.address=127.0.0.1:2181
+spring.dubbo.server=true  
+spring.dubbo.protocol.name=dubbo  
+spring.dubbo.protocol.port=21790 
+spring.dubbo.scan=com.soco.car.iot
+
+# rabbit mq
+#spring.rabbitmq.host=47.104.194.214
+spring.rabbitmq.host=47.104.243.121
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=soco
+spring.rabbitmq.password=soco
+
+# spring redis
+spring.redis.host=47.104.194.214
+spring.redis.port=6379
+spring.redis.password=soco

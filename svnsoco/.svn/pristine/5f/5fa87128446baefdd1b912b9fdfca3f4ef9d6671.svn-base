@@ -1,0 +1,71 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:LoginService.java
+ * Package Name:com.soco.car.iot.service.car
+ * Date:2018年7月12日下午2:55:18
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.service.car;
+
+import java.util.Date;
+
+import javax.annotation.Resource;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
+
+import com.soco.car.iot.cache.entity.DeviceCache;
+import com.soco.car.iot.constants.DeviceChannelContext;
+import com.soco.car.iot.constants.SOCOIotConstant;
+import com.soco.car.iot.server.car.message.BaseMsg;
+import com.soco.car.iot.server.car.message.msg.LoginMsg;
+
+import io.netty.channel.Channel;
+
+/**
+ * ClassName:LoginService <br/>
+ * Reason: 登录中后续的业务处理类. <br/>
+ * Date: 2018年7月12日 下午2:55:18 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class LoginService extends AbstractCarBaseService {
+
+	private final static Logger logger = LoggerFactory.getLogger(LoginService.class);
+
+	@Resource(name = "redisTemplate")
+	private RedisTemplate<String, DeviceCache> deviceCacheTemplate;
+
+	/**
+	 * 
+	 * 处理登录操作相关业务
+	 * 
+	 * @see com.soco.car.iot.service.car.ICarService#processBusiness(io.netty.channel.Channel,
+	 *      com.soco.car.iot.server.car.message.BaseMsg)
+	 */
+	@Override
+	public void processBusiness(Channel channel, BaseMsg baseMsg) {
+		LoginMsg loginMsg = (LoginMsg) baseMsg;
+		String deviceNo = loginMsg.getDeviceNo();
+		DeviceCache cache = (DeviceCache) deviceCacheTemplate.opsForHash().get(SOCOIotConstant.DEVICE_HASH, deviceNo);
+		if (cache == null) {
+			cache = new DeviceCache();
+			cache.setDeviceNo(deviceNo);
+			cache.setCreateTime(new Date());
+		}
+		// 调用登录的时长
+		cache.setLoginTime(new Date());
+		deviceCacheTemplate.opsForHash().put(SOCOIotConstant.DEVICE_HASH, deviceNo, cache);
+		DeviceChannelContext.setAttrbute(deviceNo, channel);
+		DeviceChannelContext.putDevice(deviceNo, channel);
+	}
+
+}

@@ -1,0 +1,64 @@
+package com.soco.car.app.api.request;
+
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import java.io.Serializable;
+
+@ApiModel(value = "用户位置详情")
+public class LocationInfoRequest implements Serializable {
+	
+	private static final long serialVersionUID = 6391085830471700521L;
+	
+	@ApiModelProperty(value = "最小经度", required = true, example = "116.0")
+    private Double leftTopLng;
+    @ApiModelProperty(value = "最大经度", required = true, example = "118.0")
+    private Double rightFootLng;
+    @ApiModelProperty(value = "最小纬度", required = true, example = "33.0")
+    private Double rightFootLat;
+    @ApiModelProperty(value = "最大纬度", required = true, example = "35.0")
+    private Double leftTopLat;
+
+    public Double getLeftTopLng() {
+        return leftTopLng;
+    }
+
+    public void setLeftTopLng(Double leftTopLng) {
+        this.leftTopLng = leftTopLng;
+    }
+
+    public Double getRightFootLng() {
+        return rightFootLng;
+    }
+
+    public void setRightFootLng(Double rightFootLng) {
+        this.rightFootLng = rightFootLng;
+    }
+
+    public Double getRightFootLat() {
+        return rightFootLat;
+    }
+
+    public void setRightFootLat(Double rightFootLat) {
+        this.rightFootLat = rightFootLat;
+    }
+
+    public Double getLeftTopLat() {
+        return leftTopLat;
+    }
+
+    public void setLeftTopLat(Double leftTopLat) {
+        this.leftTopLat = leftTopLat;
+    }
+
+    @Override
+    public String toString() {
+        return "LocationInfoRequest{" +
+                "leftTopLng=" + leftTopLng +
+                ", rightFootLng=" + rightFootLng +
+                ", rightFootLat=" + rightFootLat +
+                ", leftTopLat=" + leftTopLat +
+                '}';
+    }
+}

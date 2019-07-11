@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.device.dao.DeviceCourseUrlMapper">
+  <resultMap id="BaseResultMap" type="com.soco.car.device.entity.DeviceCourseUrl">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="device_protype" jdbcType="VARCHAR" property="deviceProtype" />
+    <result column="device_url" jdbcType="VARCHAR" property="deviceUrl" />
+    <result column="del" jdbcType="INTEGER" property="del" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="device_title" jdbcType="VARCHAR" property="deviceTitle" />
+    <result column="image_path" jdbcType="VARCHAR" property="imagePath" />
+    <result column="simple_desc" jdbcType="VARCHAR" property="simpleDesc" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.soco.car.device.entity.DeviceCourseUrl">
+    <result column="device_desc" jdbcType="LONGVARCHAR" property="deviceDesc" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, device_protype, device_url, del, create_time, update_time, device_title, image_path, 
+    simple_desc
+  </sql>
+  <sql id="Blob_Column_List">
+    device_desc
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.soco.car.device.entity.DeviceCourseUrlExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ts01_device_course_url
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.soco.car.device.entity.DeviceCourseUrlExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ts01_device_course_url
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ts01_device_course_url
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ts01_device_course_url
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.soco.car.device.entity.DeviceCourseUrlExample">
+    delete from ts01_device_course_url
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.soco.car.device.entity.DeviceCourseUrl">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_device_course_url (device_protype, device_url, del, 
+      create_time, update_time, device_title, 
+      image_path, simple_desc, device_desc
+      )
+    values (#{deviceProtype,jdbcType=VARCHAR}, #{deviceUrl,jdbcType=VARCHAR}, #{del,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, #{deviceTitle,jdbcType=VARCHAR}, 
+      #{imagePath,jdbcType=VARCHAR}, #{simpleDesc,jdbcType=VARCHAR}, #{deviceDesc,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.soco.car.device.entity.DeviceCourseUrl">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_device_course_url
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceProtype != null">
+        device_protype,
+      </if>
+      <if test="deviceUrl != null">
+        device_url,
+      </if>
+      <if test="del != null">
+        del,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deviceTitle != null">
+        device_title,
+      </if>
+      <if test="imagePath != null">
+        image_path,
+      </if>
+      <if test="simpleDesc != null">
+        simple_desc,
+      </if>
+      <if test="deviceDesc != null">
+        device_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceProtype != null">
+        #{deviceProtype,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceUrl != null">
+        #{deviceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="del != null">
+        #{del,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceTitle != null">
+        #{deviceTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null">
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="simpleDesc != null">
+        #{simpleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceDesc != null">
+        #{deviceDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.soco.car.device.entity.DeviceCourseUrlExample" resultType="java.lang.Long">
+    select count(*) from ts01_device_course_url
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ts01_device_course_url
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.deviceProtype != null">
+        device_protype = #{record.deviceProtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceUrl != null">
+        device_url = #{record.deviceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.del != null">
+        del = #{record.del,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceTitle != null">
+        device_title = #{record.deviceTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imagePath != null">
+        image_path = #{record.imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.simpleDesc != null">
+        simple_desc = #{record.simpleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceDesc != null">
+        device_desc = #{record.deviceDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update ts01_device_course_url
+    set id = #{record.id,jdbcType=BIGINT},
+      device_protype = #{record.deviceProtype,jdbcType=VARCHAR},
+      device_url = #{record.deviceUrl,jdbcType=VARCHAR},
+      del = #{record.del,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=VARCHAR},
+      device_title = #{record.deviceTitle,jdbcType=VARCHAR},
+      image_path = #{record.imagePath,jdbcType=VARCHAR},
+      simple_desc = #{record.simpleDesc,jdbcType=VARCHAR},
+      device_desc = #{record.deviceDesc,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ts01_device_course_url
+    set id = #{record.id,jdbcType=BIGINT},
+      device_protype = #{record.deviceProtype,jdbcType=VARCHAR},
+      device_url = #{record.deviceUrl,jdbcType=VARCHAR},
+      del = #{record.del,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=VARCHAR},
+      device_title = #{record.deviceTitle,jdbcType=VARCHAR},
+      image_path = #{record.imagePath,jdbcType=VARCHAR},
+      simple_desc = #{record.simpleDesc,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.soco.car.device.entity.DeviceCourseUrl">
+    update ts01_device_course_url
+    <set>
+      <if test="deviceProtype != null">
+        device_protype = #{deviceProtype,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceUrl != null">
+        device_url = #{deviceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="del != null">
+        del = #{del,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceTitle != null">
+        device_title = #{deviceTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null">
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="simpleDesc != null">
+        simple_desc = #{simpleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceDesc != null">
+        device_desc = #{deviceDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.soco.car.device.entity.DeviceCourseUrl">
+    update ts01_device_course_url
+    set device_protype = #{deviceProtype,jdbcType=VARCHAR},
+      device_url = #{deviceUrl,jdbcType=VARCHAR},
+      del = #{del,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      device_title = #{deviceTitle,jdbcType=VARCHAR},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      simple_desc = #{simpleDesc,jdbcType=VARCHAR},
+      device_desc = #{deviceDesc,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.soco.car.device.entity.DeviceCourseUrl">
+    update ts01_device_course_url
+    set device_protype = #{deviceProtype,jdbcType=VARCHAR},
+      device_url = #{deviceUrl,jdbcType=VARCHAR},
+      del = #{del,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      device_title = #{deviceTitle,jdbcType=VARCHAR},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      simple_desc = #{simpleDesc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,67 @@
+package com.soco.car.user.api;
+
+import com.soco.car.user.entity.Userbinddevice;
+
+import java.util.List;
+
+public interface UserbinddeviceApi {
+    /**
+     * 检查用户是否有绑定过其他设备
+     * @param ubd
+     * @return
+     * @throws Exception
+     */
+    public int checkUserBindDevice(Userbinddevice ubd);
+
+    /**
+     * 检查设备是否有被其他用户绑定
+     * @param ubd
+     * @return
+     * @throws Exception
+     */
+    public int checkDeviceBindUser(Userbinddevice ubd);
+
+    /**
+     * 检查该用户和该设备是否存在解绑关系
+     * @param ubd
+     * @return
+     * @throws Exception
+     */
+    public Userbinddevice checkUserDeviceBind(Userbinddevice ubd);
+
+    /**
+     * 插入新的绑定关系
+     * @throws Exception
+     */
+    public int insertUserBindDevice(Userbinddevice ubd);
+
+    /**
+     * 修改用户绑定设备状态
+     * @throws Exception
+     */
+    public int updateUserBindDevice(Userbinddevice ubd);
+
+    /**
+     * 根据用户Id查询历史绑定设备信息
+     * @param pageNum
+     * @param numPerPage
+     * @param userId
+     * @param state
+     * @return
+     */
+    public List<Userbinddevice> queryMyBindedDevice(Integer pageNum, Integer numPerPage, Integer userId, String state);
+
+    /**
+     * 查询绑定该设备的userId
+     * @param deviceNo
+     * @return
+     */
+    public String userIdBindDeviceByDeviceNo(String deviceNo);
+
+    /**
+     * 获取用户最近绑定的车
+     * @param userId
+     * @return
+     */
+    public Userbinddevice getUserBindDeviceNow(String userId);
+}

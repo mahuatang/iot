@@ -1,0 +1,50 @@
+/**
+ * Project Name:SOCO_API
+ * File Name:UserApi.java
+ * Package Name:com.soco.car.user.api
+ * Date:2018年7月24日下午1:08:36
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.user.api;
+
+import com.soco.car.user.entity.User;
+
+/**
+ * ClassName:UserApi <br/>
+ * Reason: 用户相关接口 <br/>
+ * Date: 2018年7月24日 下午1:08:36 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+public interface UserApi {
+	
+	/**
+	 * 
+	 * findByPhone:根据手机号码查询用户
+	 *
+	 * @author sunlangping
+	 * @param phone
+	 * @return
+	 */
+	public User findByPhone(String phone);
+	/**
+	 * 
+	 * save:	新增用户
+	 *
+	 * @author sunlangping
+	 * @param user
+	 * @return
+	 */
+	public User save(User user);
+
+	/**
+	 * APP前端，查询用户基本信息，根据用户ID
+	 * @param userId
+	 * @return
+	 */
+	public User selectUserBasicInfoById(Long userId);
+}

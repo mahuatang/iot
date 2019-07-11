@@ -1,0 +1,199 @@
+package com.soco.car.device.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @author 
+ */
+public class Device implements Serializable {
+    /**
+     * 设备ID
+     */
+    private Long deviceId;
+
+    /**
+     * 设备编号，系统自动生成，硬件需要进行对应
+     */
+    private String deviceNo;
+
+    /**
+     * 生产日期
+     */
+    private Date proDate;
+
+    private String qrCode;
+
+    private String snCode;
+
+    /**
+     * 激活日期，设备首次被绑定时间
+     */
+    private Date activationDate;
+
+    /**
+     * iccid用于充值
+     */
+    private String iccid;
+
+    private String imgUrls;//车辆图片路径
+
+    private String carModelName;//车辆名称
+
+    private String carMotorNumber;//电机号
+
+    private String colorCode;//车辆颜色
+
+    private String carFrameNumber;//车架号
+
+    private static final long serialVersionUID = 1L;
+
+    public Long getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(Long deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public String getDeviceNo() {
+        return deviceNo;
+    }
+
+    public void setDeviceNo(String deviceNo) {
+        this.deviceNo = deviceNo;
+    }
+
+    public Date getProDate() {
+        return proDate;
+    }
+
+    public void setProDate(Date proDate) {
+        this.proDate = proDate;
+    }
+
+    public String getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(String qrCode) {
+        this.qrCode = qrCode;
+    }
+
+    public String getSnCode() {
+        return snCode;
+    }
+
+    public void setSnCode(String snCode) {
+        this.snCode = snCode;
+    }
+
+    public Date getActivationDate() {
+        return activationDate;
+    }
+
+    public void setActivationDate(Date activationDate) {
+        this.activationDate = activationDate;
+    }
+
+    public String getIccid() {
+        return iccid;
+    }
+
+    public void setIccid(String iccid) {
+        this.iccid = iccid;
+    }
+
+    public String getImgUrls() {
+        return imgUrls;
+    }
+
+    public void setImgUrls(String imgUrls) {
+        this.imgUrls = imgUrls;
+    }
+
+    public String getCarModelName() {
+        return carModelName;
+    }
+
+    public void setCarModelName(String carModelName) {
+        this.carModelName = carModelName;
+    }
+
+    public String getCarMotorNumber() {
+        return carMotorNumber;
+    }
+
+    public void setCarMotorNumber(String carMotorNumber) {
+        this.carMotorNumber = carMotorNumber;
+    }
+
+    public String getColorCode() {
+        return colorCode;
+    }
+
+    public void setColorCode(String colorCode) {
+        this.colorCode = colorCode;
+    }
+
+    public String getCarFrameNumber() {
+        return carFrameNumber;
+    }
+
+    public void setCarFrameNumber(String carFrameNumber) {
+        this.carFrameNumber = carFrameNumber;
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
+        Device other = (Device) that;
+        return (this.getDeviceId() == null ? other.getDeviceId() == null : this.getDeviceId().equals(other.getDeviceId()))
+            && (this.getDeviceNo() == null ? other.getDeviceNo() == null : this.getDeviceNo().equals(other.getDeviceNo()))
+            && (this.getProDate() == null ? other.getProDate() == null : this.getProDate().equals(other.getProDate()))
+            && (this.getQrCode() == null ? other.getQrCode() == null : this.getQrCode().equals(other.getQrCode()))
+            && (this.getSnCode() == null ? other.getSnCode() == null : this.getSnCode().equals(other.getSnCode()))
+            && (this.getActivationDate() == null ? other.getActivationDate() == null : this.getActivationDate().equals(other.getActivationDate()))
+            && (this.getIccid() == null ? other.getIccid() == null : this.getIccid().equals(other.getIccid()));
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((getDeviceId() == null) ? 0 : getDeviceId().hashCode());
+        result = prime * result + ((getDeviceNo() == null) ? 0 : getDeviceNo().hashCode());
+        result = prime * result + ((getProDate() == null) ? 0 : getProDate().hashCode());
+        result = prime * result + ((getQrCode() == null) ? 0 : getQrCode().hashCode());
+        result = prime * result + ((getSnCode() == null) ? 0 : getSnCode().hashCode());
+        result = prime * result + ((getActivationDate() == null) ? 0 : getActivationDate().hashCode());
+        result = prime * result + ((getIccid() == null) ? 0 : getIccid().hashCode());
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", deviceid=").append(deviceId);
+        sb.append(", deviceno=").append(deviceNo);
+        sb.append(", prodate=").append(proDate);
+        sb.append(", qrcode=").append(qrCode);
+        sb.append(", sncode=").append(snCode);
+        sb.append(", activationdate=").append(activationDate);
+        sb.append(", iccid=").append(iccid);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}

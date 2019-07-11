@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.repair.dao.RepairstationMapper">
+  <resultMap id="BaseResultMap" type="com.soco.car.repair.entity.Repairstation">
+    <id column="stationId" jdbcType="BIGINT" property="stationId" />
+    <result column="stationName" jdbcType="VARCHAR" property="stationName" />
+    <result column="contacts" jdbcType="VARCHAR" property="contacts" />
+    <result column="phoneNo" jdbcType="VARCHAR" property="phoneNo" />
+    <result column="pointLat" jdbcType="DECIMAL" property="pointLat" />
+    <result column="pointLng" jdbcType="DECIMAL" property="pointLng" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="areaId" jdbcType="INTEGER" property="areaId" />
+    <result column="workTime" jdbcType="VARCHAR" property="workTime" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    stationId, stationName, contacts, phoneNo, pointLat, pointLng, address, areaId, workTime, 
+    createTime, updateTime, status
+  </sql>
+  <select id="selectByExample" parameterType="com.soco.car.repair.entity.RepairstationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ts01_repairstation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ts01_repairstation
+    where stationId = #{stationId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ts01_repairstation
+    where stationId = #{stationId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.soco.car.repair.entity.RepairstationExample">
+    delete from ts01_repairstation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.soco.car.repair.entity.Repairstation">
+    <selectKey keyProperty="stationId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_repairstation (stationName, contacts, phoneNo, 
+      pointLat, pointLng, address, 
+      areaId, workTime, createTime, 
+      updateTime, status)
+    values (#{stationName,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, #{phoneNo,jdbcType=VARCHAR}, 
+      #{pointLat,jdbcType=DECIMAL}, #{pointLng,jdbcType=DECIMAL}, #{address,jdbcType=VARCHAR}, 
+      #{areaId,jdbcType=INTEGER}, #{workTime,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.soco.car.repair.entity.Repairstation">
+    <selectKey keyProperty="stationId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ts01_repairstation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stationName != null">
+        stationName,
+      </if>
+      <if test="contacts != null">
+        contacts,
+      </if>
+      <if test="phoneNo != null">
+        phoneNo,
+      </if>
+      <if test="pointLat != null">
+        pointLat,
+      </if>
+      <if test="pointLng != null">
+        pointLng,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="areaId != null">
+        areaId,
+      </if>
+      <if test="workTime != null">
+        workTime,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stationName != null">
+        #{stationName,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null">
+        #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null">
+        #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pointLat != null">
+        #{pointLat,jdbcType=DECIMAL},
+      </if>
+      <if test="pointLng != null">
+        #{pointLng,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.soco.car.repair.entity.RepairstationExample" resultType="java.lang.Long">
+    select count(*) from ts01_repairstation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ts01_repairstation
+    <set>
+      <if test="record.stationId != null">
+        stationId = #{record.stationId,jdbcType=BIGINT},
+      </if>
+      <if test="record.stationName != null">
+        stationName = #{record.stationName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contacts != null">
+        contacts = #{record.contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneNo != null">
+        phoneNo = #{record.phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pointLat != null">
+        pointLat = #{record.pointLat,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pointLng != null">
+        pointLng = #{record.pointLng,jdbcType=DECIMAL},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaId != null">
+        areaId = #{record.areaId,jdbcType=INTEGER},
+      </if>
+      <if test="record.workTime != null">
+        workTime = #{record.workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ts01_repairstation
+    set stationId = #{record.stationId,jdbcType=BIGINT},
+      stationName = #{record.stationName,jdbcType=VARCHAR},
+      contacts = #{record.contacts,jdbcType=VARCHAR},
+      phoneNo = #{record.phoneNo,jdbcType=VARCHAR},
+      pointLat = #{record.pointLat,jdbcType=DECIMAL},
+      pointLng = #{record.pointLng,jdbcType=DECIMAL},
+      address = #{record.address,jdbcType=VARCHAR},
+      areaId = #{record.areaId,jdbcType=INTEGER},
+      workTime = #{record.workTime,jdbcType=VARCHAR},
+      createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.soco.car.repair.entity.Repairstation">
+    update ts01_repairstation
+    <set>
+      <if test="stationName != null">
+        stationName = #{stationName,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null">
+        contacts = #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null">
+        phoneNo = #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pointLat != null">
+        pointLat = #{pointLat,jdbcType=DECIMAL},
+      </if>
+      <if test="pointLng != null">
+        pointLng = #{pointLng,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        areaId = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="workTime != null">
+        workTime = #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where stationId = #{stationId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.soco.car.repair.entity.Repairstation">
+    update ts01_repairstation
+    set stationName = #{stationName,jdbcType=VARCHAR},
+      contacts = #{contacts,jdbcType=VARCHAR},
+      phoneNo = #{phoneNo,jdbcType=VARCHAR},
+      pointLat = #{pointLat,jdbcType=DECIMAL},
+      pointLng = #{pointLng,jdbcType=DECIMAL},
+      address = #{address,jdbcType=VARCHAR},
+      areaId = #{areaId,jdbcType=INTEGER},
+      workTime = #{workTime,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
+    where stationId = #{stationId,jdbcType=BIGINT}
+  </update>
+</mapper>

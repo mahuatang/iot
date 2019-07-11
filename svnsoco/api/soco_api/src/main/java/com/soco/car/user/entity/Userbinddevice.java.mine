@@ -1,0 +1,181 @@
+package com.soco.car.user.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @author 
+ */
+public class Userbinddevice implements Serializable {
+    /**
+     * 绑定ID
+     */
+    private Integer bindId;
+
+    /**
+     * 设备ID
+     */
+    private Long deviceId;
+
+    /**
+     * 设备编号
+     */
+    private String deviceNo;
+
+    /**
+     * 用户ID
+     */
+    private Long userId;
+
+    /**
+     * 车辆图片路径，多个路径已逗号（“，”）隔开
+     */
+    private String imgUrls;
+
+    /**
+     * 绑定时间
+     */
+    private Date bindTime;
+
+    /**
+     * 解绑时间
+     */
+    private Date unbindTime;
+
+    /**
+     * 车型
+     */
+    private String carModelName;
+
+    /**
+     * 绑定状态,0：绑定；-1：解绑
+     */
+    private String state;
+
+    private static final long serialVersionUID = 1L;
+
+    public Integer getBindId() {
+        return bindId;
+    }
+
+    public void setBindId(Integer bindId) {
+        this.bindId = bindId;
+    }
+
+    public Long getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(Long deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getImgUrls() {
+        return imgUrls;
+    }
+
+    public void setImgUrls(String imgUrls) {
+        this.imgUrls = imgUrls;
+    }
+
+    public Date getBindTime() {
+        return bindTime;
+    }
+
+    public void setBindTime(Date bindTime) {
+        this.bindTime = bindTime;
+    }
+
+    public Date getUnbindTime() {
+        return unbindTime;
+    }
+
+    public void setUnbindTime(Date unbindTime) {
+        this.unbindTime = unbindTime;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getDeviceNo() {
+        return deviceNo;
+    }
+
+    public void setDeviceNo(String deviceNo) {
+        this.deviceNo = deviceNo;
+    }
+
+    public String getCarModelName() {
+        return carModelName;
+    }
+
+    public void setCarModelName(String carModelName) {
+        this.carModelName = carModelName;
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
+        Userbinddevice other = (Userbinddevice) that;
+        return (this.getBindId() == null ? other.getBindId() == null : this.getBindId().equals(other.getBindId()))
+            && (this.getDeviceId() == null ? other.getDeviceId() == null : this.getDeviceId().equals(other.getDeviceId()))
+            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
+            && (this.getImgUrls() == null ? other.getImgUrls() == null : this.getImgUrls().equals(other.getImgUrls()))
+            && (this.getBindTime() == null ? other.getBindTime() == null : this.getBindTime().equals(other.getBindTime()))
+            && (this.getUnbindTime() == null ? other.getUnbindTime() == null : this.getUnbindTime().equals(other.getUnbindTime()))
+            && (this.getState() == null ? other.getState() == null : this.getState().equals(other.getState()));
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((getBindId() == null) ? 0 : getBindId().hashCode());
+        result = prime * result + ((getDeviceId() == null) ? 0 : getDeviceId().hashCode());
+        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
+        result = prime * result + ((getImgUrls() == null) ? 0 : getImgUrls().hashCode());
+        result = prime * result + ((getBindTime() == null) ? 0 : getBindTime().hashCode());
+        result = prime * result + ((getUnbindTime() == null) ? 0 : getUnbindTime().hashCode());
+        result = prime * result + ((getState() == null) ? 0 : getState().hashCode());
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", bindId=").append(bindId);
+        sb.append(", deviceId=").append(deviceId);
+        sb.append(", userId=").append(userId);
+        sb.append(", imgUrls=").append(imgUrls);
+        sb.append(", bindTime=").append(bindTime);
+        sb.append(", unbindTime=").append(unbindTime);
+        sb.append(", state=").append(state);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}

@@ -1,0 +1,4 @@
+login.success=login success
+login.failure=login failure,account or password error.
+register.failure=register error
+register.account.exist=register Account phone number already exists

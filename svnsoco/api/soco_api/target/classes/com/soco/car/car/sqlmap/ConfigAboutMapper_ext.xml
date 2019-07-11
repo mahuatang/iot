@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soco.car.car.dao.ConfigAboutMapper">
+    <select id="selectAboutConfigInfo" resultMap="BaseResultMap">
+        select
+         <include refid="Base_Column_List"/>
+         from ts01_config_about where aboutId = 1
+    </select>
+
+    <select id="selectKefuConfigInfo" resultType="String">
+        select content kefuNumber from ts01_config_about where aboutId = 2
+    </select>
+
+    <select id="selectThirdUrlMoneyConfigInfo" resultType="Double">
+        select content thirdUrlMoney from ts01_config_about where aboutId = 3
+    </select>
+
+</mapper>

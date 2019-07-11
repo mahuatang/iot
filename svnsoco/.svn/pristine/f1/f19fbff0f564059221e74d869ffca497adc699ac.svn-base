@@ -1,0 +1,77 @@
+/**
+ * Project Name:SOCO_API
+ * File Name:DeviceService.java
+ * Package Name:com.soco.car.device.service
+ * Date:2018年7月23日下午8:13:51
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.device.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
+
+import com.alibaba.dubbo.config.annotation.Service;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.soco.car.common.constatns.SOCOAPIConstatns;
+import com.soco.car.device.api.DeviceApi;
+import com.soco.car.device.dao.DeviceMapper;
+import com.soco.car.device.dao.DeviceWarnMapper;
+import com.soco.car.device.entity.Device;
+import com.soco.car.device.entity.DeviceWarn;
+import com.soco.car.device.entity.DeviceWarnExample;
+import com.soco.car.device.entity.DeviceWarnExample.Criteria;
+
+/**
+ * ClassName:DeviceService <br/>
+ * Reason: TODO ADD REASON. <br/>
+ * Date: 2018年7月23日 下午8:13:51 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service(interfaceClass = DeviceApi.class, timeout = 30000)
+public class DeviceService implements DeviceApi {
+
+	@Autowired
+	private DeviceMapper deviceMapper;
+
+	@Autowired
+	private DeviceWarnMapper deviceWarnMapper;
+
+	public List<Device> findAll() {
+		return deviceMapper.selectByExample(null);
+	}
+
+	@Override
+	public PageInfo<DeviceWarn> findDeviceWarnByPage(Long userId, Integer delFlag, Integer pageNum, Integer pageSize) {
+		Assert.notNull(userId, "用户ID不能为空");
+		Assert.notNull(pageNum, "页数不能为空");
+		Assert.notNull(pageSize, "每页显示的条数不能为空");
+		PageHelper.startPage(pageNum, pageSize);
+		DeviceWarnExample example = new DeviceWarnExample();
+		Criteria c = example.createCriteria();
+		c.andUseridEqualTo(userId);
+		if (null != delFlag) {
+			c.andDelFlagEqualTo(delFlag);
+		}
+		PageInfo<DeviceWarn> reuslt = new PageInfo<DeviceWarn>(deviceWarnMapper.selectByExample(example));
+		return reuslt;
+	}
+
+	@Override
+	public void removeWarnIds(String warnIds) {
+		String[] ids = warnIds.split(",");
+		for (String warnId : ids) {
+			DeviceWarn deviceWarn = new DeviceWarn();
+			deviceWarn.setWarnid(Long.parseLong(warnId));
+			deviceWarn.setDelFlag(SOCOAPIConstatns.Y);
+			deviceWarnMapper.updateByPrimaryKeySelective(deviceWarn);
+		}
+	}
+}

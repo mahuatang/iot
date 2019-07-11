@@ -1,0 +1,110 @@
+/**
+ * Project Name:SOCO_IOT
+ * File Name:AutoTimeConvert.java
+ * Package Name:com.soco.car.iot.message.car.convert
+ * Date:2018年7月16日下午8:57:41
+ * Copyright (c) 2018, sunlangping8888@163.com All Rights Reserved
+ *
+*/
+
+package com.soco.car.iot.message.car.convert;
+
+import java.util.Arrays;
+import java.util.Calendar;
+
+import org.apache.commons.lang.ArrayUtils;
+import org.springframework.stereotype.Service;
+
+import com.soco.car.iot.annotation.AuthAnnotation;
+import com.soco.car.iot.annotation.AuthAnnotation.Auth;
+import com.soco.car.iot.constants.SOCOIotConstant;
+import com.soco.car.iot.message.BaseMsg;
+import com.soco.car.iot.message.MessageConverter;
+import com.soco.car.iot.message.car.msg.AutoTimeMsg;
+import com.soco.car.iot.utils.ByteUtils;
+import com.soco.car.iot.utils.CRC16;
+
+import io.netty.channel.Channel;
+
+/**
+ * ClassName:AutoTimeConvert <br/>
+ * Reason: 校时包转换类 <br/>
+ * Date: 2018年7月16日 下午8:57:41 <br/>
+ * 
+ * @author sunlangping
+ * @version
+ * @see
+ */
+@Service
+public class AutoTimeConvert implements MessageConverter {
+
+	private String msgType = "autoTime";
+
+	@Override
+	@AuthAnnotation(value = Auth.AUTH_DEVICE)
+	public BaseMsg convert2Message(Channel channel, byte[] msg) {
+		AutoTimeMsg autoTimeMsg = new AutoTimeMsg();
+		byte[] command = Arrays.copyOfRange(msg, 0, 2);
+		byte contentLength = Arrays.copyOfRange(msg, 2, 3)[0];
+
+		byte[] messageSerialNumber = Arrays.copyOfRange(msg, 4, 6);
+		autoTimeMsg.setCommand(ByteUtils.byte2ToShort(command));
+		autoTimeMsg.setContentLength(contentLength);
+		autoTimeMsg.setMessageSerialNumber(ByteUtils.byte2ToShort(messageSerialNumber));
+		autoTimeMsg.setMsgType(msgType);
+
+		byte[] content = ByteUtils.addAll(new byte[] { 0x0b }, new byte[] { supportProcotol() }, getNowTimeBytes(),
+				messageSerialNumber);
+		byte[] checkCode = CRC16.crc16Bytes7878(content);
+		byte[] responseContent = ByteUtils.addAll(command, content, checkCode, SOCOIotConstant.STOP_INDEX);
+		autoTimeMsg.setResponseContent(responseContent);
+
+		return autoTimeMsg;
+	}
+
+	@Override
+	public byte supportProcotol() {
+		return (byte) 0x8a;
+	}
+
+	private byte[] getNowTimeBytes() {
+		Calendar now = Calendar.getInstance();
+		int y = now.get(Calendar.YEAR);
+		String yy = String.valueOf(y);
+		// 取年份的后两位
+		String yyy = yy.substring(yy.length() - 2, yy.length());
+		int year = Integer.parseInt(yyy);
+		// 取字节数组的最后一位，之前3位都是0
+		byte ybyte = ByteUtils.intToByte4(year)[3];
+		byte[] yfinal = new byte[] { ybyte };
+
+		int m = now.get(Calendar.MONTH) + 1;
+		byte mbyte = ByteUtils.intToByte4(m)[3];
+		byte[] mfinal = new byte[] { mbyte };
+
+		int d = now.get(Calendar.DAY_OF_MONTH);
+		byte dbyte = ByteUtils.intToByte4(d)[3];
+		byte[] dfinal = new byte[] { dbyte };
+
+		int h = now.get(Calendar.HOUR_OF_DAY);
+		byte hbyte = ByteUtils.intToByte4(h)[3];
+		byte[] hfinal = new byte[] { hbyte };
+
+		int min = now.get(Calendar.MINUTE);
+		byte minbyte = ByteUtils.intToByte4(min)[3];
+		byte[] minfinal = new byte[] { minbyte };
+
+		int s = now.get(Calendar.SECOND);
+		byte sbyte = ByteUtils.intToByte4(s)[3];
+		byte[] sfinal = new byte[] { sbyte };
+
+		byte[] res = ArrayUtils.addAll(yfinal, mfinal);
+		res = ArrayUtils.addAll(res, dfinal);
+		res = ArrayUtils.addAll(res, hfinal);
+		res = ArrayUtils.addAll(res, minfinal);
+		res = ArrayUtils.addAll(res, sfinal);
+
+		return res;
+	}
+
+}

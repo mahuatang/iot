@@ -1,0 +1,63 @@
+package com.soco.car.user.service;
+
+import com.alibaba.dubbo.config.annotation.Service;
+import com.soco.car.user.api.UserbinddeviceApi;
+import com.soco.car.user.dao.UserbinddeviceMapper;
+import com.soco.car.user.entity.Userbinddevice;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Service(interfaceClass = UserbinddeviceApi.class, timeout = 30000)
+public class UserbinddeviceService implements UserbinddeviceApi {
+    @Autowired
+    private UserbinddeviceMapper userbinddeviceMapper;
+
+    @Override
+    public int checkUserBindDevice(Userbinddevice ubd) {
+        return userbinddeviceMapper.checkUserBindDevice(ubd);
+    }
+
+    @Override
+    public int checkDeviceBindUser(Userbinddevice ubd) {
+        return userbinddeviceMapper.checkDeviceBindUser(ubd);
+    }
+
+    @Override
+    public Userbinddevice checkUserDeviceBind(Userbinddevice ubd) {
+        return userbinddeviceMapper.checkUserDeviceBind(ubd);
+    }
+
+    @Override
+    public int insertUserBindDevice(Userbinddevice ubd) {
+        return userbinddeviceMapper.insert(ubd);
+    }
+
+    public int updateUserBindDevice(Userbinddevice ubd) {
+        return userbinddeviceMapper.updateUserBindDevice(ubd);
+    }
+
+    @Override
+    public List<Userbinddevice> queryMyBindedDevice(Integer pageNum, Integer numPerPage, Integer userId, String state) {
+        Integer start = (pageNum-1)*numPerPage;
+        List<Userbinddevice> list = userbinddeviceMapper.queryMyBindedDevice(start, numPerPage, userId, state);
+        return list;
+    }
+
+    @Override
+    public String userIdBindDeviceByDeviceNo(String deviceNo) {
+        userbinddeviceMapper.userIdBindDeviceByDeviceNo(deviceNo);
+        return null;
+    }
+
+    @Override
+    public Userbinddevice getUserBindDeviceNow(String userId) {
+        Userbinddevice userbinddevice = userbinddeviceMapper.getUserBindDeviceNow(userId);
+        if (userbinddevice.getState().equals("0")) {
+            return userbinddevice;
+        }
+        return null;
+    }
+}

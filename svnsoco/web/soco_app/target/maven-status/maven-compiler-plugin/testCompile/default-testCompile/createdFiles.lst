@@ -1,0 +1,7 @@
+com/soco/car/app/base/BaseTest.class
+com/soco/car/app/utils/DirecotryUtilTest.class
+com/soco/car/app/SoCoAppTestApplicatoin.class
+com/soco/car/app/service/UserServiceTest.class
+com/soco/car/app/utils/JwtUtilTest.class
+com/soco/car/app/cache/TokenCacheTest.class
+com/soco/car/app/service/UserbinddeviceServiceTest.class
