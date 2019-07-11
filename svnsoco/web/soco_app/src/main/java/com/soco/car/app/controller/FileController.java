@@ -11,12 +11,7 @@ package com.soco.car.app.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
-
-<<<<<<< .mine
-import io.swagger.annotations.ApiOperation;
-=======
 import org.apache.commons.lang.StringUtils;
->>>>>>> .r119
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +21,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.soco.car.app.api.response.BaseResponse;
 import com.soco.car.app.handler.BaseResponseGenerator;
 import com.soco.car.app.service.FtpFileService;
 import com.soco.car.user.api.UserApi;
 import com.soco.car.user.entity.User;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

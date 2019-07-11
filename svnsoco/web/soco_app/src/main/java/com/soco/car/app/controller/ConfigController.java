@@ -80,12 +80,7 @@ public class ConfigController extends BaseController {
 	 * @return
 	 */
 	@PostMapping("isUpgradeVersion/{versionNo}/{systemName}")
-<<<<<<< .mine
-	@ApiOperation("查询是否需要进行版本更新")
-	public BaseResponse isUpgradeVersion(@PathVariable("versionNo") String versionNo, @PathVariable("systemName") String systemName) {
-=======
 	public BaseResponse isUpgradeVersion(@PathVariable("versionNo") Integer versionNo, @PathVariable("systemName") String systemName) {
->>>>>>> .r119
 		return configService.isUpgradeVersion(versionNo, systemName);
 	}
 

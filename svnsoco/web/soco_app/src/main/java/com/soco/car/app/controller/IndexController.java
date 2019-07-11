@@ -128,22 +128,6 @@ public class IndexController extends BaseController {
 		return userService.modifyPasswordWithoutVerify(setPasswordRequest);
 	}
 
-<<<<<<< .mine
-	/**
-	 * 添加APP安装的手机信息
-	 * 
-	 * @param phoneVersion
-	 * @return
-	 */
-	@ApiOperation("添加APP安装的手机信息")
-	@PostMapping("insertPhoneVersion")
-	public BaseResponse insertPhoneVersion(PhoneVersion phoneVersion) {
-		phoneVersion.setCreatetime(new Date());
-		return userService.insertPhoneVersion(phoneVersion);
-	}
-
-=======
->>>>>>> .r119
 	@ApiOperation("各个国家短信信息中详情")
 	@PostMapping("countryList")
 	@SerializedField(excludes = { "price" })

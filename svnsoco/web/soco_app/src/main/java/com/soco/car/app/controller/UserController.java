@@ -45,11 +45,7 @@ public class UserController extends BaseController {
 	@Autowired
 	private UserService userService;
 
-<<<<<<< .mine
-	@ApiOperation("获取用户登录信息")
-=======
 	@SerializedField(excludes= {"password"})
->>>>>>> .r119
 	@PostMapping("get")
 	public BaseResponse get() {
 		return BaseResponseGenerator.genSuccessResult(userService.getUserBindDevice(getUser()));
@@ -89,16 +85,9 @@ public class UserController extends BaseController {
 	 * @param userDataRequest
 	 * @return
 	 */
-<<<<<<< .mine
-	@ApiOperation("更新用户资料")
-	@PostMapping("moidfy")
-	public BaseResponse moidfy(@RequestBody UserDataRequest userDataRequest) {
-		return userService.moidfyUser(getUser(), userDataRequest);
-=======
 	@PostMapping("modify")
 	public BaseResponse modify(@RequestBody UserDataRequest userDataRequest) {
 		return userService.modifyUser(getUser(), userDataRequest);
->>>>>>> .r119
 	}
 
 }

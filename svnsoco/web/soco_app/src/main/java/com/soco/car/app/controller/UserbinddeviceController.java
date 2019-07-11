@@ -28,80 +28,32 @@ public class UserbinddeviceController extends BaseController {
 	@Autowired
 	private UserbinddeviceService userbinddeviceService;
 
-<<<<<<< .mine
-    @ApiOperation("绑定设备")
-    @PostMapping("userBindDevice/{deviceNo}")
-    public BaseResponse userBindDevice(@PathVariable("deviceNo") String deviceNo) {
-        return userbinddeviceService.userBindDevice(deviceNo, getUser().getUserId());
-    }
-=======
 	@Reference
 	private UserbinddeviceApi userbinddeviceApi;
->>>>>>> .r119
 
-<<<<<<< .mine
-    @ApiOperation("解绑设备")
-    @PostMapping("userUnBindDevice/{deviceNo}")
-    public BaseResponse userUnBindDevice(@PathVariable("deviceNo") String deviceNo) {
-        return userbinddeviceService.userUnBindDevice(deviceNo, getUser().getUserId());
-    }
-=======
 	@PostMapping("getCourseUrl/{protype}")
 	public BaseResponse getCourseUrl(@PathVariable String protype) {
 		return userbinddeviceService.getCourseUrl(protype);
 	}
->>>>>>> .r119
 
-<<<<<<< .mine
-    @ApiOperation("根据条件查询用户的历史绑定信息")
-    @PostMapping("queryMyBindedDevice")
-    public BaseResponse queryMyBindedDevice(@RequestBody BindedDeviceRequest bindedDeviceRequest) {
-        return userbinddeviceService.queryMyBindedDevice(bindedDeviceRequest);
-    }
-=======
 	@PostMapping("checkUserBindDevice/{deviceNo}")
 	public BaseResponse checkUserBindDevice(@PathVariable String deviceNo) {
 		return userbinddeviceService.checkUserBindDevice(deviceNo, getUser());
 	}
->>>>>>> .r119
 
-<<<<<<< .mine
-    @ApiOperation("查询指定设备消耗统计信息")
-    @PostMapping("queryDeviceStatisMsg")
-    public BaseResponse queryDeviceStatisMsg(@RequestBody DeviceStateRequest deviceStateRequest) {
-        return userbinddeviceService.queryDeviceStatisMsg(deviceStateRequest);
-    }
-=======
 	@PostMapping("bindDevice/{deviceNo}")
 	public BaseResponse bindDevice(@PathVariable String deviceNo) {
 		return userbinddeviceService.bindDevice(deviceNo, getUser());
 	}
->>>>>>> .r119
 
-<<<<<<< .mine
-    @ApiOperation("根据设备编号查询设备信息")
-    @PostMapping("selectDeviceInfo/{deviceNo}")
-    public BaseResponse selectDeviceInfo(@PathVariable("deviceNo") String deviceNo) {
-        return userbinddeviceService.selectDeviceInfo(deviceNo);
-    }
-=======
 	@PostMapping("unbindDevice/{deviceNo}")
 	public BaseResponse unbindDevice(@PathVariable String deviceNo) {
 		return userbinddeviceService.unbindDevice(deviceNo, getUser());
 	}
->>>>>>> .r119
 
-<<<<<<< .mine
-    @ApiOperation("获取新手教程url")
-    @PostMapping("getCourseUrl/{protype}")
-    public BaseResponse getCourseUrl(String protype) {
-        return userbinddeviceService.getCourseUrl(protype);
-    }
-=======
 	@PostMapping("list")
 	public BaseResponse list(@RequestBody BaseRequest baseRequest) {
 		return BaseResponseGenerator.genSuccessResult(userbinddeviceApi.queryUserBindDeviceByPage(getUser().getUserId(),
 				baseRequest.getPageNum(), baseRequest.getPageSize()));
 	}
->>>>>>> .r119
 }
